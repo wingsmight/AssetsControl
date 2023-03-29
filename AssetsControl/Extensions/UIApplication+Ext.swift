@@ -1,8 +1,7 @@
 //
 //  UIApplication+Ext.swift
-//  Splus
 //
-//  Created by Igoryok on 12.02.2023.
+//  Created by Igoryok
 //
 
 import Foundation

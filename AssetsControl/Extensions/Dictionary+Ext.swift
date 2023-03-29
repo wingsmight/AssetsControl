@@ -1,8 +1,7 @@
 //
 //  Dictionary+Ext.swift
-//  Splus
 //
-//  Created by Igoryok on 26.02.2023.
+//  Created by Igoryok
 //
 
 import Foundation

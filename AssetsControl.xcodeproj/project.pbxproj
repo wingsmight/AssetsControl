@@ -11,7 +11,50 @@
 		CE177BC929D23EAC00C79390 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE177BC829D23EAC00C79390 /* MainView.swift */; };
 		CE177BCB29D23EAE00C79390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE177BCA29D23EAE00C79390 /* Assets.xcassets */; };
 		CE177BCE29D23EAE00C79390 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE177BCD29D23EAE00C79390 /* Preview Assets.xcassets */; };
-		CE30DC7229D2D6AF009C519A /* Codable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7129D2D6AF009C519A /* Codable+Ext.swift */; };
+		CE30DC7429D2DAEB009C519A /* AssetCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7329D2DAEB009C519A /* AssetCreationView.swift */; };
+		CE30DC7629D2DC7B009C519A /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7529D2DC7B009C519A /* Expense.swift */; };
+		CE30DC7829D2DD9E009C519A /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7729D2DD9E009C519A /* Symbol.swift */; };
+		CE30DC7A29D2DEB1009C519A /* Debt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7929D2DEB1009C519A /* Debt.swift */; };
+		CE30DC8029D2E959009C519A /* SymbolPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7F29D2E959009C519A /* SymbolPicker.swift */; };
+		CE30DC8229D2E9DA009C519A /* FinancialDataCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC8129D2E9DA009C519A /* FinancialDataCloud.swift */; };
+		CE30DC8529D2EA4E009C519A /* NumberFormatterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC8429D2EA4E009C519A /* NumberFormatterContainer.swift */; };
+		CE30DC8729D2EC8D009C519A /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC8629D2EC8D009C519A /* Asset.swift */; };
+		CE30DC8929D2EDB2009C519A /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC8829D2EDB2009C519A /* Stock.swift */; };
+		CE30DC8B29D2EED3009C519A /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC8A29D2EED3009C519A /* Income.swift */; };
+		CE30DC9129D2FD98009C519A /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC9029D2FD98009C519A /* ExpenseView.swift */; };
+		CE30DC9329D2FE62009C519A /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC9229D2FE62009C519A /* SymbolImage.swift */; };
+		CE30DC9529D30C1E009C519A /* FinancialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC9429D30C1E009C519A /* FinancialData.swift */; };
+		CE30DC9829D30CB8009C519A /* FinancialDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC9729D30CB8009C519A /* FinancialDataStore.swift */; };
+		CE30DC9A29D320C0009C519A /* DateFormatterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC9929D320C0009C519A /* DateFormatterContainer.swift */; };
+		CE30DCBD29D326B7009C519A /* Collection+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCBC29D326B7009C519A /* Collection+Ext.swift */; };
+		CE30DCBF29D32778009C519A /* TimeInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCBE29D32778009C519A /* TimeInterval+Ext.swift */; };
+		CE30DCC129D327B5009C519A /* Image+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCC029D327B5009C519A /* Image+Ext.swift */; };
+		CE30DCC329D327E2009C519A /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCC229D327E2009C519A /* Color+Ext.swift */; };
+		CE30DCC629D3291B009C519A /* ExpensesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCC529D3291B009C519A /* ExpensesTab.swift */; };
+		CE30DCC929D32BB1009C519A /* AssetsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCC829D32BB1009C519A /* AssetsTab.swift */; };
+		CE30DCCB29D455DE009C519A /* TimeIntervalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC6E29D2D44E009C519A /* TimeIntervalFormatter.swift */; };
+		CE30DCCC29D455E2009C519A /* StringFormatterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC6B29D2D44E009C519A /* StringFormatterContainer.swift */; };
+		CE30DCCD29D455E6009C519A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC6729D2D44E009C519A /* Currency.swift */; };
+		CE30DCCE29D455EA009C519A /* RootPresentationModeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7029D2D44E009C519A /* RootPresentationModeKey.swift */; };
+		CE30DCCF29D455EE009C519A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC6229D2D44E009C519A /* Time.swift */; };
+		CE30DCD029D455F0009C519A /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC6329D2D44E009C519A /* Day.swift */; };
+		CE30DCD129D455F1009C519A /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC6429D2D44E009C519A /* Money.swift */; };
+		CE30DCD229D455F3009C519A /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC6529D2D44E009C519A /* AlertItem.swift */; };
+		CE30DCD329D455FD009C519A /* CloseNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC5129D2D400009C519A /* CloseNavigationButton.swift */; };
+		CE30DCD429D455FE009C519A /* ColorfulBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC4E29D2D400009C519A /* ColorfulBadge.swift */; };
+		CE30DCD729D45602009C519A /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC4D29D2D400009C519A /* MultilineTextField.swift */; };
+		CE30DCD829D45604009C519A /* MultiSelectPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC4C29D2D400009C519A /* MultiSelectPickerView.swift */; };
+		CE30DCDA29D45606009C519A /* OptionalDoubleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7D29D2E922009C519A /* OptionalDoubleField.swift */; };
+		CE30DCE529D456E7009C519A /* Comparable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCE029D456E7009C519A /* Comparable+Ext.swift */; };
+		CE30DCE729D456E7009C519A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCDF29D456E7009C519A /* String+Ext.swift */; };
+		CE30DCE829D456E7009C519A /* DateComponents+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCE429D456E7009C519A /* DateComponents+Ext.swift */; };
+		CE30DCE929D456E7009C519A /* JsonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCE129D456E7009C519A /* JsonExtension.swift */; };
+		CE30DCEA29D456E7009C519A /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCE229D456E7009C519A /* Dictionary+Ext.swift */; };
+		CE30DCEB29D456E7009C519A /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCDC29D456E7009C519A /* UIApplication+Ext.swift */; };
+		CE30DCEC29D456E7009C519A /* UIScreen+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCDE29D456E7009C519A /* UIScreen+Ext.swift */; };
+		CE30DCED29D456E7009C519A /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCDD29D456E7009C519A /* View+Ext.swift */; };
+		CE30DCEE29D456E7009C519A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCDB29D456E7009C519A /* Date+Ext.swift */; };
+		CE30DCF029D4585E009C519A /* TestValueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCEF29D4585E009C519A /* TestValueExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,30 +66,47 @@
 		CE30DC4C29D2D400009C519A /* MultiSelectPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectPickerView.swift; sourceTree = "<group>"; };
 		CE30DC4D29D2D400009C519A /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		CE30DC4E29D2D400009C519A /* ColorfulBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulBadge.swift; sourceTree = "<group>"; };
-		CE30DC4F29D2D400009C519A /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
-		CE30DC5029D2D400009C519A /* HorizontalDateSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDateSlider.swift; sourceTree = "<group>"; };
 		CE30DC5129D2D400009C519A /* CloseNavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseNavigationButton.swift; sourceTree = "<group>"; };
-		CE30DC5229D2D400009C519A /* TimeGridPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGridPicker.swift; sourceTree = "<group>"; };
-		CE30DC5429D2D442009C519A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5529D2D442009C519A /* TestValueExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValueExtension.swift; sourceTree = "<group>"; };
-		CE30DC5629D2D443009C519A /* UIScreen+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5729D2D443009C519A /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5829D2D443009C519A /* Dictionary+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5929D2D443009C519A /* Collection+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5A29D2D443009C519A /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5B29D2D443009C519A /* DateComponents+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5C29D2D443009C519A /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
-		CE30DC5F29D2D443009C519A /* Comparable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Ext.swift"; sourceTree = "<group>"; };
 		CE30DC6229D2D44E009C519A /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		CE30DC6329D2D44E009C519A /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		CE30DC6429D2D44E009C519A /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		CE30DC6529D2D44E009C519A /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		CE30DC6729D2D44E009C519A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		CE30DC6B29D2D44E009C519A /* StringFormatterContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatterContainer.swift; sourceTree = "<group>"; };
-		CE30DC6D29D2D44E009C519A /* DateFormatterContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterContainer.swift; sourceTree = "<group>"; };
 		CE30DC6E29D2D44E009C519A /* TimeIntervalFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalFormatter.swift; sourceTree = "<group>"; };
 		CE30DC7029D2D44E009C519A /* RootPresentationModeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationModeKey.swift; sourceTree = "<group>"; };
-		CE30DC7129D2D6AF009C519A /* Codable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Ext.swift"; sourceTree = "<group>"; };
+		CE30DC7329D2DAEB009C519A /* AssetCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCreationView.swift; sourceTree = "<group>"; };
+		CE30DC7529D2DC7B009C519A /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		CE30DC7729D2DD9E009C519A /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
+		CE30DC7929D2DEB1009C519A /* Debt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debt.swift; sourceTree = "<group>"; };
+		CE30DC7D29D2E922009C519A /* OptionalDoubleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalDoubleField.swift; sourceTree = "<group>"; };
+		CE30DC7F29D2E959009C519A /* SymbolPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPicker.swift; sourceTree = "<group>"; };
+		CE30DC8129D2E9DA009C519A /* FinancialDataCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataCloud.swift; sourceTree = "<group>"; };
+		CE30DC8429D2EA4E009C519A /* NumberFormatterContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterContainer.swift; sourceTree = "<group>"; };
+		CE30DC8629D2EC8D009C519A /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		CE30DC8829D2EDB2009C519A /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		CE30DC8A29D2EED3009C519A /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		CE30DC9029D2FD98009C519A /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
+		CE30DC9229D2FE62009C519A /* SymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolImage.swift; sourceTree = "<group>"; };
+		CE30DC9429D30C1E009C519A /* FinancialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialData.swift; sourceTree = "<group>"; };
+		CE30DC9729D30CB8009C519A /* FinancialDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataStore.swift; sourceTree = "<group>"; };
+		CE30DC9929D320C0009C519A /* DateFormatterContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterContainer.swift; sourceTree = "<group>"; };
+		CE30DCBC29D326B7009C519A /* Collection+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCBE29D32778009C519A /* TimeInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCC029D327B5009C519A /* Image+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCC229D327E2009C519A /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCC529D3291B009C519A /* ExpensesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTab.swift; sourceTree = "<group>"; };
+		CE30DCC829D32BB1009C519A /* AssetsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsTab.swift; sourceTree = "<group>"; };
+		CE30DCDB29D456E7009C519A /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCDC29D456E7009C519A /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCDD29D456E7009C519A /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCDE29D456E7009C519A /* UIScreen+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCDF29D456E7009C519A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCE029D456E7009C519A /* Comparable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCE129D456E7009C519A /* JsonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExtension.swift; sourceTree = "<group>"; };
+		CE30DCE229D456E7009C519A /* Dictionary+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCE429D456E7009C519A /* DateComponents+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Ext.swift"; sourceTree = "<group>"; };
+		CE30DCEF29D4585E009C519A /* TestValueExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValueExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +167,10 @@
 			isa = PBXGroup;
 			children = (
 				CE177BC829D23EAC00C79390 /* MainView.swift */,
+				CE30DCC429D32906009C519A /* ExpensesTab */,
+				CE30DCC729D32AC9009C519A /* AssetsTab */,
+				CE30DC9029D2FD98009C519A /* ExpenseView.swift */,
+				CE30DC9229D2FE62009C519A /* SymbolImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,12 +186,11 @@
 		CE177BDD29D243E600C79390 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CE30DC8329D2EA2F009C519A /* Formatters */,
 				CE30DC6829D2D44E009C519A /* APIs */,
-				CE30DC6C29D2D44E009C519A /* DateFormatters */,
 				CE30DC6629D2D44E009C519A /* Enumerations */,
 				CE30DC6F29D2D44E009C519A /* EnvironmentKeys */,
 				CE30DC6029D2D44E009C519A /* Models */,
-				CE30DC6B29D2D44E009C519A /* StringFormatterContainer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -143,6 +206,15 @@
 		CE177BDF29D2473000C79390 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE30DC9629D30C96009C519A /* Stores */,
+				CE30DC7529D2DC7B009C519A /* Expense.swift */,
+				CE30DC7729D2DD9E009C519A /* Symbol.swift */,
+				CE30DC7929D2DEB1009C519A /* Debt.swift */,
+				CE30DC8129D2E9DA009C519A /* FinancialDataCloud.swift */,
+				CE30DC8629D2EC8D009C519A /* Asset.swift */,
+				CE30DC8829D2EDB2009C519A /* Stock.swift */,
+				CE30DC8A29D2EED3009C519A /* Income.swift */,
+				CE30DC9429D30C1E009C519A /* FinancialData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -152,11 +224,9 @@
 			children = (
 				CE30DC5129D2D400009C519A /* CloseNavigationButton.swift */,
 				CE30DC4E29D2D400009C519A /* ColorfulBadge.swift */,
-				CE30DC4F29D2D400009C519A /* DatePicker.swift */,
-				CE30DC5029D2D400009C519A /* HorizontalDateSlider.swift */,
 				CE30DC4D29D2D400009C519A /* MultilineTextField.swift */,
 				CE30DC4C29D2D400009C519A /* MultiSelectPickerView.swift */,
-				CE30DC5229D2D400009C519A /* TimeGridPicker.swift */,
+				CE30DC7D29D2E922009C519A /* OptionalDoubleField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -186,17 +256,20 @@
 		CE177BE429D2479600C79390 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE30DC5929D2D443009C519A /* Collection+Ext.swift */,
-				CE30DC5F29D2D443009C519A /* Comparable+Ext.swift */,
-				CE30DC5A29D2D443009C519A /* Date+Ext.swift */,
-				CE30DC5B29D2D443009C519A /* DateComponents+Ext.swift */,
-				CE30DC5829D2D443009C519A /* Dictionary+Ext.swift */,
-				CE30DC5429D2D442009C519A /* String+Ext.swift */,
-				CE30DC5529D2D442009C519A /* TestValueExtension.swift */,
-				CE30DC5C29D2D443009C519A /* UIApplication+Ext.swift */,
-				CE30DC5629D2D443009C519A /* UIScreen+Ext.swift */,
-				CE30DC5729D2D443009C519A /* View+Ext.swift */,
-				CE30DC7129D2D6AF009C519A /* Codable+Ext.swift */,
+				CE30DCE029D456E7009C519A /* Comparable+Ext.swift */,
+				CE30DCDB29D456E7009C519A /* Date+Ext.swift */,
+				CE30DCE429D456E7009C519A /* DateComponents+Ext.swift */,
+				CE30DCE229D456E7009C519A /* Dictionary+Ext.swift */,
+				CE30DCE129D456E7009C519A /* JsonExtension.swift */,
+				CE30DCDF29D456E7009C519A /* String+Ext.swift */,
+				CE30DCDC29D456E7009C519A /* UIApplication+Ext.swift */,
+				CE30DCDE29D456E7009C519A /* UIScreen+Ext.swift */,
+				CE30DCDD29D456E7009C519A /* View+Ext.swift */,
+				CE30DCBC29D326B7009C519A /* Collection+Ext.swift */,
+				CE30DCBE29D32778009C519A /* TimeInterval+Ext.swift */,
+				CE30DCC029D327B5009C519A /* Image+Ext.swift */,
+				CE30DCC229D327E2009C519A /* Color+Ext.swift */,
+				CE30DCEF29D4585E009C519A /* TestValueExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -244,8 +317,8 @@
 		CE30DC6C29D2D44E009C519A /* DateFormatters */ = {
 			isa = PBXGroup;
 			children = (
-				CE30DC6D29D2D44E009C519A /* DateFormatterContainer.swift */,
 				CE30DC6E29D2D44E009C519A /* TimeIntervalFormatter.swift */,
+				CE30DC9929D320C0009C519A /* DateFormatterContainer.swift */,
 			);
 			path = DateFormatters;
 			sourceTree = "<group>";
@@ -256,6 +329,42 @@
 				CE30DC7029D2D44E009C519A /* RootPresentationModeKey.swift */,
 			);
 			path = EnvironmentKeys;
+			sourceTree = "<group>";
+		};
+		CE30DC8329D2EA2F009C519A /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				CE30DC6C29D2D44E009C519A /* DateFormatters */,
+				CE30DC6B29D2D44E009C519A /* StringFormatterContainer.swift */,
+				CE30DC8429D2EA4E009C519A /* NumberFormatterContainer.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		CE30DC9629D30C96009C519A /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				CE30DC9729D30CB8009C519A /* FinancialDataStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		CE30DCC429D32906009C519A /* ExpensesTab */ = {
+			isa = PBXGroup;
+			children = (
+				CE30DCC529D3291B009C519A /* ExpensesTab.swift */,
+				CE30DC7329D2DAEB009C519A /* AssetCreationView.swift */,
+				CE30DC7F29D2E959009C519A /* SymbolPicker.swift */,
+			);
+			path = ExpensesTab;
+			sourceTree = "<group>";
+		};
+		CE30DCC729D32AC9009C519A /* AssetsTab */ = {
+			isa = PBXGroup;
+			children = (
+				CE30DCC829D32BB1009C519A /* AssetsTab.swift */,
+			);
+			path = AssetsTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,9 +437,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE30DCEB29D456E7009C519A /* UIApplication+Ext.swift in Sources */,
 				CE177BC929D23EAC00C79390 /* MainView.swift in Sources */,
-				CE30DC7229D2D6AF009C519A /* Codable+Ext.swift in Sources */,
+				CE30DC8729D2EC8D009C519A /* Asset.swift in Sources */,
+				CE30DC8529D2EA4E009C519A /* NumberFormatterContainer.swift in Sources */,
+				CE30DC8029D2E959009C519A /* SymbolPicker.swift in Sources */,
+				CE30DCEE29D456E7009C519A /* Date+Ext.swift in Sources */,
+				CE30DC9A29D320C0009C519A /* DateFormatterContainer.swift in Sources */,
+				CE30DCEC29D456E7009C519A /* UIScreen+Ext.swift in Sources */,
+				CE30DCD729D45602009C519A /* MultilineTextField.swift in Sources */,
+				CE30DCD429D455FE009C519A /* ColorfulBadge.swift in Sources */,
+				CE30DCDA29D45606009C519A /* OptionalDoubleField.swift in Sources */,
+				CE30DCC129D327B5009C519A /* Image+Ext.swift in Sources */,
+				CE30DC8229D2E9DA009C519A /* FinancialDataCloud.swift in Sources */,
+				CE30DC7A29D2DEB1009C519A /* Debt.swift in Sources */,
+				CE30DC7429D2DAEB009C519A /* AssetCreationView.swift in Sources */,
+				CE30DCEA29D456E7009C519A /* Dictionary+Ext.swift in Sources */,
+				CE30DCCC29D455E2009C519A /* StringFormatterContainer.swift in Sources */,
+				CE30DC9829D30CB8009C519A /* FinancialDataStore.swift in Sources */,
+				CE30DCCF29D455EE009C519A /* Time.swift in Sources */,
+				CE30DCD029D455F0009C519A /* Day.swift in Sources */,
+				CE30DCCD29D455E6009C519A /* Currency.swift in Sources */,
+				CE30DCD129D455F1009C519A /* Money.swift in Sources */,
+				CE30DC9129D2FD98009C519A /* ExpenseView.swift in Sources */,
+				CE30DCD229D455F3009C519A /* AlertItem.swift in Sources */,
+				CE30DCD329D455FD009C519A /* CloseNavigationButton.swift in Sources */,
+				CE30DCC929D32BB1009C519A /* AssetsTab.swift in Sources */,
+				CE30DCBD29D326B7009C519A /* Collection+Ext.swift in Sources */,
+				CE30DCCB29D455DE009C519A /* TimeIntervalFormatter.swift in Sources */,
+				CE30DCC629D3291B009C519A /* ExpensesTab.swift in Sources */,
+				CE30DCD829D45604009C519A /* MultiSelectPickerView.swift in Sources */,
+				CE30DC8929D2EDB2009C519A /* Stock.swift in Sources */,
+				CE30DCED29D456E7009C519A /* View+Ext.swift in Sources */,
+				CE30DCCE29D455EA009C519A /* RootPresentationModeKey.swift in Sources */,
 				CE177BC729D23EAC00C79390 /* AssetsControlApp.swift in Sources */,
+				CE30DC7629D2DC7B009C519A /* Expense.swift in Sources */,
+				CE30DCE929D456E7009C519A /* JsonExtension.swift in Sources */,
+				CE30DC8B29D2EED3009C519A /* Income.swift in Sources */,
+				CE30DCE529D456E7009C519A /* Comparable+Ext.swift in Sources */,
+				CE30DCE729D456E7009C519A /* String+Ext.swift in Sources */,
+				CE30DCF029D4585E009C519A /* TestValueExtension.swift in Sources */,
+				CE30DC9529D30C1E009C519A /* FinancialData.swift in Sources */,
+				CE30DCC329D327E2009C519A /* Color+Ext.swift in Sources */,
+				CE30DC7829D2DD9E009C519A /* Symbol.swift in Sources */,
+				CE30DCE829D456E7009C519A /* DateComponents+Ext.swift in Sources */,
+				CE30DCBF29D32778009C519A /* TimeInterval+Ext.swift in Sources */,
+				CE30DC9329D2FE62009C519A /* SymbolImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

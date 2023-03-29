@@ -1,8 +1,7 @@
 //
 //  ViewExt.swift
-//  EnglishApp
 //
-//  Created by Igoryok on 14.05.2022.
+//  Created by Igoryok
 //
 
 import Combine

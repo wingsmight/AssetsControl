@@ -1,8 +1,7 @@
 //
 //  DateComponents+Ext.swift
-//  Splus
 //
-//  Created by Igoryok on 16.02.2023.
+//  Created by Igoryok
 //
 
 import Foundation

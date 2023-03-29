@@ -38,19 +38,6 @@ final class Time: Comparable, Equatable, Identifiable, Strideable, Hashable, Cus
         self.init(minutesSinceBeginningOfDay: minutesSinceBeginningOfDay)
     }
 
-    func advanced(by seconds: Int) -> Time {
-        Time(minutesSinceBeginningOfDay: minutesSinceBeginningOfDay + seconds)
-    }
-
-    func distance(to other: Time) -> Int {
-        other.minutesSinceBeginningOfDay - minutesSinceBeginningOfDay
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(hour)
-        hasher.combine(minute)
-    }
-
     static func == (lhs: Time, rhs: Time) -> Bool {
         lhs.minutesSinceBeginningOfDay == rhs.minutesSinceBeginningOfDay
     }
@@ -93,6 +80,19 @@ final class Time: Comparable, Equatable, Identifiable, Strideable, Hashable, Cus
         let minutesSinceBeginningOfDay = (lhs - rhs).minutesSinceBeginningOfDay
 
         lhs = Time(minutesSinceBeginningOfDay: minutesSinceBeginningOfDay)
+    }
+    
+    func advanced(by seconds: Int) -> Time {
+        Time(minutesSinceBeginningOfDay: minutesSinceBeginningOfDay + seconds)
+    }
+
+    func distance(to other: Time) -> Int {
+        other.minutesSinceBeginningOfDay - minutesSinceBeginningOfDay
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(hour)
+        hasher.combine(minute)
     }
 
     var date: Date {

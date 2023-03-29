@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct MainView: View {
+    private let expensesTabIndex = 0
+    private let assetsTabIndex = 1
+    
+    @EnvironmentObject private var financesStore: FinancialDataStore
+    
+    @State private var selectedTabIndex = 0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView(selection: $selectedTabIndex) {
+            ExpensesTab()
+                .tabItem {
+                    Label("Expenses", systemImage: "list.clipboard.fill")
+                }
+                .tag(expensesTabIndex)
+            
+            AssetsTab()
+                .tabItem {
+                    Label("Assets", systemImage: "banknote.fill")
+                }
+                .tag(assetsTabIndex)
         }
-        .padding()
     }
 }
 

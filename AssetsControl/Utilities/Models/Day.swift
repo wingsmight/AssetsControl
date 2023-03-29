@@ -21,18 +21,6 @@ final class Day: Comparable, Equatable, Identifiable, Strideable, Hashable, Cust
         self.date = calendar.date(from: components)!
     }
 
-    func advanced(by dayCount: Int) -> Day {
-        Day(Calendar.current.date(byAdding: .day, value: dayCount, to: date)!)
-    }
-
-    func distance(to otherDay: Day) -> Int {
-        Calendar.current.dateComponents([.day], from: date, to: otherDay.date).day!
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(date)
-    }
-
     static func == (lhs: Day, rhs: Day) -> Bool {
         Calendar.current.dateComponents([.day], from: lhs.date, to: rhs.date).day == 0
     }
@@ -51,6 +39,18 @@ final class Day: Comparable, Equatable, Identifiable, Strideable, Hashable, Cust
 
     static func > (lhs: Day, rhs: Day) -> Bool {
         lhs.date > rhs.date
+    }
+    
+    func advanced(by dayCount: Int) -> Day {
+        Day(Calendar.current.date(byAdding: .day, value: dayCount, to: date)!)
+    }
+
+    func distance(to otherDay: Day) -> Int {
+        Calendar.current.dateComponents([.day], from: date, to: otherDay.date).day!
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
     }
 
     var description: String {

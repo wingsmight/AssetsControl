@@ -1,8 +1,7 @@
 //
 //  Money.swift
-//  Splus
 //
-//  Created by Igoryok on 21.01.2023.
+//  Created by Igoryok
 //
 
 import Foundation

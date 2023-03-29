@@ -109,16 +109,22 @@ struct MultiSelectItemRow<T>: View {
 }
 
 struct MultiSelectPickerView_Previews: PreviewProvider {
-    private static let products = [
-        Product.test,
-        Product.test,
+    struct Person: Identifiable, Hashable {
+        let id = UUID()
+        
+        var name: String
+    }
+    
+    private static let people = [
+        Person(name: "Jaden"),
+        Person(name: "Igor"),
     ]
 
     static var previews: some View {
         VStack {
-            MultiSelectItemList<Product>(items: products,
-                                         itemView: { product in
-                                             AnyView(Text(product.name))
+            MultiSelectItemList<Person>(items: people,
+                                         itemView: { person in
+                                            AnyView(Text(person.name))
                                          },
                                          selected: .constant([]))
         }
