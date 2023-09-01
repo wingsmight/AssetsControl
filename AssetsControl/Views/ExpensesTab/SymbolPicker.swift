@@ -21,6 +21,7 @@ struct SymbolPicker: View {
                         Circle()
                             .fill(Color(UIColor.tertiarySystemGroupedBackground))
                     }
+
                     Image(safeSystemImage: "\(symbol.rawValue).fill", default: symbol.rawValue)
                         .foregroundColor(symbol == selected ? Color.white : symbol.color)
                 }
@@ -36,12 +37,13 @@ struct SymbolPicker: View {
         .padding(.vertical, 12)
     }
 
+    @ViewBuilder
     func getSelectedBackground(symbol: Symbol) -> some View {
         if #available(iOS 16.0, *) {
-            return Circle()
+            Circle()
                 .fill(symbol.color.gradient)
         } else {
-            return Circle()
+            Circle()
                 .fill(symbol.color)
         }
     }
@@ -49,6 +51,18 @@ struct SymbolPicker: View {
 
 struct SymbolPicker_Previews: PreviewProvider {
     static var previews: some View {
-        SymbolPicker(selected: .constant(Symbol.defaultSymbol))
-    }
+         SymbolPickerView()
+     }
+     
+     private struct SymbolPickerView : View {
+         @State var selectedSymbol = Symbol.defaultSymbol
+         
+         var body: some View {
+             VStack {
+                 Text(selectedSymbol.suggestedTitle)
+                 
+                 SymbolPicker(selected: $selectedSymbol)
+             }
+         }
+     }
 }
