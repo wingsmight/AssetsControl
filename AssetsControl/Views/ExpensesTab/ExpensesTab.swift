@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ExpensesTab: View {
     @EnvironmentObject private var financesStore: FinancialDataStore
-    
+
     @State private var isNewAssetSheetShowing: Bool = false
     @State private var expense: Expense? = nil
-    
+
     var body: some View {
         NavigationView {
             List {
@@ -37,27 +37,28 @@ struct ExpensesTab: View {
                 }
             }
             .sheet(isPresented: $isNewAssetSheetShowing) {
-                AssetCreationView(parentExpense: $expense, isShowing: $isNewAssetSheetShowing)
+                AssetCreationView(expense: $expense,
+                                  isShowing: $isNewAssetSheetShowing)
             }
             .onChange(of: expense) { newExpense in
                 if let newExpense {
-                    financesStore.data.expenses.append(newExpense)
+                    financesStore.data.addExpense(newExpense)
                 }
             }
         }
     }
-    
+
     func removeExpense(at offsets: IndexSet) {
         financesStore.data.expenses.remove(atOffsets: offsets)
     }
-    
+
     private var expenseGroups: [Date: [Expense]] {
         financesStore.data.expenses.sliced(by: [.year, .month, .day], for: \.date)
     }
-    
+
     private var expenseGroupHeaders: [Date] {
         expenseGroups
-            .map{ $0.key }
+            .map(\.key)
             .sorted()
     }
 }

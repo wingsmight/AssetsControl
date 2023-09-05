@@ -55,6 +55,13 @@
 		CE30DCED29D456E7009C519A /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCDD29D456E7009C519A /* View+Ext.swift */; };
 		CE30DCEE29D456E7009C519A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCDB29D456E7009C519A /* Date+Ext.swift */; };
 		CE30DCF029D4585E009C519A /* TestValueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DCEF29D4585E009C519A /* TestValueExtension.swift */; };
+		CEFD301B29DFDC12008A3071 /* MoneyHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */; };
+		CEFD301F29DFE2E4008A3071 /* OtherTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD301E29DFE2E4008A3071 /* OtherTab.swift */; };
+		CEFD302129DFE3E3008A3071 /* MoneyHolderCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */; };
+		CEFD302329DFEAA7008A3071 /* MoneyHolderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD302229DFEAA7008A3071 /* MoneyHolderRowView.swift */; };
+		CEFD302529E13050008A3071 /* CurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD302429E13050008A3071 /* CurrencyField.swift */; };
+		CEFD302729E1318F008A3071 /* NumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD302629E1318F008A3071 /* NumericTextField.swift */; };
+		CEFD303129E18FC2008A3071 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD303029E18FC2008A3071 /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +114,13 @@
 		CE30DCE229D456E7009C519A /* Dictionary+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
 		CE30DCE429D456E7009C519A /* DateComponents+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Ext.swift"; sourceTree = "<group>"; };
 		CE30DCEF29D4585E009C519A /* TestValueExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValueExtension.swift; sourceTree = "<group>"; };
+		CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolder.swift; sourceTree = "<group>"; };
+		CEFD301E29DFE2E4008A3071 /* OtherTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTab.swift; sourceTree = "<group>"; };
+		CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolderCreationView.swift; sourceTree = "<group>"; };
+		CEFD302229DFEAA7008A3071 /* MoneyHolderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolderRowView.swift; sourceTree = "<group>"; };
+		CEFD302429E13050008A3071 /* CurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyField.swift; sourceTree = "<group>"; };
+		CEFD302629E1318F008A3071 /* NumericTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericTextField.swift; sourceTree = "<group>"; };
+		CEFD303029E18FC2008A3071 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +183,7 @@
 				CE177BC829D23EAC00C79390 /* MainView.swift */,
 				CE30DCC429D32906009C519A /* ExpensesTab */,
 				CE30DCC729D32AC9009C519A /* AssetsTab */,
+				CEFD301D29DFE2C8008A3071 /* OtherTab */,
 				CE30DC9029D2FD98009C519A /* ExpenseView.swift */,
 				CE30DC9229D2FE62009C519A /* SymbolImage.swift */,
 			);
@@ -206,6 +221,7 @@
 		CE177BDF29D2473000C79390 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */,
 				CE30DC9629D30C96009C519A /* Stores */,
 				CE30DC7529D2DC7B009C519A /* Expense.swift */,
 				CE30DC7729D2DD9E009C519A /* Symbol.swift */,
@@ -215,6 +231,7 @@
 				CE30DC8829D2EDB2009C519A /* Stock.swift */,
 				CE30DC8A29D2EED3009C519A /* Income.swift */,
 				CE30DC9429D30C1E009C519A /* FinancialData.swift */,
+				CEFD303029E18FC2008A3071 /* Transaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -227,6 +244,8 @@
 				CE30DC4D29D2D400009C519A /* MultilineTextField.swift */,
 				CE30DC4C29D2D400009C519A /* MultiSelectPickerView.swift */,
 				CE30DC7D29D2E922009C519A /* OptionalDoubleField.swift */,
+				CEFD302429E13050008A3071 /* CurrencyField.swift */,
+				CEFD302629E1318F008A3071 /* NumericTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -367,6 +386,16 @@
 			path = AssetsTab;
 			sourceTree = "<group>";
 		};
+		CEFD301D29DFE2C8008A3071 /* OtherTab */ = {
+			isa = PBXGroup;
+			children = (
+				CEFD301E29DFE2E4008A3071 /* OtherTab.swift */,
+				CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */,
+				CEFD302229DFEAA7008A3071 /* MoneyHolderRowView.swift */,
+			);
+			path = OtherTab;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -383,6 +412,8 @@
 			dependencies = (
 			);
 			name = AssetsControl;
+			packageProductDependencies = (
+			);
 			productName = AssetsControl;
 			productReference = CE177BC329D23EAC00C79390 /* AssetsControl.app */;
 			productType = "com.apple.product-type.application";
@@ -411,6 +442,8 @@
 				Base,
 			);
 			mainGroup = CE177BBA29D23EAC00C79390;
+			packageReferences = (
+			);
 			productRefGroup = CE177BC429D23EAC00C79390 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -439,11 +472,13 @@
 			files = (
 				CE30DCEB29D456E7009C519A /* UIApplication+Ext.swift in Sources */,
 				CE177BC929D23EAC00C79390 /* MainView.swift in Sources */,
+				CEFD301F29DFE2E4008A3071 /* OtherTab.swift in Sources */,
 				CE30DC8729D2EC8D009C519A /* Asset.swift in Sources */,
 				CE30DC8529D2EA4E009C519A /* NumberFormatterContainer.swift in Sources */,
 				CE30DC8029D2E959009C519A /* SymbolPicker.swift in Sources */,
 				CE30DCEE29D456E7009C519A /* Date+Ext.swift in Sources */,
 				CE30DC9A29D320C0009C519A /* DateFormatterContainer.swift in Sources */,
+				CEFD302129DFE3E3008A3071 /* MoneyHolderCreationView.swift in Sources */,
 				CE30DCEC29D456E7009C519A /* UIScreen+Ext.swift in Sources */,
 				CE30DCD729D45602009C519A /* MultilineTextField.swift in Sources */,
 				CE30DCD429D455FE009C519A /* ColorfulBadge.swift in Sources */,
@@ -461,17 +496,22 @@
 				CE30DCD129D455F1009C519A /* Money.swift in Sources */,
 				CE30DC9129D2FD98009C519A /* ExpenseView.swift in Sources */,
 				CE30DCD229D455F3009C519A /* AlertItem.swift in Sources */,
+				CEFD302329DFEAA7008A3071 /* MoneyHolderRowView.swift in Sources */,
 				CE30DCD329D455FD009C519A /* CloseNavigationButton.swift in Sources */,
 				CE30DCC929D32BB1009C519A /* AssetsTab.swift in Sources */,
+				CEFD302729E1318F008A3071 /* NumericTextField.swift in Sources */,
 				CE30DCBD29D326B7009C519A /* Collection+Ext.swift in Sources */,
 				CE30DCCB29D455DE009C519A /* TimeIntervalFormatter.swift in Sources */,
 				CE30DCC629D3291B009C519A /* ExpensesTab.swift in Sources */,
 				CE30DCD829D45604009C519A /* MultiSelectPickerView.swift in Sources */,
+				CEFD302529E13050008A3071 /* CurrencyField.swift in Sources */,
 				CE30DC8929D2EDB2009C519A /* Stock.swift in Sources */,
 				CE30DCED29D456E7009C519A /* View+Ext.swift in Sources */,
 				CE30DCCE29D455EA009C519A /* RootPresentationModeKey.swift in Sources */,
 				CE177BC729D23EAC00C79390 /* AssetsControlApp.swift in Sources */,
 				CE30DC7629D2DC7B009C519A /* Expense.swift in Sources */,
+				CEFD303129E18FC2008A3071 /* Transaction.swift in Sources */,
+				CEFD301B29DFDC12008A3071 /* MoneyHolder.swift in Sources */,
 				CE30DCE929D456E7009C519A /* JsonExtension.swift in Sources */,
 				CE30DC8B29D2EED3009C519A /* Income.swift in Sources */,
 				CE30DCE529D456E7009C519A /* Comparable+Ext.swift in Sources */,

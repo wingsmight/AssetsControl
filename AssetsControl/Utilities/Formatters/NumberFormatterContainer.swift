@@ -8,6 +8,15 @@
 import Foundation
 
 class NumberFormatterContainer {
+    static let decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+
+        return formatter
+    }()
+    
     static let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
 

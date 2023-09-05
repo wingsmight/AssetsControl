@@ -8,33 +8,26 @@
 import Foundation
 
 class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
-    let fromDebt: Bool
-
     @Published var name: String
     @Published var symbol: Symbol
     @Published var colorHex: String
     @Published var baseMonthlyCost: Double
     @Published var children: [Expense]
     @Published var date: Date
+    @Published var moneyHolderSource: MoneyHolder
 
-    init(name: String, symbol: Symbol, monthlyCost: Double) {
+    init(name: String,
+         symbol: Symbol,
+         monthlyCost: Double,
+         moneyHolderSource: MoneyHolder)
+    {
         self.name = name
         self.symbol = symbol
         colorHex = "000000"
         baseMonthlyCost = monthlyCost
-        fromDebt = false
         children = []
         date = Date()
-    }
-
-    init(debt: Debt) {
-        name = debt.name
-        symbol = debt.symbol
-        colorHex = debt.colorHex
-        baseMonthlyCost = debt.monthlyPayment
-        fromDebt = true
-        children = []
-        date = Date()
+        self.moneyHolderSource = moneyHolderSource
     }
 
     required init(from decoder: Decoder) throws {
@@ -46,9 +39,9 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
         symbol = .init(rawValue: symbolName) ?? .init(rawValue: Symbol.defaultSymbol.rawValue)!
         colorHex = try values.decode(String.self, forKey: .colorHex)
         baseMonthlyCost = try values.decode(Double.self, forKey: .monthlyCost)
-        fromDebt = false
-        children = (try? values.decode([Expense].self, forKey: .children)) ?? []
+        children = (try? values.decodeIfPresent([Expense].self, forKey: .children)) ?? []
         date = try values.decode(Date.self, forKey: .date)
+        moneyHolderSource = try values.decode(MoneyHolder.self, forKey: .moneyHolderSource)
     }
 
     static func == (lhs: Expense, rhs: Expense) -> Bool {
@@ -58,10 +51,8 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     static func < (lhs: Expense, rhs: Expense) -> Bool {
         lhs.monthlyCost < rhs.monthlyCost
     }
-    
-    func encode(to encoder: Encoder) throws {
-        guard !fromDebt else { throw CodingError.isFromDebt }
 
+    func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
         try container.encode(name, forKey: .name)
@@ -70,15 +61,16 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
         try container.encode(baseMonthlyCost, forKey: .monthlyCost)
         try container.encode(children, forKey: .children)
         try container.encode(date, forKey: .date)
+        try container.encode(moneyHolderSource, forKey: .moneyHolderSource)
     }
-    
-    func hash(into hasher: inout Hasher) {       
-        hasher.combine(fromDebt.hashValue)
+
+    func hash(into hasher: inout Hasher) {
         hasher.combine(name.hashValue)
         hasher.combine(symbol.hashValue)
         hasher.combine(colorHex.hashValue)
         hasher.combine(baseMonthlyCost.hashValue)
         hasher.combine(children.hashValue)
+        hasher.combine(moneyHolderSource.hashValue)
     }
 
     var id: String {
@@ -96,9 +88,6 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
         case monthlyCost
         case children
         case date
-    }
-
-    enum CodingError: Error {
-        case isFromDebt
+        case moneyHolderSource
     }
 }

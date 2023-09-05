@@ -44,6 +44,15 @@ extension View {
     func frame(_ size: CGSize) -> some View {
         frame(width: size.width, height: size.height)
     }
+
+    func hideKeyboardWhenTappedAround() -> some View {
+        onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                            to: nil,
+                                            from: nil,
+                                            for: nil)
+        }
+    }
 }
 
 struct ResignKeyboardOnDragGesture: ViewModifier {
@@ -84,7 +93,7 @@ struct AnimationCompletionObserverModifier<Value>: AnimatableModifier where Valu
         /// Dispatching is needed to take the next runloop for the completion callback.
         /// This prevents errors like "Modifying state during view update, this will cause undefined behavior."
         DispatchQueue.main.async {
-            self.completion()
+            completion()
         }
     }
 

@@ -127,7 +127,7 @@ final class FinancialDataCloud: Codable, ObservableObject {
     }
 
     var expenses: [Expense] {
-        (nonDebtExpenses + debts.map { Expense(debt: $0) })
+        nonDebtExpenses /* + debts.map { Expense(debt: $0) }*/
             .filter { $0.monthlyCost != 0 }
             .sorted(by: >)
     }
@@ -135,7 +135,7 @@ final class FinancialDataCloud: Codable, ObservableObject {
     var totalExpenses: Double {
         expenses.reduce(0) { $0 + $1.monthlyCost }
     }
-    
+
     private var fileURL: URL {
         let directoryURL = FileManager.default.url(forUbiquityContainerIdentifier: nil) ??
             FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

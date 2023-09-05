@@ -8,6 +8,7 @@
 import Combine
 import SwiftUI
 
+// TODO: filter input
 struct OptionalDoubleField: View {
     let label: LocalizedStringKey
     let formatter: NumberFormatter
@@ -40,56 +41,74 @@ struct OptionalDoubleField: View {
     }
 
     var body: some View {
-        TextField(label, text: $textValue, onEditingChanged: { isInFocus in
-            // When the field is in focus we replace the field's contents
-            // with a plain unformatted number. When not in focus, the field
-            // is treated as a label and shows the formatted value.
-            if isInFocus {
-                if formatter.numberStyle == .percent, let value {
-                    self.textValue = (value * 100).description
-                } else {
-                    self.textValue = self.value?.description ?? ""
+        TextField(label,
+                  text: $textValue,
+                  onEditingChanged: { isInFocus in
+                      // When the field is in focus we replace the field's contents
+                      // with a plain unformatted number. When not in focus, the field
+                      // is treated as a label and shows the formatted value.
+                      if isInFocus {
+                          if formatter.numberStyle == .percent, let value {
+                              textValue = (value * 100).description
+                          } else {
+                              textValue = value?.description ?? ""
+                          }
+                      } else {
+                          let f = formatter
+                          var newValue = f.number(from: textValue)?.doubleValue
+                          if newValue == nil {
+                              newValue = Double(textValue)
+                              if let temp = newValue, f.numberStyle == .percent {
+                                  newValue = temp / 100
+                              }
+                          }
+                          textValue = f.string(for: newValue) ?? ""
+                      }
+                      onEditingChanged(isInFocus)
+                  },
+                  onCommit: onCommit)
+            .onChange(of: textValue) {
+                guard hasInitialTextValue else {
+                    // We don't have a usable `textValue` yet -- bail out.
+                    return
                 }
-            } else {
-                let f = self.formatter
-                var newValue = f.number(from: self.textValue)?.doubleValue
-                if newValue == nil {
-                    newValue = Double(self.textValue)
-                    if let temp = newValue, f.numberStyle == .percent {
-                        newValue = temp / 100
+
+//                textValue = textValue
+//                    .removingExceptFirst(".")
+//                    .removingExceptFirst(",")
+//                    .removingLeadingZero()
+
+//                textValue = String(format: "%.2f", textValue)
+
+//                textValue = formatCurrency(textValue)
+
+                // This is the only place we update `value`.
+                value = formatter.number(from: $0)?.doubleValue
+                if value == nil {
+                    value = Double($0)
+                    if let temp = value, formatter.numberStyle == .percent {
+                        value = temp / 100
                     }
                 }
-                self.textValue = f.string(for: newValue) ?? ""
             }
-            self.onEditingChanged(isInFocus)
-        }, onCommit: {
-            self.onCommit()
-        })
-        .onChange(of: textValue) {
-            guard self.hasInitialTextValue else {
-                // We don't have a usable `textValue` yet -- bail out.
-                return
-            }
-            // This is the only place we update `value`.
-            self.value = self.formatter.number(from: $0)?.doubleValue
-            if self.value == nil {
-                self.value = Double($0)
-                if let temp = self.value, self.formatter.numberStyle == .percent {
-                    self.value = temp / 100
+            .onAppear { // Otherwise textfield is empty when view appears
+                hasInitialTextValue = true
+                // Any `textValue` from this point on is considered valid and
+                // should be synced with `value`.
+                if let value {
+                    // Synchronize `textValue` with `value`; can't be done earlier
+                    textValue = formatter.string(from: NSDecimalNumber(value: value)) ?? ""
+                    // TODO: .replacingOccurrences(of: ",", with: ".")
                 }
             }
-        }
-        .onAppear { // Otherwise textfield is empty when view appears
-            self.hasInitialTextValue = true
-            // Any `textValue` from this point on is considered valid and
-            // should be synced with `value`.
-            if let value = self.value {
-                // Synchronize `textValue` with `value`; can't be done earlier
-                self.textValue = self.formatter.string(from: NSDecimalNumber(value: value)) ?? ""
-            }
-        }
-        .keyboardType(.decimalPad)
+            .keyboardType(.decimalPad)
     }
+}
+
+func formatCurrency(_ value: String) -> String {
+    guard let doubleValue = Double(value) else { return "0.00" }
+    let formattedValue = String(format: "%.2f", doubleValue)
+    return formattedValue
 }
 
 struct OptionalDoubleField_Previews: PreviewProvider {

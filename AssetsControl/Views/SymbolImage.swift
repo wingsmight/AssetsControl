@@ -14,8 +14,6 @@ struct SymbolImage: View {
     var body: some View {
         Image(safeSystemImage: "\(symbol.rawValue).fill", default: symbol.rawValue)
             .foregroundColor(symbol.color)
-            .font(.system(size: 17, weight: .medium))
-            .frame(width: 32)
     }
 }
 

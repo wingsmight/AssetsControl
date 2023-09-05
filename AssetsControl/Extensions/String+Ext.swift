@@ -26,4 +26,38 @@ extension String {
         let endIndex = index(startIndex, offsetBy: range.upperBound - range.lowerBound)
         return String(self[startIndex..<endIndex])
     }
+
+    func removingExceptFirst(_ subString: any StringProtocol) -> String {
+        var result = self
+        result.removeExceptFirst(subString)
+
+        return result
+    }
+
+    mutating func removeExceptFirst(_ subString: any StringProtocol) {
+        guard let firstCommaRange = range(of: subString) else {
+            return
+        }
+
+        let firstPart = self[..<firstCommaRange.upperBound]
+        let secondPart = self[firstCommaRange.upperBound...]
+            .replacingOccurrences(of: subString, with: "")
+
+        self = "\(firstPart)\(secondPart)"
+    }
+
+    func removingLeadingZero() -> String {
+        var result = self
+        result.removeLeadingZero()
+
+        return result
+    }
+
+    mutating func removeLeadingZero() {
+        while first == "0",
+              count > 1
+        {
+            removeFirst()
+        }
+    }
 }

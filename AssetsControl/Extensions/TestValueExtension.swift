@@ -39,3 +39,17 @@ extension [Day: [Time]] {
         return intervals
     }
 }
+
+extension Expense {
+    static let test = Expense(name: "Expense",
+                              symbol: Symbol.defaultSymbol,
+                              monthlyCost: 100.0,
+                              moneyHolderSource: MoneyHolder.test)
+}
+
+extension MoneyHolder {
+    static let test = MoneyHolder(name: "Apple Card",
+                                  description: "Credit Card",
+                                  symbol: Symbol.creditCard,
+                                  money: Money(12000))
+}

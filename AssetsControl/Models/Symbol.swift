@@ -73,6 +73,10 @@ enum Symbol: String, CaseIterable, Identifiable, Codable, Hashable {
 
     var id: Self { self }
 
+    var systemImageName: String {
+        rawValue
+    }
+
     var suggestedTitle: String {
         switch self {
         case .banknote:

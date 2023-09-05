@@ -15,17 +15,14 @@ class FinancialDataStore: ObservableObject {
     static func load(completion: @escaping (Result<FinancialData, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             do {
-                sleep(1)
-                
                 let fileURL = try fileURL()
                 let file = try FileHandle(forReadingFrom: fileURL)
                 let data = try JSONDecoder().decode(FinancialData.self, from: file.availableData)
+
                 DispatchQueue.main.async {
                     completion(.success(data))
                 }
             } catch {
-                print(error.localizedDescription)
-                
                 DispatchQueue.main.async {
                     completion(.failure(error))
                 }
@@ -39,6 +36,24 @@ class FinancialDataStore: ObservableObject {
                 let data = try JSONEncoder().encode(data)
                 let outfile = try fileURL()
                 try data.write(to: outfile)
+
+                DispatchQueue.main.async {
+                    completion(.success(true))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
+    static func delete(completion: @escaping (Result<Bool, Error>) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let outFile = try fileURL()
+                try FileManager.default.removeItem(at: outFile)
+
                 DispatchQueue.main.async {
                     completion(.success(true))
                 }

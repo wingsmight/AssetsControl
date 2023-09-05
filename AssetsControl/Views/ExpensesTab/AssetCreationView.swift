@@ -8,25 +8,38 @@
 import SwiftUI
 
 struct AssetCreationView: View {
-    @Binding var parentExpense: Expense?
-    @Binding var isShowing: Bool
+    @Binding private var expense: Expense?
+    @Binding private var isShowing: Bool
 
-    @StateObject var expense = Expense(name: "", symbol: Symbol.defaultSymbol, monthlyCost: 0)
-    @State var cost: Double?
+    @State private var name: String = ""
+    @State private var selectedSymbol: Symbol = .defaultSymbol
+    @State private var cost: Double?
+    @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
+
+    @EnvironmentObject private var financesStore: FinancialDataStore
+
+    init(expense: Binding<Expense?>,
+         isShowing: Binding<Bool>)
+    {
+        _expense = expense
+        _isShowing = isShowing
+    }
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Name", text: $expense.name)
-                        .autocapitalization(.words)
+                    nameField
 
-                    OptionalDoubleField("Monthly Cost ($)",
-                                        value: $cost,
-                                        formatter: NumberFormatterContainer.currencyFormatter)
+                    currencyField
                 }
+
                 Section {
-                    SymbolPicker(selected: $expense.symbol)
+                    moneyHolderPicker
+                }
+
+                Section {
+                    symbolPicker
                 }
             }
             .navigationTitle("Add Expense")
@@ -40,26 +53,71 @@ struct AssetCreationView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
                         if let cost {
-                            self.expense.baseMonthlyCost = cost
-                            
-                            parentExpense = self.expense
+                            expense = Expense(name: name, symbol: selectedSymbol, monthlyCost: cost, moneyHolderSource: moneyHolderSource)
 
                             dismiss()
                         }
                     }
+                    .disabled(isDoneButtonDisabled)
                 }
             }
         }
+        .onAppear {
+            guard let firstMoneyHolder = financesStore.data.moneyHolders.first else { return }
+
+            moneyHolderSource = firstMoneyHolder
+        }
+    }
+    
+    private var nameField: some View {
+        TextField("Name", text: $name)
+            .autocapitalization(.words)
+    }
+    
+    private var currencyField: some View {
+        CurrencyField("Money amount",
+                      value: $cost)
+    }
+    
+    private var moneyHolderPicker: some View {
+        MoneyHolderSourcePickerRow(selectedMoneyHolder: $moneyHolderSource,
+                                   moneyHolders: financesStore.data.moneyHolders)
+    }
+    
+    private var symbolPicker: some View {
+        SymbolPicker(selected: $selectedSymbol)
     }
 
-    func dismiss() {
+    private func dismiss() {
         isShowing = false
+    }
+
+    private var isDoneButtonDisabled: Bool {
+        cost == nil
+    }
+}
+
+struct MoneyHolderSourcePickerRow: View {
+    @Binding var selectedMoneyHolder: MoneyHolder
+
+    var moneyHolders: [MoneyHolder]
+
+    var body: some View {
+        Picker("Source", selection: $selectedMoneyHolder) {
+            ForEach(moneyHolders, id: \.self) { moneyHolder in
+                Label(moneyHolder.name, systemImage: moneyHolder.symbol.systemImageName)
+                    .tag(moneyHolder.id)
+            }
+        }
     }
 }
 
 struct AssetCreationView_Previews: PreviewProvider {
+    @StateObject private static var financialDataStore = FinancialDataStore()
+
     static var previews: some View {
-        AssetCreationView(parentExpense: .constant(nil),
+        AssetCreationView(expense: .constant(nil),
                           isShowing: .constant(false))
+            .environmentObject(financialDataStore)
     }
 }
