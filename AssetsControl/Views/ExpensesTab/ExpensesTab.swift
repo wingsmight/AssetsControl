@@ -21,7 +21,9 @@ struct ExpensesTab: View {
                         ForEach(expenseGroups[headerDate]!) { expense in
                             ExpenseView(expense: expense)
                         }
-                        .onDelete(perform: removeExpense)
+                        .onDelete { offsetIndexSet in
+                            removeExpenses(at: offsetIndexSet, for: headerDate)
+                        }
                     }
                 }
             }
@@ -48,8 +50,13 @@ struct ExpensesTab: View {
         }
     }
 
-    func removeExpense(at offsets: IndexSet) {
-        financesStore.data.expenses.remove(atOffsets: offsets)
+    private func removeExpenses(at offsets: IndexSet, for headerDate: Date) {
+        print(offsets.startIndex.description)
+
+        guard let expenseGroup = expenseGroups[headerDate] else { return }
+        let removedExpenses = offsets.map { expenseGroup[$0] }
+
+        financesStore.data.removeExpenses(removedExpenses)
     }
 
     private var expenseGroups: [Date: [Expense]] {

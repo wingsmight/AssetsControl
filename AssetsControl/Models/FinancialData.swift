@@ -36,6 +36,18 @@ struct FinancialData: Codable {
         transactions.append(Transaction())
     }
 
+    mutating func removeExpense(atOffsets offsets: IndexSet) {
+        expenses.remove(atOffsets: offsets)
+    }
+
+    mutating func removeExpense(_ removedExpense: Expense) {
+        expenses.removeAll { $0 == removedExpense }
+    }
+    
+    mutating func removeExpenses(_ removedExpenses: [Expense]) {
+        expenses.removeAll { removedExpenses.contains($0) }
+    }
+
     enum CodingKeys: String, CodingKey {
         case expenses
         case moneyHolders
