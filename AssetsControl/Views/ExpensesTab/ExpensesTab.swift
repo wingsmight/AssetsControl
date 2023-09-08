@@ -27,7 +27,6 @@ struct ExpensesTab: View {
                     }
                 }
             }
-            .padding()
             .navigationTitle("Expenses")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
