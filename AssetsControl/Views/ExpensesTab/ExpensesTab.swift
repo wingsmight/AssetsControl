@@ -59,7 +59,7 @@ struct ExpensesTab: View {
     private var expenseGroupHeaders: [Date] {
         expenseGroups
             .map(\.key)
-            .sorted()
+            .sorted { $0 > $1 }
     }
 }
 
