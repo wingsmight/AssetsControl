@@ -22,7 +22,7 @@ struct OtherTab: View {
                     MoneyHolderRowView(data: moneyHolder)
                 }
                 .onDelete { indexSet in
-                    financesStore.data.moneyHolders.remove(atOffsets: indexSet)
+                    financesStore.data.removeMoneyHolder(atOffsets: indexSet)
                 }
             }
 
@@ -34,7 +34,7 @@ struct OtherTab: View {
                 return
             }
 
-            financesStore.data.moneyHolders.append(newMoneyHolder)
+            financesStore.data.addMoneyHolder(newMoneyHolder)
             self.newMoneyHolder = nil
         } content: {
             MoneyHolderCreationView(moneyHolder: $newMoneyHolder, isShowing: $isMoneyHolderCreationSheetShowing)
