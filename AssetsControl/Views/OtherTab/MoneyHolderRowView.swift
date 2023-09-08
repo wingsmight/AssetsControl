@@ -31,7 +31,7 @@ struct MoneyHolderRowView: View {
     }
     
     var moneyTextView: some View {
-        Text(data.money.description)
+        Text(data.initialMoney.description)
             .font(.title3)
             .bold()
     }

@@ -51,5 +51,5 @@ extension MoneyHolder {
     static let test = MoneyHolder(name: "Apple Card",
                                   description: "Credit Card",
                                   symbol: Symbol.creditCard,
-                                  money: Money(12000))
+                                  initialMoney: Money(12000))
 }

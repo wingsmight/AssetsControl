@@ -25,7 +25,7 @@ struct MoneyHolderCreationView: View {
                         .autocapitalization(.words)
 
                     CurrencyField("Current Money Count",
-                                  value: Binding<Double?>($createdMoneyHolder.money.count))
+                                  value: Binding<Double?>($createdMoneyHolder.initialMoney.count))
                 }
 
                 Section {
