@@ -11,6 +11,8 @@ struct Asset: Comparable, Identifiable, Codable {
     private var prevValue: Double
     private var prevDate: Date
 
+    let id = UUID()
+
     var name: String
     var symbol: Symbol
     var color: Color
@@ -63,10 +65,6 @@ struct Asset: Comparable, Identifiable, Codable {
         return prevValue * pow(1 + (annualInterestFraction / compoundFrequency.periodsPerYear), periodsSinceDate)
     }
 
-    var id: String {
-        name
-    }
-
     var effectiveAnnualInterestFraction: Double {
         if compoundFrequency.timeInterval == .year {
             return annualInterestFraction
@@ -96,6 +94,7 @@ struct Asset: Comparable, Identifiable, Codable {
         case none
 
         var id: Self { self }
+
         var timeInterval: TimeInterval {
             switch self {
             case .monthly:

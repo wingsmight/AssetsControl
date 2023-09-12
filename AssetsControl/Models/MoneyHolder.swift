@@ -8,13 +8,13 @@
 import Foundation
 
 struct MoneyHolder: Codable, Identifiable, Hashable {
+    let id = UUID()
+
     var name: String
     var description: String
     var symbol: Symbol
     var initialMoney: Money
-    var initialDate: Date = Date()
-    
-    private(set) var id = UUID()
+    var initialDate: Date = .init()
 
     init(name: String,
          description: String = "",
@@ -28,7 +28,7 @@ struct MoneyHolder: Codable, Identifiable, Hashable {
         self.initialMoney = initialMoney
         self.initialDate = initialDate
     }
-    
+
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -48,7 +48,7 @@ struct MoneyHolder: Codable, Identifiable, Hashable {
         try container.encode(initialMoney, forKey: .initialMoney)
         try container.encode(initialDate, forKey: .initialDate)
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case name
         case description

@@ -10,13 +10,13 @@ import Foundation
 enum Currency: String, CaseIterable, CustomStringConvertible, Identifiable, Hashable, Codable {
     case ruble
 
+    var id: Self { self }
+
     var description: String {
         switch self {
         case .ruble: return "Ruble"
         }
     }
-
-    var id: Self { self }
 
     var symbol: String {
         switch self {

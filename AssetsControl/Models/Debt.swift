@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Debt: Comparable, Identifiable, Codable {
+    let id = UUID()
+
     var name: String
     var symbol: Symbol
     var color: Color
@@ -37,10 +39,6 @@ struct Debt: Comparable, Identifiable, Codable {
         let i = annualInterestFraction / 12
         let value = prevValue * pow(1 + i, monthsSinceDate) - (monthlyPayment / i) * (pow(1 + i, monthsSinceDate) - 1)
         return max(0, value)
-    }
-
-    var id: String {
-        name
     }
 
     var currentValue: Double {

@@ -8,6 +8,8 @@
 import SwiftUI
 
 class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
+    let id = UUID()
+
     @Published var name: String
     @Published var symbol: Symbol
     @Published var color: Color
@@ -69,10 +71,6 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
         hasher.combine(amount.hashValue)
         hasher.combine(children.hashValue)
         hasher.combine(moneyHolderSource.hashValue)
-    }
-
-    var id: String {
-        name + symbol.rawValue
     }
 
     var cost: Money {

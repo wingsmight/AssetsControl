@@ -11,10 +11,9 @@ import Foundation
 class Stock: Identifiable, Codable {
     static let apiKey = "MZ4NGAVYGGF4NACP"
 
+    let id = UUID()
+
     let symbol: String
-    var id: String {
-        symbol
-    }
 
     var numberOfShares: Int
     var price: Double?

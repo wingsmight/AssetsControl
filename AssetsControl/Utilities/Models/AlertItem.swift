@@ -1,36 +1,32 @@
 //
 //  AlertItem.swift
-//  Splus
 //
-//  Created by Igoryok on 03.03.2023.
+//  Created by Igoryok
 //
 
 import SwiftUI
 
 struct AlertItem: Identifiable {
-    var id = UUID()
+    let id = UUID()
+
     var title: Text
     var message: Text?
     var dismissButton: Alert.Button?
 
-    init(id: UUID = UUID(),
-         title: Text,
+    init(title: Text,
          message: Text? = nil,
          dismissButton: Alert.Button? = nil)
     {
-        self.id = id
         self.title = title
         self.message = message
         self.dismissButton = dismissButton
     }
 
-    init(id: UUID = UUID(),
-         titleText: String,
+    init(titleText: String,
          message: Text? = nil,
          dismissButton: Alert.Button? = nil)
     {
-        self.init(id: id,
-                  title: Text(titleText),
+        self.init(title: Text(titleText),
                   message: message,
                   dismissButton: dismissButton)
     }
