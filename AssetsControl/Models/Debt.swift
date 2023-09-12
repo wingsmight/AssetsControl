@@ -5,12 +5,12 @@
 //  Created by Igoryok on 28.03.2023.
 //
 
-import Foundation
+import SwiftUI
 
 struct Debt: Comparable, Identifiable, Codable {
     var name: String
     var symbol: Symbol
-    var colorHex: String
+    var color: Color
 
     var annualInterestFraction: Double
     var monthlyPayment: Double
@@ -21,7 +21,7 @@ struct Debt: Comparable, Identifiable, Codable {
     init() {
         name = ""
         symbol = Symbol.defaultSymbol
-        colorHex = "000000"
+        color = .black
         annualInterestFraction = 0
         monthlyPayment = 0
         prevValue = 0
@@ -31,7 +31,7 @@ struct Debt: Comparable, Identifiable, Codable {
     static func < (lhs: Debt, rhs: Debt) -> Bool {
         lhs.currentValue < rhs.currentValue
     }
-    
+
     func currentValue(at date: Date) -> Double {
         let monthsSinceDate = date.timeIntervalSince(prevDate) / TimeInterval.month
         let i = annualInterestFraction / 12

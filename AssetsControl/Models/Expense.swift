@@ -5,12 +5,12 @@
 //  Created by Igoryok on 28.03.2023.
 //
 
-import Foundation
+import SwiftUI
 
 class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     @Published var name: String
     @Published var symbol: Symbol
-    @Published var colorHex: String // TODO: convert to Color
+    @Published var color: Color
     @Published var baseMonthlyCost: Double // TODO: rename to amount: Money
     @Published var children: [Expense]
     @Published var date: Date
@@ -23,7 +23,7 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     {
         self.name = name
         self.symbol = symbol
-        colorHex = "000000"
+        color = .black
         baseMonthlyCost = monthlyCost
         children = []
         date = Date()
@@ -35,7 +35,7 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
 
         name = try values.decode(String.self, forKey: .name)
         symbol = try values.decode(Symbol.self, forKey: .symbol)
-        colorHex = try values.decode(String.self, forKey: .colorHex)
+        color = try values.decode(Color.self, forKey: .color)
         baseMonthlyCost = try values.decode(Double.self, forKey: .monthlyCost)
         children = (try? values.decodeIfPresent([Expense].self, forKey: .children)) ?? []
         date = try values.decode(Date.self, forKey: .date)
@@ -55,7 +55,7 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
 
         try container.encode(name, forKey: .name)
         try container.encode(symbol, forKey: .symbol)
-        try container.encode(colorHex, forKey: .colorHex)
+        try container.encode(color, forKey: .color)
         try container.encode(baseMonthlyCost, forKey: .monthlyCost)
         try container.encode(children, forKey: .children)
         try container.encode(date, forKey: .date)
@@ -65,7 +65,7 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(name.hashValue)
         hasher.combine(symbol.hashValue)
-        hasher.combine(colorHex.hashValue)
+        hasher.combine(color.hashValue)
         hasher.combine(baseMonthlyCost.hashValue)
         hasher.combine(children.hashValue)
         hasher.combine(moneyHolderSource.hashValue)
@@ -82,7 +82,7 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case name
         case symbol
-        case colorHex
+        case color
         case monthlyCost
         case children
         case date

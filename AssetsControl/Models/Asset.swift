@@ -2,11 +2,10 @@
 //  Models.swift
 //  My Assets
 //
-//  Created by Jayden Irwin on 2020-02-06.
-//  Copyright © 2020 Jayden Irwin. All rights reserved.
+//  Created by Igoryok
 //
 
-import Foundation
+import SwiftUI
 
 struct Asset: Comparable, Identifiable, Codable {
     private var prevValue: Double
@@ -14,7 +13,7 @@ struct Asset: Comparable, Identifiable, Codable {
 
     var name: String
     var symbol: Symbol
-    var colorHex: String
+    var color: Color
     var isLiquid: Bool
     var compoundFrequency: CompoundFrequency
     var annualInterestFraction: Double
@@ -22,7 +21,7 @@ struct Asset: Comparable, Identifiable, Codable {
     init() {
         name = ""
         symbol = Symbol.defaultSymbol
-        colorHex = "000000"
+        color = .black
         isLiquid = true
         compoundFrequency = .none
         annualInterestFraction = 0
@@ -33,7 +32,7 @@ struct Asset: Comparable, Identifiable, Codable {
     init(stock: Stock) {
         name = stock.symbol
         symbol = Symbol.stocks
-        colorHex = "000000"
+        color = .black
         isLiquid = true
         compoundFrequency = .none
         annualInterestFraction = stock.annualInterestFraction ?? 0.0
@@ -47,7 +46,7 @@ struct Asset: Comparable, Identifiable, Codable {
 
         name = try values.decode(String.self, forKey: .name)
         symbol = try values.decode(Symbol.self, forKey: .symbol)
-        colorHex = try values.decode(String.self, forKey: .colorHex)
+        color = try values.decode(Color.self, forKey: .color)
         isLiquid = (try? values.decode(Bool.self, forKey: .isLiquid)) ?? true
         compoundFrequency = (try? values.decode(CompoundFrequency.self, forKey: .compoundFrequency)) ?? .none
         annualInterestFraction = try values.decode(Double.self, forKey: .annualInterestFraction)
@@ -58,7 +57,7 @@ struct Asset: Comparable, Identifiable, Codable {
     static func < (lhs: Asset, rhs: Asset) -> Bool {
         lhs.currentValue < rhs.currentValue
     }
-    
+
     func currentValue(at date: Date) -> Double {
         let periodsSinceDate = date.timeIntervalSince(prevDate) / compoundFrequency.timeInterval
         return prevValue * pow(1 + (annualInterestFraction / compoundFrequency.periodsPerYear), periodsSinceDate)
@@ -116,7 +115,7 @@ struct Asset: Comparable, Identifiable, Codable {
     enum CodingKeys: String, CodingKey {
         case name
         case symbol
-        case colorHex
+        case color
         case isLiquid
         case compoundFrequency
         case annualInterestFraction
