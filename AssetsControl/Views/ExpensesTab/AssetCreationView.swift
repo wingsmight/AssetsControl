@@ -13,7 +13,7 @@ struct AssetCreationView: View {
 
     @State private var name: String = ""
     @State private var selectedSymbol: Symbol = .defaultSymbol
-    @State private var cost: Double?
+    @State private var amount: Double?
     @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
 
     @EnvironmentObject private var financesStore: FinancialDataStore
@@ -54,10 +54,10 @@ struct AssetCreationView: View {
 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
-                        if let cost {
+                        if let amount {
                             expense = Expense(name: name,
                                               symbol: selectedSymbol,
-                                              monthlyCost: cost,
+                                              amount: Money(amount),
                                               moneyHolderSource: moneyHolderSource)
 
                             dismiss()
@@ -81,7 +81,7 @@ struct AssetCreationView: View {
 
     private var currencyField: some View {
         CurrencyField("Money amount",
-                      value: $cost)
+                      value: $amount)
     }
 
     private var moneyHolderPicker: some View {
@@ -98,7 +98,7 @@ struct AssetCreationView: View {
     }
 
     private var isDoneButtonDisabled: Bool {
-        cost == nil
+        amount == nil
     }
 }
 

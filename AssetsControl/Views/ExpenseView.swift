@@ -20,7 +20,7 @@ struct ExpenseView: View {
 
             Spacer()
 
-            Text(NumberFormatterContainer.currencyFormatter.string(from: NSNumber(value: expense.monthlyCost))!)
+            Text(expense.amount.description)
         }
     }
 }

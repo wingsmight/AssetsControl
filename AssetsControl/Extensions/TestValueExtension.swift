@@ -43,7 +43,7 @@ extension [Day: [Time]] {
 extension Expense {
     static let test = Expense(name: "Expense",
                               symbol: Symbol.defaultSymbol,
-                              monthlyCost: 100.0,
+                              amount: Money(100),
                               moneyHolderSource: MoneyHolder.test)
 }
 
