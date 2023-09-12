@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct Asset: Comparable, Identifiable, Codable {
+class Asset: Comparable, Identifiable, Codable {
     private var prevValue: Double
     private var prevDate: Date
 
     let id = UUID()
 
-    var name: String
-    var symbol: Symbol
-    var color: Color
-    var isLiquid: Bool
-    var compoundFrequency: CompoundFrequency
-    var annualInterestFraction: Double
+    @Published var name: String
+    @Published var symbol: Symbol
+    @Published var color: Color
+    @Published var isLiquid: Bool
+    @Published var compoundFrequency: CompoundFrequency
+    @Published var annualInterestFraction: Double
 
     init() {
         name = ""
@@ -42,22 +42,38 @@ struct Asset: Comparable, Identifiable, Codable {
         prevDate = Date()
     }
 
-    // For legacy decode
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         name = try values.decode(String.self, forKey: .name)
         symbol = try values.decode(Symbol.self, forKey: .symbol)
         color = try values.decode(Color.self, forKey: .color)
-        isLiquid = (try? values.decode(Bool.self, forKey: .isLiquid)) ?? true
-        compoundFrequency = (try? values.decode(CompoundFrequency.self, forKey: .compoundFrequency)) ?? .none
+        isLiquid = try values.decode(Bool.self, forKey: .isLiquid)
+        compoundFrequency = try values.decode(CompoundFrequency.self, forKey: .compoundFrequency)
         annualInterestFraction = try values.decode(Double.self, forKey: .annualInterestFraction)
         prevValue = try values.decode(Double.self, forKey: .prevValue)
         prevDate = try values.decode(Date.self, forKey: .prevDate)
     }
 
+    static func == (lhs: Asset, rhs: Asset) -> Bool {
+        lhs.currentValue == rhs.currentValue
+    }
+
     static func < (lhs: Asset, rhs: Asset) -> Bool {
         lhs.currentValue < rhs.currentValue
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(name, forKey: .name)
+        try container.encode(symbol, forKey: .symbol)
+        try container.encode(color, forKey: .color)
+        try container.encode(isLiquid, forKey: .isLiquid)
+        try container.encode(compoundFrequency, forKey: .compoundFrequency)
+        try container.encode(annualInterestFraction, forKey: .annualInterestFraction)
+        try container.encode(prevValue, forKey: .prevValue)
+        try container.encode(prevDate, forKey: .prevDate)
     }
 
     func currentValue(at date: Date) -> Double {

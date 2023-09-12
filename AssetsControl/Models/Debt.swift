@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Debt: Comparable, Identifiable, Codable {
+class Debt: Comparable, Identifiable, Codable {
     let id = UUID()
 
     var name: String
@@ -28,6 +28,10 @@ struct Debt: Comparable, Identifiable, Codable {
         monthlyPayment = 0
         prevValue = 0
         prevDate = Date()
+    }
+
+    static func == (lhs: Debt, rhs: Debt) -> Bool {
+        lhs.currentValue == rhs.currentValue
     }
 
     static func < (lhs: Debt, rhs: Debt) -> Bool {

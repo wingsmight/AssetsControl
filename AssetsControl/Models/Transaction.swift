@@ -7,6 +7,4 @@
 
 import Foundation
 
-struct Transaction {
-    
-}
+class Transaction {}

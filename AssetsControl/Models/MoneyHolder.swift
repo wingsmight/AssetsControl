@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct MoneyHolder: Codable, Identifiable, Hashable {
+class MoneyHolder: Codable, Identifiable, Hashable {
     let id = UUID()
 
-    var name: String
-    var description: String
-    var symbol: Symbol
-    var initialMoney: Money
-    var initialDate: Date = .init()
+    @Published var name: String
+    @Published var description: String
+    @Published var symbol: Symbol
+    @Published var initialMoney: Money
+    @Published var initialDate: Date = .init()
 
     init(name: String,
          description: String = "",
@@ -29,7 +29,7 @@ struct MoneyHolder: Codable, Identifiable, Hashable {
         self.initialDate = initialDate
     }
 
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         name = try values.decode(String.self, forKey: .name)
@@ -37,6 +37,18 @@ struct MoneyHolder: Codable, Identifiable, Hashable {
         symbol = try values.decode(Symbol.self, forKey: .symbol)
         initialMoney = try values.decode(Money.self, forKey: .initialMoney)
         initialDate = try values.decode(Date.self, forKey: .initialDate)
+    }
+
+    static func == (lhs: MoneyHolder, rhs: MoneyHolder) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name.hashValue)
+        hasher.combine(description.hashValue)
+        hasher.combine(symbol.hashValue)
+        hasher.combine(initialMoney.hashValue)
+        hasher.combine(initialDate.hashValue)
     }
 
     func encode(to encoder: Encoder) throws {

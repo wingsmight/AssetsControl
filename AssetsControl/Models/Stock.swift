@@ -2,26 +2,19 @@
 //  Stock.swift
 //  My Assets
 //
-//  Created by Jayden Irwin on 2020-02-07.
-//  Copyright © 2020 Jayden Irwin. All rights reserved.
+//  Created by Igoryok
 //
 
 import Foundation
 
-class Stock: Identifiable, Codable {
+class Stock: Identifiable, Codable, Equatable {
     static let apiKey = "MZ4NGAVYGGF4NACP"
 
     let id = UUID()
-
     let symbol: String
 
     var numberOfShares: Int
     var price: Double?
-    var annualInterestFraction: Double? {
-        guard let prevD = prevDate, let prevP = prevPrice, let curr = price else { return nil }
-        let yearsSinceDate = Date().timeIntervalSince(prevD) / TimeInterval.year
-        return ((prevP / curr) - 1) / yearsSinceDate
-    }
 
     private var prevPrice: Double?
     private var prevDate: Date?
@@ -32,6 +25,10 @@ class Stock: Identifiable, Codable {
         price = nil
         prevPrice = nil
         prevDate = nil
+    }
+
+    static func == (lhs: Stock, rhs: Stock) -> Bool {
+        lhs.id == rhs.id
     }
 
     func fetchPrices() {
@@ -150,5 +147,11 @@ class Stock: Identifiable, Codable {
             }
         }
         task.resume()
+    }
+
+    var annualInterestFraction: Double? {
+        guard let prevD = prevDate, let prevP = prevPrice, let curr = price else { return nil }
+        let yearsSinceDate = Date().timeIntervalSince(prevD) / TimeInterval.year
+        return ((prevP / curr) - 1) / yearsSinceDate
     }
 }
