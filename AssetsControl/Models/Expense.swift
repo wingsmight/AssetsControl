@@ -10,8 +10,8 @@ import Foundation
 class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     @Published var name: String
     @Published var symbol: Symbol
-    @Published var colorHex: String
-    @Published var baseMonthlyCost: Double
+    @Published var colorHex: String // TODO: convert to Color
+    @Published var baseMonthlyCost: Double // TODO: rename to amount: Money
     @Published var children: [Expense]
     @Published var date: Date
     @Published var moneyHolderSource: MoneyHolder
@@ -33,10 +33,8 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
-        let symbolName = try values.decode(String.self, forKey: .symbol)
-
         name = try values.decode(String.self, forKey: .name)
-        symbol = .init(rawValue: symbolName) ?? .init(rawValue: Symbol.defaultSymbol.rawValue)!
+        symbol = try values.decode(Symbol.self, forKey: .symbol)
         colorHex = try values.decode(String.self, forKey: .colorHex)
         baseMonthlyCost = try values.decode(Double.self, forKey: .monthlyCost)
         children = (try? values.decodeIfPresent([Expense].self, forKey: .children)) ?? []
@@ -56,7 +54,7 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
         try container.encode(name, forKey: .name)
-        try container.encode(symbol.rawValue, forKey: .symbol)
+        try container.encode(symbol, forKey: .symbol)
         try container.encode(colorHex, forKey: .colorHex)
         try container.encode(baseMonthlyCost, forKey: .monthlyCost)
         try container.encode(children, forKey: .children)

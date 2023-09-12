@@ -53,3 +53,16 @@ extension MoneyHolder {
                                   symbol: Symbol.creditCard,
                                   initialMoney: Money(12000))
 }
+
+extension IncomeSource {
+    static let test = IncomeSource(name: "Income source", description: "Description")
+}
+
+extension ActiveIncome {
+    static let test = ActiveIncome(name: "Income",
+                                   symbol: .defaultSymbol,
+                                   initialDate: Date(),
+                                   source: IncomeSource.test,
+                                   target: MoneyHolder.test,
+                                   amount: Money(20000))
+}

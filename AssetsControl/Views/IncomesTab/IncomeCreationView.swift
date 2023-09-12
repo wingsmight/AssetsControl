@@ -1,27 +1,28 @@
 //
-//  AssetCreationView.swift
+//  IncomeCreationView.swift
 //  AssetsControl
 //
-//  Created by Igoryok on 28.03.2023.
+//  Created by Igoryok on 08.09.2023.
 //
 
 import SwiftUI
 
-struct AssetCreationView: View {
-    @Binding private var expense: Expense?
+struct IncomeCreationView: View {
+    @Binding private var income: (any Income)?
     @Binding private var isShowing: Bool
 
     @State private var name: String = ""
-    @State private var selectedSymbol: Symbol = .defaultSymbol
-    @State private var cost: Double?
-    @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
+    @State private var symbol: Symbol = .defaultSymbol
+    @State private var amount: Double?
+    @State private var source: IncomeSource = .init(name: "default")
+    @State private var moneyHolderTarget: MoneyHolder = .init(name: "default")
 
     @EnvironmentObject private var financesStore: FinancialDataStore
 
-    init(expense: Binding<Expense?>,
+    init(income: Binding<(any Income)?>,
          isShowing: Binding<Bool>)
     {
-        _expense = expense
+        _income = income
         _isShowing = isShowing
     }
 
@@ -42,23 +43,24 @@ struct AssetCreationView: View {
                     symbolPicker
                 }
             }
-            .navigationTitle("Add Expense")
+            .navigationTitle("Add Income")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
-                        expense = nil
-
+                        income = nil
+                        
                         dismiss()
                     }
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
-                        if let cost {
-                            expense = Expense(name: name,
-                                              symbol: selectedSymbol,
-                                              monthlyCost: cost,
-                                              moneyHolderSource: moneyHolderSource)
+                        if let amount {
+                            income = ActiveIncome(name: name,
+                                                  symbol: symbol,
+                                                  source: source,
+                                                  target: moneyHolderTarget,
+                                                  amount: Money(amount))
 
                             dismiss()
                         }
@@ -70,7 +72,7 @@ struct AssetCreationView: View {
         .onAppear {
             guard let firstMoneyHolder = financesStore.data.moneyHolders.first else { return }
 
-            moneyHolderSource = firstMoneyHolder
+            moneyHolderTarget = firstMoneyHolder
         }
     }
 
@@ -81,16 +83,16 @@ struct AssetCreationView: View {
 
     private var currencyField: some View {
         CurrencyField("Money amount",
-                      value: $cost)
+                      value: $amount)
     }
 
     private var moneyHolderPicker: some View {
-        MoneyHolderSourcePickerRow(selectedMoneyHolder: $moneyHolderSource,
+        MoneyHolderTargetPickerRow(selectedMoneyHolder: $moneyHolderTarget,
                                    moneyHolders: financesStore.data.moneyHolders)
     }
 
     private var symbolPicker: some View {
-        SymbolPicker(selected: $selectedSymbol)
+        SymbolPicker(selected: $symbol)
     }
 
     private func dismiss() {
@@ -98,17 +100,17 @@ struct AssetCreationView: View {
     }
 
     private var isDoneButtonDisabled: Bool {
-        cost == nil
+        amount == nil
     }
 }
 
-struct MoneyHolderSourcePickerRow: View {
+struct MoneyHolderTargetPickerRow: View {
     @Binding var selectedMoneyHolder: MoneyHolder
 
     var moneyHolders: [MoneyHolder]
 
     var body: some View {
-        Picker("Source", selection: $selectedMoneyHolder) {
+        Picker("Target", selection: $selectedMoneyHolder) {
             ForEach(moneyHolders, id: \.self) { moneyHolder in
                 Label(moneyHolder.name, systemImage: moneyHolder.symbol.systemImageName)
                     .tag(moneyHolder.id)
@@ -117,12 +119,12 @@ struct MoneyHolderSourcePickerRow: View {
     }
 }
 
-struct AssetCreationView_Previews: PreviewProvider {
+struct IncomeCreationView_Previews: PreviewProvider {
     @StateObject private static var financialDataStore = FinancialDataStore()
 
     static var previews: some View {
-        AssetCreationView(expense: .constant(nil),
-                          isShowing: .constant(false))
+        IncomeCreationView(income: .constant(nil),
+                           isShowing: .constant(false))
             .environmentObject(financialDataStore)
     }
 }

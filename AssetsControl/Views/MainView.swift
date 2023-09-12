@@ -9,8 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     private let expensesTabIndex = 0
-    private let assetsTabIndex = 1
-    private let otherTabIndex = 2
+    private let incomesTabIndex = 1
+    private let assetsTabIndex = 2
+    private let otherTabIndex = 3
 
     @EnvironmentObject private var financesStore: FinancialDataStore
 
@@ -23,6 +24,12 @@ struct MainView: View {
                     Label("Expenses", systemImage: "list.clipboard.fill")
                 }
                 .tag(expensesTabIndex)
+            
+            IncomesTab()
+                .tabItem {
+                    Label("Incomes", systemImage: "dollarsign.square.fill")
+                }
+                .tag(incomesTabIndex)
 
             AssetsTab()
                 .tabItem {

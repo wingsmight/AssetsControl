@@ -32,11 +32,9 @@ struct MoneyHolder: Codable, Identifiable, Hashable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
-        let symbolName = try values.decode(String.self, forKey: .symbol)
-
         name = try values.decode(String.self, forKey: .name)
         description = try values.decode(String.self, forKey: .description)
-        symbol = .init(rawValue: symbolName) ?? .init(rawValue: Symbol.defaultSymbol.rawValue)!
+        symbol = try values.decode(Symbol.self, forKey: .symbol)
         initialMoney = try values.decode(Money.self, forKey: .initialMoney)
         initialDate = try values.decode(Date.self, forKey: .initialDate)
     }
@@ -46,7 +44,7 @@ struct MoneyHolder: Codable, Identifiable, Hashable {
 
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
-        try container.encode(symbol.rawValue, forKey: .symbol)
+        try container.encode(symbol, forKey: .symbol)
         try container.encode(initialMoney, forKey: .initialMoney)
         try container.encode(initialDate, forKey: .initialDate)
     }

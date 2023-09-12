@@ -35,6 +35,7 @@ struct ExpensesTab: View {
                     } label: {
                         Image(systemName: "plus.circle.fill")
                     }
+                    .foregroundColor(.red)
                 }
             }
             .sheet(isPresented: $isNewAssetSheetShowing) {
