@@ -1,191 +1,519 @@
 //
 //  Currency.swift
-//  Splus
 //
-//  Created by Igoryok on 21.01.2023.
+//  Created by Igoryok
 //
-
-import Foundation
 
 enum Currency: String, CaseIterable, CustomStringConvertible, Identifiable, Hashable, Codable {
-    case ruble
+    case afghani = "AFN"
+    case algerianDinar = "DZD"
+    case argentinePeso = "ARS"
+    case armenianDram = "AMD"
+    case arubanFlorin = "AWG"
+    case australianDollar = "AUD"
+    case azerbaijanManat = "AZN"
+    case bahamianDollar = "BSD"
+    case bahrainiDinar = "BHD"
+    case baht = "THB"
+    case balboa = "PAB"
+    case barbadosDollar = "BBD"
+    case belarusianRuble = "BYN"
+    case belizeDollar = "BZD"
+    case bermudianDollar = "BMD"
+    case boliviano = "BOB"
+    case bolívar = "VEF"
+    case brazilianReal = "BRL"
+    case bruneiDollar = "BND"
+    case bulgarianLev = "BGN"
+    case burundiFranc = "BIF"
+    case caboVerdeEscudo = "CVE"
+    case canadianDollar = "CAD"
+    case caymanIslandsDollar = "KYD"
+    case chileanPeso = "CLP"
+    case colombianPeso = "COP"
+    case comorianFranc = "KMF"
+    case congoleseFranc = "CDF"
+    case convertibleMark = "BAM"
+    case cordobaOro = "NIO"
+    case costaRicanColon = "CRC"
+    case cubanPeso = "CUP"
+    case czechKoruna = "CZK"
+    case dalasi = "GMD"
+    case danishKrone = "DKK"
+    case denar = "MKD"
+    case djiboutiFranc = "DJF"
+    case dobra = "STN"
+    case dollar = "USD"
+    case dominicanPeso = "DOP"
+    case dong = "VND"
+    case eastCaribbeanDollar = "XCD"
+    case egyptianPound = "EGP"
+    case elSalvadorColon = "SVC"
+    case ethiopianBirr = "ETB"
+    case euro = "EUR"
+    case falklandIslandsPound = "FKP"
+    case fijiDollar = "FJD"
+    case forint = "HUF"
+    case ghanaCedi = "GHS"
+    case gibraltarPound = "GIP"
+    case gourde = "HTG"
+    case guarani = "PYG"
+    case guineanFranc = "GNF"
+    case guyanaDollar = "GYD"
+    case hongKongDollar = "HKD"
+    case hryvnia = "UAH"
+    case icelandKrona = "ISK"
+    case indianRupee = "INR"
+    case iranianRial = "IRR"
+    case iraqiDinar = "IQD"
+    case jamaicanDollar = "JMD"
+    case jordanianDinar = "JOD"
+    case kenyanShilling = "KES"
+    case kina = "PGK"
+    case kuna = "HRK"
+    case kuwaitiDinar = "KWD"
+    case kwanza = "AOA"
+    case kyat = "MMK"
+    case laoKip = "LAK"
+    case lari = "GEL"
+    case lebanesePound = "LBP"
+    case lek = "ALL"
+    case lempira = "HNL"
+    case leone = "SLL"
+    case liberianDollar = "LRD"
+    case libyanDinar = "LYD"
+    case lilangeni = "SZL"
+    case loti = "LSL"
+    case malagasyAriary = "MGA"
+    case malawiKwacha = "MWK"
+    case malaysianRinggit = "MYR"
+    case mauritiusRupee = "MUR"
+    case mexicanPeso = "MXN"
+    case mexicanUnidadDeInversion = "MXV"
+    case moldovanLeu = "MDL"
+    case moroccanDirham = "MAD"
+    case mozambiqueMetical = "MZN"
+    case mvdol = "BOV"
+    case naira = "NGN"
+    case nakfa = "ERN"
+    case namibiaDollar = "NAD"
+    case nepaleseRupee = "NPR"
+    case netherlandsAntilleanGuilder = "ANG"
+    case newIsraeliSheqel = "ILS"
+    case newTaiwanDollar = "TWD"
+    case newZealandDollar = "NZD"
+    case ngultrum = "BTN"
+    case northKoreanWon = "KPW"
+    case norwegianKrone = "NOK"
+    case ouguiya = "MRU"
+    case paanga = "TOP"
+    case pakistanRupee = "PKR"
+    case pataca = "MOP"
+    case pesoConvertible = "CUC"
+    case pesoUruguayo = "UYU"
+    case philippinePiso = "PHP"
+    case poundSterling = "GBP"
+    case pula = "BWP"
+    case qatariRial = "QAR"
+    case quetzal = "GTQ"
+    case rand = "ZAR"
+    case rialOmani = "OMR"
+    case riel = "KHR"
+    case romanianLeu = "RON"
+    case rufiyaa = "MVR"
+    case rupiah = "IDR"
+    case russianRuble = "RUB"
+    case rwandaFranc = "RWF"
+    case saintHelenaPound = "SHP"
+    case saudiRiyal = "SAR"
+    case serbianDinar = "RSD"
+    case seychellesRupee = "SCR"
+    case singaporeDollar = "SGD"
+    case sol = "PEN"
+    case solomonIslandsDollar = "SBD"
+    case som = "KGS"
+    case somaliShilling = "SOS"
+    case somoni = "TJS"
+    case southSudanesePound = "SSP"
+    case sriLankaRupee = "LKR"
+    case sudanesePound = "SDG"
+    case surinamDollar = "SRD"
+    case swedishKrona = "SEK"
+    case swissFranc = "CHF"
+    case syrianPound = "SYP"
+    case taka = "BDT"
+    case tala = "WST"
+    case tanzanianShilling = "TZS"
+    case tenge = "KZT"
+    case trinidadAndTobagoDollar = "TTD"
+    case tugrik = "MNT"
+    case tunisianDinar = "TND"
+    case turkishLira = "TRY"
+    case turkmenistanNewManat = "TMT"
+    case uaeDirham = "AED"
+    case ugandaShilling = "UGX"
+    case unidadDeFomento = "CLF"
+    case unidadDeValorReal = "COU"
+    case uruguayPesoEnUnidadesIndexadas = "UYI"
+    case uzbekistanSum = "UZS"
+    case vatu = "VUV"
+    case wirEuro = "CHE"
+    case wirFranc = "CHW"
+    case won = "KRW"
+    case yemeniRial = "YER"
+    case yen = "JPY"
+    case yuanRenminbi = "CNY"
+    case zambianKwacha = "ZMW"
+    case zimbabweDollar = "ZWL"
+    case zloty = "PLN"
 
+    case none
+}
+
+extension Currency {
+    var code: String { rawValue }
+}
+
+extension Currency {
     var id: Self { self }
+}
 
+extension Currency {
     var description: String {
         switch self {
-        case .ruble: return "Ruble"
-        }
-    }
+        case .afghani: return "Afghani"
+        case .algerianDinar: return "Algerian Dinar"
+        case .argentinePeso: return "Argentine Peso"
+        case .armenianDram: return "Armenian Dram"
+        case .arubanFlorin: return "Aruban Florin"
+        case .australianDollar: return "Australian Dollar"
+        case .azerbaijanManat: return "Azerbaijan Manat"
+        case .bahamianDollar: return "Bahamian Dollar"
+        case .bahrainiDinar: return "Bahraini Dinar"
+        case .baht: return "Baht"
+        case .balboa: return "Balboa"
+        case .barbadosDollar: return "Barbados Dollar"
+        case .belarusianRuble: return "Belarusian Ruble"
+        case .belizeDollar: return "Belize Dollar"
+        case .bermudianDollar: return "Bermudian Dollar"
+        case .boliviano: return "Boliviano"
+        case .bolívar: return "Bolívar"
+        case .brazilianReal: return "Brazilian Real"
+        case .bruneiDollar: return "Brunei Dollar"
+        case .bulgarianLev: return "Bulgarian Lev"
+        case .burundiFranc: return "Burundi Franc"
+        case .caboVerdeEscudo: return "Cabo Verde Escudo"
+        case .canadianDollar: return "Canadian Dollar"
+        case .caymanIslandsDollar: return "Cayman Islands Dollar"
+        case .chileanPeso: return "Chilean Peso"
+        case .colombianPeso: return "Colombian Peso"
+        case .comorianFranc: return "Comorian Franc"
+        case .congoleseFranc: return "Congolese Franc"
+        case .convertibleMark: return "Convertible Mark"
+        case .cordobaOro: return "Cordoba Oro"
+        case .costaRicanColon: return "Costa Rican Colon"
+        case .cubanPeso: return "Cuban Peso"
+        case .czechKoruna: return "Czech Koruna"
+        case .dalasi: return "Dalasi"
+        case .danishKrone: return "Danish Krone"
+        case .denar: return "Denar"
+        case .djiboutiFranc: return "Djibouti Franc"
+        case .dobra: return "Dobra"
+        case .dollar: return "Dollar"
+        case .dominicanPeso: return "Dominican Peso"
+        case .dong: return "Dong"
+        case .eastCaribbeanDollar: return "East Caribbean Dollar"
+        case .egyptianPound: return "Egyptian Pound"
+        case .elSalvadorColon: return "El Salvador Colon"
+        case .ethiopianBirr: return "Ethiopian Birr"
+        case .euro: return "Euro"
+        case .falklandIslandsPound: return "Falkland Islands Pound"
+        case .fijiDollar: return "Fiji Dollar"
+        case .forint: return "Forint"
+        case .ghanaCedi: return "Ghana Cedi"
+        case .gibraltarPound: return "Gibraltar Pound"
+        case .gourde: return "Gourde"
+        case .guarani: return "Guarani"
+        case .guineanFranc: return "Guinean Franc"
+        case .guyanaDollar: return "Guyana Dollar"
+        case .hongKongDollar: return "Hong Kong Dollar"
+        case .hryvnia: return "Hryvnia"
+        case .icelandKrona: return "Iceland Krona"
+        case .indianRupee: return "Indian Rupee"
+        case .iranianRial: return "Iranian Rial"
+        case .iraqiDinar: return "Iraqi Dinar"
+        case .jamaicanDollar: return "Jamaican Dollar"
+        case .jordanianDinar: return "Jordanian Dinar"
+        case .kenyanShilling: return "Kenyan Shilling"
+        case .kina: return "Kina"
+        case .kuna: return "Kuna"
+        case .kuwaitiDinar: return "Kuwaiti Dinar"
+        case .kwanza: return "Kwanza"
+        case .kyat: return "Kyat"
+        case .laoKip: return "Lao Kip"
+        case .lari: return "Lari"
+        case .lebanesePound: return "Lebanese Pound"
+        case .lek: return "Lek"
+        case .lempira: return "Lempira"
+        case .leone: return "Leone"
+        case .liberianDollar: return "Liberian Dollar"
+        case .libyanDinar: return "Libyan Dinar"
+        case .lilangeni: return "Lilangeni"
+        case .loti: return "Loti"
+        case .malagasyAriary: return "Malagasy Ariary"
+        case .malawiKwacha: return "Malawi Kwacha"
+        case .malaysianRinggit: return "Malaysian Ringgit"
+        case .mauritiusRupee: return "Mauritius Rupee"
+        case .mexicanPeso: return "Mexican Peso"
+        case .mexicanUnidadDeInversion: return "Mexican Unidad De Inversion"
+        case .moldovanLeu: return "Moldovan Leu"
+        case .moroccanDirham: return "Moroccan Dirham"
+        case .mozambiqueMetical: return "Mozambique Metical"
+        case .mvdol: return "Mvdol"
+        case .naira: return "Naira"
+        case .nakfa: return "Nakfa"
+        case .namibiaDollar: return "Namibia Dollar"
+        case .nepaleseRupee: return "Nepalese Rupee"
+        case .netherlandsAntilleanGuilder: return "Netherlands Antillean Guilder"
+        case .newIsraeliSheqel: return "New Israeli Sheqel"
+        case .newTaiwanDollar: return "New Taiwan Dollar"
+        case .newZealandDollar: return "New Zealand Dollar"
+        case .ngultrum: return "Ngultrum"
+        case .northKoreanWon: return "North Korean Won"
+        case .norwegianKrone: return "Norwegian Krone"
+        case .ouguiya: return "Ouguiya"
+        case .paanga: return "Pa'anga"
+        case .pakistanRupee: return "Pakistan Rupee"
+        case .pataca: return "Pataca"
+        case .pesoConvertible: return "Peso Convertible"
+        case .pesoUruguayo: return "Peso Uruguayo"
+        case .philippinePiso: return "Philippine Piso"
+        case .poundSterling: return "Pound Sterling"
+        case .pula: return "Pula"
+        case .qatariRial: return "Qatari Rial"
+        case .quetzal: return "Quetzal"
+        case .rand: return "Rand"
+        case .rialOmani: return "Rial Omani"
+        case .riel: return "Riel"
+        case .romanianLeu: return "Romanian Leu"
+        case .rufiyaa: return "Rufiyaa"
+        case .rupiah: return "Rupiah"
+        case .russianRuble: return "Ruble"
+        case .rwandaFranc: return "Rwanda Franc"
+        case .saintHelenaPound: return "Saint Helena Pound"
+        case .saudiRiyal: return "Saudi Riyal"
+        case .serbianDinar: return "Serbian Dinar"
+        case .seychellesRupee: return "Seychelles Rupee"
+        case .singaporeDollar: return "Singapore Dollar"
+        case .sol: return "Sol"
+        case .solomonIslandsDollar: return "Solomon Islands Dollar"
+        case .som: return "Som"
+        case .somaliShilling: return "Somali Shilling"
+        case .somoni: return "Somoni"
+        case .southSudanesePound: return "South Sudanese Pound"
+        case .sriLankaRupee: return "Sri Lanka Rupee"
+        case .sudanesePound: return "Sudanese Pound"
+        case .surinamDollar: return "Surinam Dollar"
+        case .swedishKrona: return "Swedish Krona"
+        case .swissFranc: return "Swiss Franc"
+        case .syrianPound: return "Syrian Pound"
+        case .taka: return "Taka"
+        case .tala: return "Tala"
+        case .tanzanianShilling: return "Tanzanian Shilling"
+        case .tenge: return "Tenge"
+        case .trinidadAndTobagoDollar: return "Trinidad and Tobago Dollar"
+        case .tugrik: return "Tugrik"
+        case .tunisianDinar: return "Tunisian Dinar"
+        case .turkishLira: return "Turkish Lira"
+        case .turkmenistanNewManat: return "Turkmenistan New Manat"
+        case .uaeDirham: return "UAE Dirham"
+        case .ugandaShilling: return "Uganda Shilling"
+        case .unidadDeFomento: return "Unidad de Fomento"
+        case .unidadDeValorReal: return "Unidad de Valor Real"
+        case .uruguayPesoEnUnidadesIndexadas: return "Uruguay Peso en Unidades Indexadas"
+        case .uzbekistanSum: return "Uzbekistan Sum"
+        case .vatu: return "Vatu"
+        case .wirEuro: return "WIR Euro"
+        case .wirFranc: return "WIR Franc"
+        case .won: return "Won"
+        case .yemeniRial: return "Yemeni Rial"
+        case .yen: return "Yen"
+        case .yuanRenminbi: return "Yuan Renminbi"
+        case .zambianKwacha: return "Zambian Kwacha"
+        case .zimbabweDollar: return "Zimbabwe Dollar"
+        case .zloty: return "Zloty"
 
-    var symbol: String {
-        switch self {
-        case .ruble: return "₽"
+        case .none: return "none"
         }
     }
 }
 
-// public enum Currency: String, CaseIterable {
-//    case afghani = "AFN",
-//    algerianDinar = "DZD",
-//    argentinePeso = "ARS",
-//    armenianDram = "AMD",
-//    arubanFlorin = "AWG",
-//    australianDollar = "AUD",
-//    azerbaijanManat = "AZN",
-//    bahamianDollar = "BSD",
-//    bahrainiDinar = "BHD",
-//    baht = "THB",
-//    balboa = "PAB",
-//    barbadosDollar = "BBD",
-//    belarusianRuble = "BYN",
-//    belizeDollar = "BZD",
-//    bermudianDollar = "BMD",
-//    boliviano = "BOB",
-//    bolívar = "VEF",
-//    brazilianReal = "BRL",
-//    bruneiDollar = "BND",
-//    bulgarianLev = "BGN",
-//    burundiFranc = "BIF",
-//    caboVerdeEscudo = "CVE",
-//    canadianDollar = "CAD",
-//    caymanIslandsDollar = "KYD",
-//    chileanPeso = "CLP",
-//    colombianPeso = "COP",
-//    comorianFranc  = "KMF",
-//    congoleseFranc = "CDF",
-//    convertibleMark = "BAM",
-//    cordobaOro = "NIO",
-//    costaRicanColon = "CRC",
-//    cubanPeso = "CUP",
-//    czechKoruna = "CZK",
-//    dalasi = "GMD",
-//    danishKrone = "DKK",
-//    denar = "MKD",
-//    djiboutiFranc = "DJF",
-//    dobra = "STN",
-//    dollar = "USD",
-//    dominicanPeso = "DOP",
-//    dong = "VND",
-//    eastCaribbeanDollar = "XCD",
-//    egyptianPound = "EGP",
-//    elSalvadorColon = "SVC",
-//    ethiopianBirr = "ETB",
-//    euro = "EUR",
-//    falklandIslandsPound = "FKP",
-//    fijiDollar = "FJD",
-//    forint = "HUF",
-//    ghanaCedi = "GHS",
-//    gibraltarPound = "GIP",
-//    gourde = "HTG",
-//    guarani = "PYG",
-//    guineanFranc = "GNF",
-//    guyanaDollar = "GYD",
-//    hongKongDollar = "HKD",
-//    hryvnia = "UAH",
-//    icelandKrona = "ISK",
-//    indianRupee = "INR",
-//    iranianRial = "IRR",
-//    iraqiDinar = "IQD",
-//    jamaicanDollar = "JMD",
-//    jordanianDinar = "JOD",
-//    kenyanShilling = "KES",
-//    kina = "PGK",
-//    kuna = "HRK",
-//    kuwaitiDinar = "KWD",
-//    kwanza = "AOA",
-//    kyat = "MMK",
-//    laoKip = "LAK",
-//    lari = "GEL",
-//    lebanesePound = "LBP",
-//    lek = "ALL",
-//    lempira = "HNL",
-//    leone = "SLL",
-//    liberianDollar = "LRD",
-//    libyanDinar = "LYD",
-//    lilangeni = "SZL",
-//    loti = "LSL",
-//    malagasyAriary = "MGA",
-//    malawiKwacha = "MWK",
-//    malaysianRinggit = "MYR",
-//    mauritiusRupee = "MUR",
-//    mexicanPeso = "MXN",
-//    mexicanUnidadDeInversion = "MXV",
-//    moldovanLeu = "MDL",
-//    moroccanDirham = "MAD",
-//    mozambiqueMetical = "MZN",
-//    mvdol = "BOV",
-//    naira = "NGN",
-//    nakfa = "ERN",
-//    namibiaDollar = "NAD",
-//    nepaleseRupee = "NPR",
-//    netherlandsAntilleanGuilder = "ANG",
-//    newIsraeliSheqel = "ILS",
-//    newTaiwanDollar = "TWD",
-//    newZealandDollar = "NZD",
-//    ngultrum =  "BTN",
-//    northKoreanWon = "KPW",
-//    norwegianKrone = "NOK",
-//    ouguiya = "MRU",
-//    paanga = "TOP",
-//    pakistanRupee = "PKR",
-//    pataca = "MOP",
-//    pesoConvertible = "CUC",
-//    pesoUruguayo = "UYU",
-//    philippinePiso = "PHP",
-//    poundSterling = "GBP",
-//    pula = "BWP",
-//    qatariRial = "QAR",
-//    quetzal = "GTQ",
-//    rand = "ZAR",
-//    rialOmani = "OMR",
-//    riel = "KHR",
-//    romanianLeu = "RON",
-//    rufiyaa = "MVR",
-//    rupiah = "IDR",
-//    russianRuble = "RUB",
-//    rwandaFranc = "RWF",
-//    saintHelenaPound = "SHP",
-//    saudiRiyal = "SAR",
-//    serbianDinar = "RSD",
-//    seychellesRupee = "SCR",
-//    singaporeDollar = "SGD",
-//    sol = "PEN",
-//    solomonIslandsDollar = "SBD",
-//    som = "KGS",
-//    somaliShilling = "SOS",
-//    somoni = "TJS",
-//    southSudanesePound = "SSP",
-//    sriLankaRupee = "LKR",
-//    sudanesePound = "SDG",
-//    surinamDollar = "SRD",
-//    swedishKrona = "SEK",
-//    swissFranc = "CHF",
-//    syrianPound = "SYP",
-//    taka = "BDT",
-//    tala = "WST",
-//    tanzanianShilling = "TZS",
-//    tenge = "KZT",
-//    trinidadAndTobagoDollar = "TTD",
-//    tugrik = "MNT",
-//    tunisianDinar = "TND",
-//    turkishLira = "TRY",
-//    turkmenistanNewManat = "TMT",
-//    uaeDirham = "AED",
-//    ugandaShilling = "UGX",
-//    unidadDeFomento = "CLF",
-//    unidadDeValorReal = "COU",
-//    uruguayPesoEnUnidadesIndexadas = "UYI",
-//    uzbekistanSum = "UZS",
-//    vatu = "VUV",
-//    wirEuro = "CHE",
-//    wirFranc = "CHW",
-//    won = "KRW",
-//    yemeniRial = "YER",
-//    yen = "JPY",
-//    yuanRenminbi = "CNY",
-//    zambianKwacha = "ZMW",
-//    zimbabweDollar = "ZWL",
-//    zloty = "PLN",
-//    none
-// }
+extension Currency {
+    var symbol: String {
+        switch self {
+        case .afghani: return "؋"
+        case .algerianDinar: return "دج"
+        case .argentinePeso: return "$"
+        case .armenianDram: return "֏"
+        case .arubanFlorin: return "ƒ"
+        case .australianDollar: return "$"
+        case .azerbaijanManat: return "₼"
+        case .bahamianDollar: return "$"
+        case .bahrainiDinar: return ".د.ب "
+        case .baht: return "฿"
+        case .balboa: return "B/."
+        case .barbadosDollar: return "Bds$"
+        case .belarusianRuble: return "Br"
+        case .belizeDollar: return "BZ$"
+        case .bermudianDollar: return "BD$"
+        case .boliviano: return "Bs."
+        case .bolívar: return "Bs.S."
+        case .brazilianReal: return "R$"
+        case .bruneiDollar: return "B$"
+        case .bulgarianLev: return "лв."
+        case .burundiFranc: return "FBu"
+        case .caboVerdeEscudo: return "Esc"
+        case .canadianDollar: return "$"
+        case .caymanIslandsDollar: return "CI$"
+        case .chileanPeso: return "$"
+        case .colombianPeso: return "COL$"
+        case .comorianFranc: return "CF"
+        case .congoleseFranc: return "FC"
+        case .convertibleMark: return "KM"
+        case .cordobaOro: return "C$"
+        case .costaRicanColon: return "₡"
+        case .cubanPeso: return "₱"
+        case .czechKoruna: return "Kč"
+        case .dalasi: return "D"
+        case .danishKrone: return "kr"
+        case .denar: return "ден"
+        case .djiboutiFranc: return "Fdj"
+        case .dobra: return "Db"
+        case .dollar: return "$"
+        case .dominicanPeso: return "RD$"
+        case .dong: return "₫"
+        case .eastCaribbeanDollar: return "EC$"
+        case .egyptianPound: return "E£"
+        case .elSalvadorColon: return "₡"
+        case .ethiopianBirr: return "Br"
+        case .euro: return "€"
+        case .falklandIslandsPound: return "FK£"
+        case .fijiDollar: return "FJ$"
+        case .forint: return "Ft"
+        case .ghanaCedi: return "₵"
+        case .gibraltarPound: return "£"
+        case .gourde: return "G"
+        case .guarani: return "₲"
+        case .guineanFranc: return "FG"
+        case .guyanaDollar: return "GY$"
+        case .hongKongDollar: return "HK$"
+        case .hryvnia: return "₴"
+        case .icelandKrona: return "kr"
+        case .indianRupee: return "₹"
+        case .iranianRial: return "﷼"
+        case .iraqiDinar: return "ع.د"
+        case .jamaicanDollar: return "J$"
+        case .jordanianDinar: return "د.ا"
+        case .kenyanShilling: return "KSh"
+        case .kina: return "K"
+        case .kuna: return "kn"
+        case .kuwaitiDinar: return "د.ك"
+        case .kwanza: return "Kz"
+        case .kyat: return "Ks"
+        case .laoKip: return "₭"
+        case .lari: return "₾"
+        case .lebanesePound: return "ل.ل"
+        case .lek: return "Lek"
+        case .lempira: return "L"
+        case .leone: return "Le"
+        case .liberianDollar: return "L$"
+        case .libyanDinar: return "ل.د"
+        case .lilangeni: return "E"
+        case .loti: return "L"
+        case .malagasyAriary: return "Ar"
+        case .malawiKwacha: return "MK"
+        case .malaysianRinggit: return "RM"
+        case .mauritiusRupee: return "₨"
+        case .mexicanPeso: return "Mex$"
+        case .mexicanUnidadDeInversion: return "MXV"
+        case .moldovanLeu: return "L"
+        case .moroccanDirham: return "د.م."
+        case .mozambiqueMetical: return "MT"
+        case .mvdol: return "BOV"
+        case .naira: return "₦"
+        case .nakfa: return "Nfk"
+        case .namibiaDollar: return "N$"
+        case .nepaleseRupee: return "₨"
+        case .netherlandsAntilleanGuilder: return "ƒ"
+        case .newIsraeliSheqel: return "₪"
+        case .newTaiwanDollar: return "NT$"
+        case .newZealandDollar: return "NZ$"
+        case .ngultrum: return "Nu."
+        case .northKoreanWon: return "₩"
+        case .norwegianKrone: return "kr"
+        case .ouguiya: return "UM"
+        case .paanga: return "T$"
+        case .pakistanRupee: return "₨"
+        case .pataca: return "MOP$"
+        case .pesoConvertible: return "CUC$"
+        case .pesoUruguayo: return "$U"
+        case .philippinePiso: return "₱"
+        case .poundSterling: return "£"
+        case .pula: return "P"
+        case .qatariRial: return "ر.ق"
+        case .quetzal: return "Q"
+        case .rand: return "R"
+        case .rialOmani: return "ر.ع."
+        case .riel: return "៛"
+        case .romanianLeu: return "lei"
+        case .rufiyaa: return "ރ."
+        case .rupiah: return "Rp"
+        case .russianRuble: return "₽"
+        case .rwandaFranc: return "RF"
+        case .saintHelenaPound: return "£"
+        case .saudiRiyal: return "ر.س"
+        case .serbianDinar: return "дин."
+        case .seychellesRupee: return "₨"
+        case .singaporeDollar: return "S$"
+        case .sol: return "S/."
+        case .solomonIslandsDollar: return "SI$"
+        case .som: return "сом"
+        case .somaliShilling: return "Sh"
+        case .somoni: return "ЅМ"
+        case .southSudanesePound: return "£"
+        case .sriLankaRupee: return "₨"
+        case .sudanesePound: return "£"
+        case .surinamDollar: return "Sr$"
+        case .swedishKrona: return "kr"
+        case .swissFranc: return "₣"
+        case .syrianPound: return "£"
+        case .taka: return "৳"
+        case .tala: return "T"
+        case .tanzanianShilling: return "TSh"
+        case .tenge: return "₸"
+        case .trinidadAndTobagoDollar: return "TT$"
+        case .tugrik: return "₮"
+        case .tunisianDinar: return "د.ت"
+        case .turkishLira: return "₺"
+        case .turkmenistanNewManat: return "₼"
+        case .uaeDirham: return "د.إ"
+        case .ugandaShilling: return "USh"
+        case .unidadDeFomento: return "UF"
+        case .unidadDeValorReal: return "UVR"
+        case .uruguayPesoEnUnidadesIndexadas: return "UI"
+        case .uzbekistanSum: return "so'm"
+        case .vatu: return "VT"
+        case .wirEuro: return "€"
+        case .wirFranc: return "CHW"
+        case .won: return "₩"
+        case .yemeniRial: return "﷼"
+        case .yen: return "¥"
+        case .yuanRenminbi: return "¥"
+        case .zambianKwacha: return "ZK"
+        case .zimbabweDollar: return "Z$"
+        case .zloty: return "zł"
+
+        case .none: return "none"
+        }
+    }
+}

@@ -7,10 +7,12 @@
 import Foundation
 
 struct Money: Hashable, Codable, CustomStringConvertible, Comparable {
+    private static let defaultCurrency: Currency = .dollar // TODO: make it dynamic depending on user's region
+
     var count: Double
     let currency: Currency
 
-    init(_ count: Double, of currency: Currency = .ruble) {
+    init(_ count: Double, of currency: Currency = defaultCurrency) {
         self.count = count
         self.currency = currency
     }
