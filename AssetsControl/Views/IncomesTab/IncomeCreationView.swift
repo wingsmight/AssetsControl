@@ -48,7 +48,7 @@ struct IncomeCreationView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         income = nil
-                        
+
                         dismiss()
                     }
                 }
@@ -82,8 +82,7 @@ struct IncomeCreationView: View {
     }
 
     private var currencyField: some View {
-        CurrencyField("Money amount",
-                      value: $amount)
+        MoneyCountField("Money amount", value: $amount)
     }
 
     private var moneyHolderPicker: some View {

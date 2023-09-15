@@ -1,8 +1,7 @@
 //
 //  ColorfulBadge.swift
-//  EnglishApp
 //
-//  Created by Igoryok on 05.05.2022.
+//  Created by Igoryok
 //
 
 import SwiftUI

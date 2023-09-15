@@ -1,8 +1,7 @@
 //
 //  NumericTextField.swift
-//  AssetsControl
 //
-//  Created by Igoryok on 08.04.2023.
+//  Created by Igoryok
 //
 
 import Foundation

@@ -39,7 +39,7 @@ struct ExpensesTab: View {
                 }
             }
             .sheet(isPresented: $isNewAssetSheetShowing) {
-                AssetCreationView(expense: $expense,
+                ExpenseCreationView(expense: $expense,
                                   isShowing: $isNewAssetSheetShowing)
             }
             .onChange(of: expense) { newExpense in

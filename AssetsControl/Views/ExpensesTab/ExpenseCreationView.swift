@@ -1,5 +1,5 @@
 //
-//  AssetCreationView.swift
+//  ExpenseCreationView.swift
 //  AssetsControl
 //
 //  Created by Igoryok on 28.03.2023.
@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct AssetCreationView: View {
+struct ExpenseCreationView: View {
     @Binding private var expense: Expense?
     @Binding private var isShowing: Bool
 
     @State private var name: String = ""
     @State private var selectedSymbol: Symbol = .defaultSymbol
-    @State private var amount: Double?
+    @State private var moneyAmount: Double?
+    @State private var moneyCurrency: Currency = .dollar
     @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
 
     @EnvironmentObject private var financesStore: FinancialDataStore
@@ -31,7 +32,7 @@ struct AssetCreationView: View {
                 Section {
                     nameField
 
-                    currencyField
+                    moneyField
                 }
 
                 Section {
@@ -54,10 +55,12 @@ struct AssetCreationView: View {
 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
-                        if let amount {
+                        if let moneyAmount {
+                            let amount = Money(moneyAmount, of: moneyCurrency)
+
                             expense = Expense(name: name,
                                               symbol: selectedSymbol,
-                                              amount: Money(amount),
+                                              amount: amount,
                                               moneyHolderSource: moneyHolderSource)
 
                             dismiss()
@@ -71,6 +74,8 @@ struct AssetCreationView: View {
             guard let firstMoneyHolder = financesStore.data.moneyHolders.first else { return }
 
             moneyHolderSource = firstMoneyHolder
+
+            moneyCurrency = firstMoneyHolder.initialMoney.currency
         }
     }
 
@@ -79,14 +84,17 @@ struct AssetCreationView: View {
             .autocapitalization(.words)
     }
 
-    private var currencyField: some View {
-        CurrencyField("Money amount",
-                      value: $amount)
+    private var moneyField: some View {
+        HStack {
+            MoneyCountField("Money amount", value: $moneyAmount)
+
+            Text(moneyCurrency.symbol)
+        }
     }
 
     private var moneyHolderPicker: some View {
-        MoneyHolderSourcePickerRow(selectedMoneyHolder: $moneyHolderSource,
-                                   moneyHolders: financesStore.data.moneyHolders)
+        MoneyHolderPicker(selected: $moneyHolderSource,
+                          moneyHolders: financesStore.data.moneyHolders)
     }
 
     private var symbolPicker: some View {
@@ -98,22 +106,7 @@ struct AssetCreationView: View {
     }
 
     private var isDoneButtonDisabled: Bool {
-        amount == nil
-    }
-}
-
-struct MoneyHolderSourcePickerRow: View {
-    @Binding var selectedMoneyHolder: MoneyHolder
-
-    var moneyHolders: [MoneyHolder]
-
-    var body: some View {
-        Picker("Source", selection: $selectedMoneyHolder) {
-            ForEach(moneyHolders, id: \.self) { moneyHolder in
-                Label(moneyHolder.name, systemImage: moneyHolder.symbol.systemImageName)
-                    .tag(moneyHolder.id)
-            }
-        }
+        moneyAmount == nil
     }
 }
 
@@ -121,8 +114,8 @@ struct AssetCreationView_Previews: PreviewProvider {
     @StateObject private static var financialDataStore = FinancialDataStore()
 
     static var previews: some View {
-        AssetCreationView(expense: .constant(nil),
-                          isShowing: .constant(false))
+        ExpenseCreationView(expense: .constant(nil),
+                            isShowing: .constant(false))
             .environmentObject(financialDataStore)
     }
 }

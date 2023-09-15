@@ -1,8 +1,7 @@
 //
 //  MultiSelectPickerView.swift
-//  Splus
 //
-//  Created by Igoryok on 29.01.2023.
+//  Created by Igoryok
 //
 
 import SwiftUI
@@ -18,16 +17,16 @@ struct MultiSelectPickerView<T: Identifiable & Hashable & CustomStringConvertibl
                 ForEach(sourceItems, id: \.self) { item in
                     Button(action: {
                         withAnimation {
-                            if self.selectedItems.contains(item) {
-                                self.selectedItems.removeAll(where: { $0 == item })
+                            if selectedItems.contains(item) {
+                                selectedItems.removeAll(where: { $0 == item })
                             } else {
-                                self.selectedItems.append(item)
+                                selectedItems.append(item)
                             }
                         }
                     }) {
                         HStack {
                             Image(systemName: "checkmark")
-                                .opacity(self.selectedItems.contains(item) ? 1.0 : 0.0)
+                                .opacity(selectedItems.contains(item) ? 1.0 : 0.0)
                             Text(item.description)
                         }
                     }
@@ -111,10 +110,10 @@ struct MultiSelectItemRow<T>: View {
 struct MultiSelectPickerView_Previews: PreviewProvider {
     struct Person: Identifiable, Hashable {
         let id = UUID()
-        
+
         var name: String
     }
-    
+
     private static let people = [
         Person(name: "Jaden"),
         Person(name: "Igor"),
@@ -123,10 +122,10 @@ struct MultiSelectPickerView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             MultiSelectItemList<Person>(items: people,
-                                         itemView: { person in
+                                        itemView: { person in
                                             AnyView(Text(person.name))
-                                         },
-                                         selected: .constant([]))
+                                        },
+                                        selected: .constant([]))
         }
     }
 }

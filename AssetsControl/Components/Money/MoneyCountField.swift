@@ -1,5 +1,5 @@
 //
-//  CurrencyField.swift
+//  MoneyCountField.swift
 //
 //  Created by Igoryok
 //
@@ -8,21 +8,20 @@ import Combine
 import Foundation
 import SwiftUI
 
-struct CurrencyField: View {
+struct MoneyCountField: View {
     private let label: LocalizedStringKey
     private let onEditingChanged: (Bool) -> Void
     private let onCommit: () -> Void
 
-    @State private var textValue: String = ""
-
     @Binding private var value: Double?
 
-    init(
-        _ label: LocalizedStringKey,
-        value: Binding<Double?>,
-        onEditingChanged: @escaping (Bool) -> Void = { _ in },
-        onCommit: @escaping () -> Void = {}
-    ) {
+    @State private var textValue: String = ""
+
+    init(_ label: LocalizedStringKey = "",
+         value: Binding<Double?>,
+         onEditingChanged: @escaping (Bool) -> Void = { _ in },
+         onCommit: @escaping () -> Void = {})
+    {
         self.label = label
         _value = value
         self.onEditingChanged = onEditingChanged
@@ -51,22 +50,22 @@ struct CurrencyField: View {
             }
             .keyboardType(.decimalPad)
     }
-}
 
-func format(_ textString: String) -> String {
-    guard let text0 = textString.components(separatedBy: ".")[safe: 0] else {
-        return textString
-    }
-    guard let text1 = textString.components(separatedBy: ".")[safe: 1] else {
-        return text0
-    }
+    private func format(_ textString: String) -> String {
+        guard let text0 = textString.components(separatedBy: ".")[safe: 0] else {
+            return textString
+        }
+        guard let text1 = textString.components(separatedBy: ".")[safe: 1] else {
+            return text0
+        }
 
-    return "\(text0).\(text1.prefix(2))"
+        return "\(text0).\(text1.prefix(2))"
+    }
 }
 
 struct CurrencyField_Previews: PreviewProvider {
     static var previews: some View {
-        CurrencyField("Title",
-                      value: .constant(0.0))
+        MoneyCountField("Title",
+                        value: .constant(0.0))
     }
 }

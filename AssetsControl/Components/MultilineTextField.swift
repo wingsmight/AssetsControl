@@ -1,8 +1,7 @@
 //
 //  MultilineTextField.swift
-//  Splus
 //
-//  Created by Igoryok on 30.01.2023.
+//  Created by Igoryok
 //
 
 import Foundation

@@ -11,45 +11,53 @@ struct MoneyHolderCreationView: View {
     @Binding var moneyHolder: MoneyHolder?
     @Binding var isShowing: Bool
 
-    @State private var createdMoneyHolder: MoneyHolder = .init(name: "")
-    @State private var test: String = ""
+    @State private var name: String = ""
+    @State private var description: String = ""
+    @State private var money: Money = Money(0)
+    @State private var selectedSymbol: Symbol = .defaultSymbol
+    @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Name", text: $createdMoneyHolder.name)
+                    TextField("Name", text: $name)
                         .autocapitalization(.words)
 
-                    TextField("Description", text: $createdMoneyHolder.description)
+                    TextField("Description", text: $description)
                         .autocapitalization(.words)
 
-                    CurrencyField("Current Money Count",
-                                  value: Binding<Double?>($createdMoneyHolder.initialMoney.count))
+                    MoneyInputField(initialMoney: $money)
+                        .buttonStyle(BorderlessButtonStyle())
                 }
 
                 Section {
-                    SymbolPicker(selected: $createdMoneyHolder.symbol)
+                    SymbolPicker(selected: $selectedSymbol)
                 }
             }
             .navigationTitle("Create Account")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
+                        moneyHolder = nil
                         dismiss()
                     }
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
-                        guard !createdMoneyHolder.name.isEmpty else {
+                        guard !name.isEmpty else {
                             moneyHolder = nil
                             dismiss()
 
                             return
                         }
 
-                        moneyHolder = createdMoneyHolder
+                        moneyHolder = MoneyHolder(name: name,
+                                                  description: description,
+                                                  symbol: selectedSymbol,
+                                                  initialMoney: money,
+                                                  initialDate: Date())
 
                         dismiss()
                     }
@@ -59,7 +67,7 @@ struct MoneyHolderCreationView: View {
         }
     }
 
-    func dismiss() {
+    private func dismiss() {
         isShowing = false
     }
 }
