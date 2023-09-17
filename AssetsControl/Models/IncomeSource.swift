@@ -12,10 +12,15 @@ class IncomeSource: Codable, Identifiable, Hashable {
 
     @Published var name: String
     @Published var description: String
+    @Published var currency: Currency
 
-    init(name: String, description: String = "") {
+    init(name: String,
+         description: String = "",
+         currency: Currency)
+    {
         self.name = name
         self.description = description
+        self.currency = currency
     }
 
     required init(from decoder: Decoder) throws {
@@ -23,6 +28,7 @@ class IncomeSource: Codable, Identifiable, Hashable {
 
         name = try values.decode(String.self, forKey: .name)
         description = try values.decode(String.self, forKey: .description)
+        currency = try values.decodeIfPresent(Currency.self, forKey: .currency) ?? .dollar
     }
 
     static func == (lhs: IncomeSource, rhs: IncomeSource) -> Bool {
@@ -32,6 +38,7 @@ class IncomeSource: Codable, Identifiable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
         hasher.combine(description)
+        hasher.combine(currency)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -39,10 +46,12 @@ class IncomeSource: Codable, Identifiable, Hashable {
 
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
+        try container.encode(currency, forKey: .currency)
     }
 
     enum CodingKeys: String, CodingKey {
         case name
         case description
+        case currency
     }
 }

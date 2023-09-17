@@ -55,7 +55,9 @@ extension MoneyHolder {
 }
 
 extension IncomeSource {
-    static let test = IncomeSource(name: "Income source", description: "Description")
+    static let test = IncomeSource(name: "Income source",
+                                   description: "Description",
+                                   currency: .dollar)
 }
 
 extension ActiveIncome {

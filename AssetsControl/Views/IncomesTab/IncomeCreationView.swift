@@ -14,7 +14,7 @@ struct IncomeCreationView: View {
     @State private var name: String = ""
     @State private var symbol: Symbol = .defaultSymbol
     @State private var amount: Double?
-    @State private var source: IncomeSource = .init(name: "default")
+    @State private var source: IncomeSource = .init(name: "default", currency: .dollar)
     @State private var moneyHolderTarget: MoneyHolder = .init(name: "default")
 
     @EnvironmentObject private var financesStore: FinancialDataStore
@@ -33,6 +33,8 @@ struct IncomeCreationView: View {
                     nameField
 
                     currencyField
+                    
+                    sourcePicker
                 }
 
                 Section {
@@ -48,7 +50,7 @@ struct IncomeCreationView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         income = nil
-
+                        
                         dismiss()
                     }
                 }
@@ -82,7 +84,15 @@ struct IncomeCreationView: View {
     }
 
     private var currencyField: some View {
-        MoneyCountField("Money amount", value: $amount)
+        HStack {
+            MoneyCountField("Money amount", value: $amount)
+
+            Text(source.currency.symbol)
+        }
+    }
+    
+    private var sourcePicker: some View {
+        SourcePicker(incomeSources: financesStore.data.incomeSources, selected: $source)
     }
 
     private var moneyHolderPicker: some View {
@@ -117,6 +127,28 @@ struct MoneyHolderTargetPickerRow: View {
         }
     }
 }
+
+struct SourcePicker: View {
+    let incomeSources: [IncomeSource]
+    
+    @Binding var selected: IncomeSource
+    
+    var body: some View {
+        if incomeSources.isEmpty {
+            Text("empty")
+        } else {
+            Text(incomeSources.count.description)
+//            Picker("Source", selection: $selected) {
+//                ForEach(incomeSources, id: \.self) { incomeSource in
+//                    Text(incomeSource.name)
+//                    //                Label("\(incomeSource.name) \(incomeSource.currency.symbol)")
+//                    //                    .tag(incomeSource.id)
+//                }
+//            }
+        }
+    }
+}
+
 
 struct IncomeCreationView_Previews: PreviewProvider {
     @StateObject private static var financialDataStore = FinancialDataStore()
