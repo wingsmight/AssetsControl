@@ -16,7 +16,8 @@ struct ExpenseCreationView: View {
     @State private var moneyAmount: Double?
     @State private var moneyCurrency: Currency = .dollar
     @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
-
+    @State private var date: Date = Date()
+    
     @EnvironmentObject private var financesStore: FinancialDataStore
 
     init(expense: Binding<Expense?>,
@@ -37,6 +38,10 @@ struct ExpenseCreationView: View {
 
                 Section {
                     moneyHolderPicker
+                }
+                
+                Section {
+                    DatePicker("Date", selection: $date)
                 }
 
                 Section {
@@ -61,7 +66,8 @@ struct ExpenseCreationView: View {
                             expense = Expense(name: name,
                                               symbol: selectedSymbol,
                                               amount: amount,
-                                              moneyHolderSource: moneyHolderSource)
+                                              moneyHolderSource: moneyHolderSource,
+                                              date: date)
 
                             dismiss()
                         }

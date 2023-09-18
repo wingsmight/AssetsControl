@@ -21,14 +21,15 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
     init(name: String,
          symbol: Symbol,
          amount: Money,
-         moneyHolderSource: MoneyHolder)
+         moneyHolderSource: MoneyHolder,
+         date: Date = Date())
     {
         self.name = name
         self.symbol = symbol
         color = .black
         self.amount = amount
         children = []
-        date = Date()
+        self.date = date
         self.moneyHolderSource = moneyHolderSource
     }
 
