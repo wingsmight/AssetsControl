@@ -16,6 +16,7 @@ struct IncomeCreationView: View {
     @State private var amount: Double?
     @State private var source: IncomeSource = .init(name: "default", currency: .dollar)
     @State private var moneyHolderTarget: MoneyHolder = .init(name: "default")
+    @State private var date: Date = Date()
 
     @EnvironmentObject private var financesStore: FinancialDataStore
 
@@ -40,6 +41,10 @@ struct IncomeCreationView: View {
                 Section {
                     moneyHolderPicker
                 }
+                
+                Section {
+                    DatePicker("Date", selection: $date)
+                }
 
                 Section {
                     symbolPicker
@@ -60,6 +65,7 @@ struct IncomeCreationView: View {
                         if let amount {
                             income = ActiveIncome(name: name,
                                                   symbol: symbol,
+                                                  initialDate: date,
                                                   source: source,
                                                   target: moneyHolderTarget,
                                                   amount: Money(amount))
