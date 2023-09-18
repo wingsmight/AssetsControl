@@ -77,6 +77,9 @@ struct ExpenseCreationView: View {
 
             moneyCurrency = firstMoneyHolder.initialMoney.currency
         }
+        .onChange(of: moneyHolderSource) { newSelectedMoneyHolderSource in
+            moneyCurrency = newSelectedMoneyHolderSource.initialMoney.currency
+        }
     }
 
     private var nameField: some View {
