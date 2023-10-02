@@ -71,7 +71,10 @@ struct ExpensesTab: View {
 }
 
 struct ExpensesTab_Previews: PreviewProvider {
+    @StateObject private static var financialDataStore = FinancialDataStore()
+    
     static var previews: some View {
-        AssetsTab()
+        ExpensesTab()
+            .environmentObject(financialDataStore)
     }
 }

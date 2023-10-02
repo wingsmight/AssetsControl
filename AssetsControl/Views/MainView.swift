@@ -47,7 +47,10 @@ struct MainView: View {
 }
 
 struct MainView_Previews: PreviewProvider {
+    @StateObject private static var financialDataStore = FinancialDataStore()
+    
     static var previews: some View {
         MainView()
+            .environmentObject(financialDataStore)
     }
 }
