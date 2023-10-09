@@ -24,9 +24,7 @@ struct AssetsControlApp: App {
 
                     FinancialDataStore.load { result in
                         switch result {
-                        case let .failure(error):
-                            print(error.localizedDescription)
-
+                        case .failure:
                             financialDataStore.data = FinancialData()
                         case let .success(data):
                             financialDataStore.data = data
@@ -37,11 +35,7 @@ struct AssetsControlApp: App {
                 }
                 .onChange(of: scenePhase) { phase in
                     if scenePhase == .active, phase == .inactive {
-                        FinancialDataStore.save(financialDataStore.data) { result in
-                            if case let .failure(error) = result {
-                                print(error.localizedDescription)
-                            }
-                        }
+                        FinancialDataStore.save(financialDataStore.data) { _ in }
                     }
                 }
         }

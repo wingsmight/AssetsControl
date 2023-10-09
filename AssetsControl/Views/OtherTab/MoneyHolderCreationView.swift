@@ -9,14 +9,17 @@ import SwiftUI
 
 struct MoneyHolderCreationView: View {
     @Binding var moneyHolder: MoneyHolder?
-    @Binding var isShowing: Bool
 
+    @State private var id: UUID? = nil
     @State private var name: String = ""
     @State private var description: String = ""
-    @State private var money: Money = Money(0)
+    @State private var money: Money = .init(0)
     @State private var selectedSymbol: Symbol = .defaultSymbol
     @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
+    @State private var date: Date = .init()
 
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         NavigationView {
             Form {
@@ -29,6 +32,10 @@ struct MoneyHolderCreationView: View {
 
                     MoneyInputField(initialMoney: $money)
                         .buttonStyle(BorderlessButtonStyle())
+                }
+
+                Section {
+                    DatePicker("Date", selection: $date)
                 }
 
                 Section {
@@ -52,12 +59,13 @@ struct MoneyHolderCreationView: View {
 
                             return
                         }
-
-                        moneyHolder = MoneyHolder(name: name,
+                        
+                        moneyHolder = MoneyHolder(id: id,
+                                                  name: name,
                                                   description: description,
                                                   symbol: selectedSymbol,
                                                   initialMoney: money,
-                                                  initialDate: Date())
+                                                  initialDate: date)
 
                         dismiss()
                     }
@@ -65,16 +73,25 @@ struct MoneyHolderCreationView: View {
             }
             .hideKeyboardWhenTappedAround()
         }
+        .onAppear {
+            if let moneyHolder {
+                id = moneyHolder.id
+                name = moneyHolder.name
+                description = moneyHolder.description
+                money = moneyHolder.initialMoney
+                selectedSymbol = moneyHolder.symbol
+                date = moneyHolder.initialDate
+            }
+        }
     }
 
     private func dismiss() {
-        isShowing = false
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
 struct MoneyHolderCreationView_Previews: PreviewProvider {
     static var previews: some View {
-        MoneyHolderCreationView(moneyHolder: .constant(MoneyHolder(name: "")),
-                                isShowing: .constant(true))
+        MoneyHolderCreationView(moneyHolder: .constant(MoneyHolder(name: "")))
     }
 }

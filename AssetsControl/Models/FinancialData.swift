@@ -61,6 +61,12 @@ extension FinancialData {
     mutating func removeMoneyHolder(atOffsets offsets: IndexSet) {
         moneyHolders.remove(atOffsets: offsets)
     }
+    
+    mutating func updateMoneyHolder(withId moneyHolderId: UUID, to updatedMoneyHolder: MoneyHolder) {
+        guard let index = moneyHolders.firstIndex(where: { $0.id == updatedMoneyHolder.id }) else { return }
+        
+        moneyHolders[index] = updatedMoneyHolder
+    }
 }
 
 extension FinancialData {

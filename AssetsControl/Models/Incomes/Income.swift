@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol Income: ObservableObject, Hashable, Identifiable, Codable {
+protocol Income: Hashable, Identifiable, Codable {
     var id: UUID { get }
 
     var name: String { get set }

@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
+struct Expense: Comparable, Identifiable, Codable, Hashable {
     let id = UUID()
 
-    @Published var name: String
-    @Published var symbol: Symbol
-    @Published var color: Color
-    @Published var amount: Money
-    @Published var children: [Expense]
-    @Published var date: Date
-    @Published var moneyHolderSource: MoneyHolder
+    var name: String
+    var symbol: Symbol
+    var color: Color
+    var amount: Money
+    var children: [Expense]
+    var date: Date
+    var moneyHolderSource: MoneyHolder
 
     init(name: String,
          symbol: Symbol,
@@ -33,7 +33,7 @@ class Expense: ObservableObject, Comparable, Identifiable, Codable, Hashable {
         self.moneyHolderSource = moneyHolderSource
     }
 
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         name = try values.decode(String.self, forKey: .name)

@@ -7,21 +7,25 @@
 
 import Foundation
 
-class MoneyHolder: Codable, Identifiable, Hashable {
-    let id = UUID()
+struct MoneyHolder: Codable, Identifiable, Hashable {
+    private static let defaultSymbol: Symbol = .creditCard
 
-    @Published var name: String
-    @Published var description: String
-    @Published var symbol: Symbol
-    @Published var initialMoney: Money
-    @Published var initialDate: Date = .init()
+    let id: UUID
 
-    init(name: String,
+    var name: String
+    var description: String
+    var symbol: Symbol
+    var initialMoney: Money
+    var initialDate: Date = .init()
+
+    init(id: UUID? = UUID(),
+         name: String,
          description: String = "",
-         symbol: Symbol = .creditCard,
+         symbol: Symbol = defaultSymbol,
          initialMoney: Money = Money(0),
          initialDate: Date = Date())
     {
+        self.id = id ?? UUID()
         self.name = name
         self.description = description
         self.symbol = symbol
@@ -29,9 +33,10 @@ class MoneyHolder: Codable, Identifiable, Hashable {
         self.initialDate = initialDate
     }
 
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
+        id = try values.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
         name = try values.decode(String.self, forKey: .name)
         description = try values.decode(String.self, forKey: .description)
         symbol = try values.decode(Symbol.self, forKey: .symbol)
@@ -44,6 +49,7 @@ class MoneyHolder: Codable, Identifiable, Hashable {
     }
 
     func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
         hasher.combine(name.hashValue)
         hasher.combine(description.hashValue)
         hasher.combine(symbol.hashValue)
@@ -54,6 +60,7 @@ class MoneyHolder: Codable, Identifiable, Hashable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
         try container.encode(symbol, forKey: .symbol)
@@ -62,6 +69,7 @@ class MoneyHolder: Codable, Identifiable, Hashable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case id
         case name
         case description
         case symbol
