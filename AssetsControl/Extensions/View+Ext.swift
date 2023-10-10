@@ -74,7 +74,8 @@ struct AnimationCompletionObserverModifier<Value>: AnimatableModifier where Valu
         }
     }
 
-    /// The target value for which we're observing. This value is directly set once the animation starts. During animation, `animatableData` will hold the oldValue and is only updated to the target value once the animation completes.
+    /// The target value for which we're observing. This value is directly set once the animation starts.
+    /// During animation, `animatableData` will hold the oldValue and is only updated to the target value once the animation completes.
     private var targetValue: Value
 
     /// The completion callback which is called once the animation completes.

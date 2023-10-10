@@ -53,7 +53,10 @@ class Stock: Identifiable, Codable, Equatable {
                     print("error trying to convert data to JSON")
                     return
                 }
-                let timeSeries = json["Monthly Time Series"] as! [String: [String: String]]
+                guard let timeSeries = json["Monthly Time Series"] as? [String: [String: String]] else {
+                    print("error trying to convert \"Monthly Time Series\" to [String: [String: String]]")
+                    return
+                }
 
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM"
@@ -113,7 +116,10 @@ class Stock: Identifiable, Codable, Equatable {
                     print("error trying to convert data to JSON")
                     return
                 }
-                let timeSeries = json["Time Series (Digital Currency Monthly)"] as! [String: [String: String]]
+                guard let timeSeries = json["Time Series (Digital Currency Monthly)"] as? [String: [String: String]] else {
+                    print("error trying to convert \"Time Series (Digital Currency Monthly)\" to [String: [String: String]]")
+                    return
+                }
 
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM"

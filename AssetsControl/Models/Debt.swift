@@ -40,8 +40,9 @@ class Debt: Comparable, Identifiable, Codable {
 
     func currentValue(at date: Date) -> Double {
         let monthsSinceDate = date.timeIntervalSince(prevDate) / TimeInterval.month
-        let i = annualInterestFraction / 12
-        let value = prevValue * pow(1 + i, monthsSinceDate) - (monthlyPayment / i) * (pow(1 + i, monthsSinceDate) - 1)
+        let monthlyInterestRate = annualInterestFraction / 12
+        let compoundFactor = pow(1 + monthlyInterestRate, monthsSinceDate)
+        let value = prevValue * compoundFactor - (monthlyPayment / monthlyInterestRate) * (compoundFactor - 1)
         return max(0, value)
     }
 

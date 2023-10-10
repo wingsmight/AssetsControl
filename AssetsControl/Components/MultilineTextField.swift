@@ -7,7 +7,9 @@
 import Foundation
 import SwiftUI
 
+// swiftlint: disable type_name
 struct MultilineTextField_iOS15: View {
+// swiftlint: enable type_name
     let internalPadding: CGFloat = 5
 
     let placeholder: String

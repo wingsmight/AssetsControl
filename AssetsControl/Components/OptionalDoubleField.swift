@@ -54,15 +54,14 @@ struct OptionalDoubleField: View {
                               textValue = value?.description ?? ""
                           }
                       } else {
-                          let f = formatter
-                          var newValue = f.number(from: textValue)?.doubleValue
+                          var newValue = formatter.number(from: textValue)?.doubleValue
                           if newValue == nil {
                               newValue = Double(textValue)
-                              if let temp = newValue, f.numberStyle == .percent {
+                              if let temp = newValue, formatter.numberStyle == .percent {
                                   newValue = temp / 100
                               }
                           }
-                          textValue = f.string(for: newValue) ?? ""
+                          textValue = formatter.string(for: newValue) ?? ""
                       }
                       onEditingChanged(isInFocus)
                   },

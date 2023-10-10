@@ -29,7 +29,9 @@ extension Color {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)
+        // swiftlint:disable identifier_name
         let a, r, g, b: UInt64
+        // swiftlint:enable identifier_name
         switch hex.count {
         case 3:
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
@@ -62,19 +64,28 @@ extension Color {
         guard let components = uic.cgColor.components, components.count >= 3 else {
             return "00000000"
         }
+        // swiftlint:disable identifier_name
         let r = Float(components[0])
         let g = Float(components[1])
         let b = Float(components[2])
         var a = Float(1.0)
+        // swiftlint:enable identifier_name
 
         if components.count >= 4 {
             a = Float(components[3])
         }
 
         if a != Float(1.0) {
-            return String(format: "%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
+            return String(format: "%02lX%02lX%02lX%02lX",
+                          lroundf(r * 255),
+                          lroundf(g * 255),
+                          lroundf(b * 255),
+                          lroundf(a * 255))
         } else {
-            return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
+            return String(format: "%02lX%02lX%02lX",
+                          lroundf(r * 255),
+                          lroundf(g * 255),
+                          lroundf(b * 255))
         }
     }
 }

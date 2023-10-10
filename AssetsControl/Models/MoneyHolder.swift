@@ -23,8 +23,7 @@ struct MoneyHolder: Codable, Identifiable, Hashable {
          description: String = "",
          symbol: Symbol = defaultSymbol,
          initialMoney: Money = Money(0),
-         initialDate: Date = Date())
-    {
+         initialDate: Date = Date()) {
         self.id = id ?? UUID()
         self.name = name
         self.description = description

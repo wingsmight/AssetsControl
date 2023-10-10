@@ -8,8 +8,11 @@ import Foundation
 
 extension String {
     func nonNumericRemoved() -> String {
-        let regex = try! NSRegularExpression(pattern: "[^0-9]")
-        return regex.stringByReplacingMatches(in: self, options: [], range: NSRange(location: 0, length: utf16.count), withTemplate: "")
+        guard let regex = try? NSRegularExpression(pattern: "[^0-9]") else {
+            return self
+        }
+        let range = NSRange(location: 0, length: utf16.count)
+        return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "")
     }
 
     var capitalizedSentence: String {

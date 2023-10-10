@@ -20,7 +20,9 @@ struct RoundedTextFieldStyle: TextFieldStyle {
         self.cornerRadius = cornerRadius
     }
 
+    // swiftlint: disable identifier_name
     func _body(configuration: TextField<Self._Label>) -> some View {
+    // swiftlint: enable identifier_name
         configuration
             .padding(10)
             .foregroundColor(foregroundColor)

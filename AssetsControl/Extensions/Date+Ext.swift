@@ -60,8 +60,8 @@ extension Date: Strideable {
         other.timeIntervalSinceReferenceDate - timeIntervalSinceReferenceDate
     }
 
-    public func advanced(by n: TimeInterval) -> Date {
-        self + n
+    public func advanced(by distance: TimeInterval) -> Date {
+        self + distance
     }
 }
 
