@@ -61,7 +61,7 @@ extension FinancialData {
     mutating func removeMoneyHolder(atOffsets offsets: IndexSet) {
         moneyHolders.remove(atOffsets: offsets)
     }
-    
+
     mutating func updateMoneyHolder(withId moneyHolderId: UUID, to updatedMoneyHolder: MoneyHolder) {
         guard let index = moneyHolders.firstIndex(where: { $0.id == updatedMoneyHolder.id }) else { return }
         
@@ -73,9 +73,15 @@ extension FinancialData {
     mutating func addIncomeSource(_ newIncomeSource: IncomeSource) {
         incomeSources.insert(newIncomeSource, at: 0)
     }
-    
+
     mutating func removeIncomeSource(atOffsets offsets: IndexSet) {
         incomeSources.remove(atOffsets: offsets)
+    }
+    
+    mutating func updateIncomeSource(withId incomeSourceId: UUID, to updatedIncomeSource: IncomeSource) {
+        guard let index = incomeSources.firstIndex(where: { $0.id == updatedIncomeSource.id }) else { return }
+        
+        incomeSources[index] = updatedIncomeSource
     }
 }
 
@@ -83,7 +89,7 @@ extension FinancialData {
     mutating func addIncome(_ newIncome: any Income) {
         incomes.insert(newIncome, at: 0)
     }
-    
+
     mutating func removeIncome(atOffsets offsets: IndexSet) {
         incomes.remove(atOffsets: offsets)
     }
@@ -101,7 +107,7 @@ extension FinancialData {
     mutating func addExpense(_ newExpense: Expense) {
         expenses.insert(newExpense, at: 0)
     }
-    
+
     mutating func removeExpense(atOffsets offsets: IndexSet) {
         expenses.remove(atOffsets: offsets)
     }

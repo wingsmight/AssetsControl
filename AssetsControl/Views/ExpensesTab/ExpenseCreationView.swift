@@ -20,6 +20,8 @@ struct ExpenseCreationView: View {
     
     @EnvironmentObject private var financesStore: FinancialDataStore
 
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
     init(expense: Binding<Expense?>,
          isShowing: Binding<Bool>)
     {
@@ -39,7 +41,7 @@ struct ExpenseCreationView: View {
                 Section {
                     moneyHolderPicker
                 }
-                
+
                 Section {
                     DatePicker("Date", selection: $date)
                 }
@@ -111,7 +113,7 @@ struct ExpenseCreationView: View {
     }
 
     private func dismiss() {
-        isShowing = false
+        presentationMode.wrappedValue.dismiss()
     }
 
     private var isDoneButtonDisabled: Bool {

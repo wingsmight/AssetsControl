@@ -19,6 +19,8 @@
 		CE177BC929D23EAC00C79390 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE177BC829D23EAC00C79390 /* MainView.swift */; };
 		CE177BCB29D23EAE00C79390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE177BCA29D23EAE00C79390 /* Assets.xcassets */; };
 		CE177BCE29D23EAE00C79390 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE177BCD29D23EAE00C79390 /* Preview Assets.xcassets */; };
+		CE2239A12AD6D61F00A95E70 /* IncomeSourceCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2239A02AD6D61F00A95E70 /* IncomeSourceCreationView.swift */; };
+		CE2239A52AD6E86600A95E70 /* IncomeSourceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2239A42AD6E86600A95E70 /* IncomeSourceRowView.swift */; };
 		CE30DC7429D2DAEB009C519A /* ExpenseCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7329D2DAEB009C519A /* ExpenseCreationView.swift */; };
 		CE30DC7629D2DC7B009C519A /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7529D2DC7B009C519A /* Expense.swift */; };
 		CE30DC7829D2DD9E009C519A /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7729D2DD9E009C519A /* Symbol.swift */; };
@@ -103,6 +105,8 @@
 		CE177BC829D23EAC00C79390 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CE177BCA29D23EAE00C79390 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE177BCD29D23EAE00C79390 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE2239A02AD6D61F00A95E70 /* IncomeSourceCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSourceCreationView.swift; sourceTree = "<group>"; };
+		CE2239A42AD6E86600A95E70 /* IncomeSourceRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSourceRowView.swift; sourceTree = "<group>"; };
 		CE30DC4C29D2D400009C519A /* MultiSelectPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectPickerView.swift; sourceTree = "<group>"; };
 		CE30DC4D29D2D400009C519A /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		CE30DC4E29D2D400009C519A /* ColorfulBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulBadge.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			children = (
 				CE10576E2AAB4E2500C6512A /* IncomesTab.swift */,
 				CE1057702AAB4F0800C6512A /* IncomeCreationView.swift */,
+				CE2239A02AD6D61F00A95E70 /* IncomeSourceCreationView.swift */,
 			);
 			path = IncomesTab;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				CEFD301E29DFE2E4008A3071 /* OtherTab.swift */,
 				CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */,
 				CEFD302229DFEAA7008A3071 /* MoneyHolderRowView.swift */,
+				CE2239A42AD6E86600A95E70 /* IncomeSourceRowView.swift */,
 			);
 			path = OtherTab;
 			sourceTree = "<group>";
@@ -633,6 +639,7 @@
 				CE30DCEB29D456E7009C519A /* UIApplication+Ext.swift in Sources */,
 				CE177BC929D23EAC00C79390 /* MainView.swift in Sources */,
 				CEFD301F29DFE2E4008A3071 /* OtherTab.swift in Sources */,
+				CE2239A52AD6E86600A95E70 /* IncomeSourceRowView.swift in Sources */,
 				CE30DC8729D2EC8D009C519A /* Asset.swift in Sources */,
 				CE8B4ECE2ACB39D9004C8144 /* BankrollShape.swift in Sources */,
 				CE30DC8529D2EA4E009C519A /* NumberFormatterContainer.swift in Sources */,
@@ -682,6 +689,7 @@
 				CE30DCCE29D455EA009C519A /* RootPresentationModeKey.swift in Sources */,
 				CE8B4EE22ACB3C3F004C8144 /* MoneyHolderPicker.swift in Sources */,
 				CE177BC729D23EAC00C79390 /* AssetsControlApp.swift in Sources */,
+				CE2239A12AD6D61F00A95E70 /* IncomeSourceCreationView.swift in Sources */,
 				CE30DC7629D2DC7B009C519A /* Expense.swift in Sources */,
 				CEFD303129E18FC2008A3071 /* Transaction.swift in Sources */,
 				CEFD301B29DFDC12008A3071 /* MoneyHolder.swift in Sources */,

@@ -12,14 +12,20 @@ class IncomeSource: Codable, Identifiable, Hashable {
 
     @Published var name: String
     @Published var description: String
+    @Published var symbol: Symbol
+    @Published var defaultAmount: Double?
     @Published var currency: Currency
 
     init(name: String,
          description: String = "",
+         symbol: Symbol = .defaultSymbol,
+         defaultAmount: Double? = nil,
          currency: Currency)
     {
         self.name = name
         self.description = description
+        self.symbol = symbol
+        self.defaultAmount = defaultAmount
         self.currency = currency
     }
 
@@ -28,6 +34,8 @@ class IncomeSource: Codable, Identifiable, Hashable {
 
         name = try values.decode(String.self, forKey: .name)
         description = try values.decode(String.self, forKey: .description)
+        symbol = try values.decodeIfPresent(Symbol.self, forKey: .symbol) ?? .defaultSymbol
+        defaultAmount = try values.decodeIfPresent(Double.self, forKey: .defaultAmount)
         currency = try values.decodeIfPresent(Currency.self, forKey: .currency) ?? .dollar
     }
 
@@ -38,6 +46,8 @@ class IncomeSource: Codable, Identifiable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
         hasher.combine(description)
+        hasher.combine(symbol)
+        hasher.combine(defaultAmount)
         hasher.combine(currency)
     }
 
@@ -46,12 +56,16 @@ class IncomeSource: Codable, Identifiable, Hashable {
 
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
+        try container.encode(symbol, forKey: .symbol)
+        try container.encode(defaultAmount, forKey: .defaultAmount)
         try container.encode(currency, forKey: .currency)
     }
 
     enum CodingKeys: String, CodingKey {
         case name
         case description
+        case symbol
+        case defaultAmount
         case currency
     }
 }

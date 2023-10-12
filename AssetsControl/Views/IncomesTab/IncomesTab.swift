@@ -42,11 +42,11 @@ struct IncomesTab: View {
             .sheet(isPresented: $isNewIncomeSheetShowing) {
                 IncomeCreationView(income: $newIncome,
                                    isShowing: $isNewIncomeSheetShowing)
+                    .environmentObject(financesStore)
             }
             .onChange(of: isNewIncomeSheetShowing) { isNewIncomeSheetShowing in
                 if !isNewIncomeSheetShowing,
-                   let newIncome
-                {
+                   let newIncome {
                     financesStore.data.addIncome(newIncome)
                 }
             }
@@ -75,7 +75,7 @@ struct IncomesTab: View {
 
 struct IncomesTab_Previews: PreviewProvider {
     @StateObject private static var financialDataStore = FinancialDataStore()
-    
+
     static var previews: some View {
         IncomesTab()
             .environmentObject(financialDataStore)

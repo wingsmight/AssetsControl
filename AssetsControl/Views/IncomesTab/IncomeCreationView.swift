@@ -20,11 +20,17 @@ struct IncomeCreationView: View {
 
     @EnvironmentObject private var financesStore: FinancialDataStore
 
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
     init(income: Binding<(any Income)?>,
          isShowing: Binding<Bool>)
     {
         _income = income
         _isShowing = isShowing
+
+        if let incomeSource = income.wrappedValue?.source {
+            source = incomeSource
+        }
     }
 
     var body: some View {
@@ -34,14 +40,14 @@ struct IncomeCreationView: View {
                     nameField
 
                     currencyField
-                    
+
                     sourcePicker
                 }
 
                 Section {
                     moneyHolderPicker
                 }
-                
+
                 Section {
                     DatePicker("Date", selection: $date)
                 }
@@ -55,7 +61,7 @@ struct IncomeCreationView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         income = nil
-                        
+
                         dismiss()
                     }
                 }
@@ -82,6 +88,11 @@ struct IncomeCreationView: View {
 
             moneyHolderTarget = firstMoneyHolder
         }
+        .onAppear {
+            if let incomeSource = financesStore.data.incomeSources.first {
+                source = incomeSource
+            }
+        }
     }
 
     private var nameField: some View {
@@ -96,7 +107,7 @@ struct IncomeCreationView: View {
             Text(source.currency.symbol)
         }
     }
-    
+
     private var sourcePicker: some View {
         SourcePicker(incomeSources: financesStore.data.incomeSources, selected: $source)
     }
@@ -111,7 +122,7 @@ struct IncomeCreationView: View {
     }
 
     private func dismiss() {
-        isShowing = false
+        presentationMode.wrappedValue.dismiss()
     }
 
     private var isDoneButtonDisabled: Bool {
@@ -136,25 +147,22 @@ struct MoneyHolderTargetPickerRow: View {
 
 struct SourcePicker: View {
     let incomeSources: [IncomeSource]
-    
+
     @Binding var selected: IncomeSource
-    
+
     var body: some View {
         if incomeSources.isEmpty {
             Text("empty")
         } else {
-            Text(incomeSources.count.description)
-//            Picker("Source", selection: $selected) {
-//                ForEach(incomeSources, id: \.self) { incomeSource in
-//                    Text(incomeSource.name)
-//                    //                Label("\(incomeSource.name) \(incomeSource.currency.symbol)")
-//                    //                    .tag(incomeSource.id)
-//                }
-//            }
+            Picker("Source", selection: $selected) {
+                ForEach(incomeSources, id: \.self) { incomeSource in
+                    Label("\(incomeSource.name) \(incomeSource.currency.symbol)",
+                          systemImage: incomeSource.symbol.systemImageName)
+                }
+            }
         }
     }
 }
-
 
 struct IncomeCreationView_Previews: PreviewProvider {
     @StateObject private static var financialDataStore = FinancialDataStore()
