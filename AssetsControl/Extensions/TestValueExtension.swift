@@ -52,6 +52,11 @@ extension MoneyHolder {
                                   description: "Credit Card",
                                   symbol: Symbol.creditCard,
                                   initialMoney: Money(12000))
+
+    static let test2 = MoneyHolder(name: "Pound Cash",
+                                   description: "GBP Cash",
+                                   symbol: Symbol.banknote,
+                                   initialMoney: Money(12000, of: .poundSterling))
 }
 
 extension IncomeSource {
@@ -67,4 +72,12 @@ extension ActiveIncome {
                                    source: IncomeSource.test,
                                    target: MoneyHolder.test,
                                    amount: Money(20000))
+}
+
+extension Transfer {
+    static let test = Transfer(source: MoneyHolder.test,
+                               target: MoneyHolder.test2,
+                               description: "Cash Advance",
+                               amount: 95.99,
+                               date: Date())
 }

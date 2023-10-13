@@ -10,10 +10,20 @@ import SwiftUI
 struct MoneyHolderPicker: View {
     @Binding var selected: MoneyHolder
 
-    var moneyHolders: [MoneyHolder]
+    let moneyHolders: [MoneyHolder]
+    let label: String
+
+    init(label: String = "Source",
+         selected: Binding<MoneyHolder>,
+         moneyHolders: [MoneyHolder])
+    {
+        self.label = label
+        self._selected = selected
+        self.moneyHolders = moneyHolders
+    }
 
     var body: some View {
-        Picker("Source", selection: $selected) {
+        Picker(label, selection: $selected) {
             ForEach(moneyHolders, id: \.self) { moneyHolder in
                 Label(moneyHolder.name, systemImage: moneyHolder.symbol.systemImageName)
                     .tag(moneyHolder.id)

@@ -12,6 +12,7 @@ struct FinancialData: Codable {
     private(set) var incomeSources: [IncomeSource] = []
     private(set) var incomes: [any Income] = []
     private(set) var expenses: [Expense] = []
+    private(set) var transfers: [Transfer] = []
 
     init() {}
 
@@ -22,6 +23,7 @@ struct FinancialData: Codable {
         incomeSources = try container.decodeIfPresent([IncomeSource].self, forKey: .incomeSources) ?? []
         incomes = try decodeIncomes(container: container)
         expenses = try container.decodeIfPresent([Expense].self, forKey: .expenses) ?? []
+        transfers = try container.decodeIfPresent([Transfer].self, forKey: .transfers) ?? []
     }
 
     func encode(to encoder: Encoder) throws {
@@ -31,6 +33,7 @@ struct FinancialData: Codable {
         try container.encodeIfPresent(incomeSources, forKey: .incomeSources)
         try encodeIncomes(container: &container)
         try container.encodeIfPresent(expenses, forKey: .expenses)
+        try container.encodeIfPresent(transfers, forKey: .transfers)
     }
 
     private func decodeIncomes(container: KeyedDecodingContainer<FinancialData.CodingKeys>) throws -> [any Income] {
@@ -50,6 +53,7 @@ struct FinancialData: Codable {
         case incomeSources
         case incomeTypes
         case expenses
+        case transfers
     }
 }
 
@@ -63,8 +67,8 @@ extension FinancialData {
     }
 
     mutating func updateMoneyHolder(withId moneyHolderId: UUID, to updatedMoneyHolder: MoneyHolder) {
-        guard let index = moneyHolders.firstIndex(where: { $0.id == updatedMoneyHolder.id }) else { return }
-        
+        guard let index = moneyHolders.firstIndex(where: { $0.id == moneyHolderId }) else { return }
+
         moneyHolders[index] = updatedMoneyHolder
     }
 }
@@ -77,10 +81,10 @@ extension FinancialData {
     mutating func removeIncomeSource(atOffsets offsets: IndexSet) {
         incomeSources.remove(atOffsets: offsets)
     }
-    
+
     mutating func updateIncomeSource(withId incomeSourceId: UUID, to updatedIncomeSource: IncomeSource) {
-        guard let index = incomeSources.firstIndex(where: { $0.id == updatedIncomeSource.id }) else { return }
-        
+        guard let index = incomeSources.firstIndex(where: { $0.id == incomeSourceId }) else { return }
+
         incomeSources[index] = updatedIncomeSource
     }
 }
@@ -118,5 +122,29 @@ extension FinancialData {
 
     mutating func removeExpenses(_ removedExpenses: [Expense]) {
         expenses.removeAll { removedExpenses.contains($0) }
+    }
+}
+
+extension FinancialData {
+    mutating func addTransfer(_ newTransfer: Transfer) {
+        transfers.insert(newTransfer, at: 0)
+    }
+
+    mutating func removeTransfer(atOffsets offsets: IndexSet) {
+        transfers.remove(atOffsets: offsets)
+    }
+
+    mutating func removeTransfer(_ removedTransfer: Transfer) {
+        transfers.removeAll { $0 == removedTransfer }
+    }
+
+    mutating func removeTransfers(_ removedTransfers: [Transfer]) {
+        transfers.removeAll { removedTransfers.contains($0) }
+    }
+
+    mutating func updateTransfer(withId transferId: UUID, to updatedTransfer: Transfer) {
+        guard let index = transfers.firstIndex(where: { $0.id == transferId }) else { return }
+
+        transfers[index] = updatedTransfer
     }
 }

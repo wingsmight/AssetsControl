@@ -21,6 +21,9 @@
 		CE177BCE29D23EAE00C79390 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE177BCD29D23EAE00C79390 /* Preview Assets.xcassets */; };
 		CE2239A12AD6D61F00A95E70 /* IncomeSourceCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2239A02AD6D61F00A95E70 /* IncomeSourceCreationView.swift */; };
 		CE2239A52AD6E86600A95E70 /* IncomeSourceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2239A42AD6E86600A95E70 /* IncomeSourceRowView.swift */; };
+		CE2239A72AD9450800A95E70 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2239A62AD9450800A95E70 /* Transfer.swift */; };
+		CE2239A92AD95C8800A95E70 /* TransferRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2239A82AD95C8800A95E70 /* TransferRowView.swift */; };
+		CE2239AB2AD960C100A95E70 /* TransferCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2239AA2AD960C100A95E70 /* TransferCreationView.swift */; };
 		CE30DC7429D2DAEB009C519A /* ExpenseCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7329D2DAEB009C519A /* ExpenseCreationView.swift */; };
 		CE30DC7629D2DC7B009C519A /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7529D2DC7B009C519A /* Expense.swift */; };
 		CE30DC7829D2DD9E009C519A /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30DC7729D2DD9E009C519A /* Symbol.swift */; };
@@ -107,6 +110,9 @@
 		CE177BCD29D23EAE00C79390 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE2239A02AD6D61F00A95E70 /* IncomeSourceCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSourceCreationView.swift; sourceTree = "<group>"; };
 		CE2239A42AD6E86600A95E70 /* IncomeSourceRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSourceRowView.swift; sourceTree = "<group>"; };
+		CE2239A62AD9450800A95E70 /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		CE2239A82AD95C8800A95E70 /* TransferRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferRowView.swift; sourceTree = "<group>"; };
+		CE2239AA2AD960C100A95E70 /* TransferCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCreationView.swift; sourceTree = "<group>"; };
 		CE30DC4C29D2D400009C519A /* MultiSelectPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectPickerView.swift; sourceTree = "<group>"; };
 		CE30DC4D29D2D400009C519A /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		CE30DC4E29D2D400009C519A /* ColorfulBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulBadge.swift; sourceTree = "<group>"; };
@@ -312,15 +318,16 @@
 		CE177BDF29D2473000C79390 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE1057672AAB38C400C6512A /* Incomes */,
-				CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */,
 				CE30DC9629D30C96009C519A /* Stores */,
+				CE1057672AAB38C400C6512A /* Incomes */,
+				CE30DC9429D30C1E009C519A /* FinancialData.swift */,
+				CE2239A62AD9450800A95E70 /* Transfer.swift */,
 				CE30DC7529D2DC7B009C519A /* Expense.swift */,
+				CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */,
 				CE30DC7729D2DD9E009C519A /* Symbol.swift */,
 				CE30DC7929D2DEB1009C519A /* Debt.swift */,
 				CE30DC8629D2EC8D009C519A /* Asset.swift */,
 				CE30DC8829D2EDB2009C519A /* Stock.swift */,
-				CE30DC9429D30C1E009C519A /* FinancialData.swift */,
 				CEFD303029E18FC2008A3071 /* Transaction.swift */,
 				CE10576A2AAB49BA00C6512A /* IncomeSource.swift */,
 			);
@@ -537,6 +544,8 @@
 				CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */,
 				CEFD302229DFEAA7008A3071 /* MoneyHolderRowView.swift */,
 				CE2239A42AD6E86600A95E70 /* IncomeSourceRowView.swift */,
+				CE2239A82AD95C8800A95E70 /* TransferRowView.swift */,
+				CE2239AA2AD960C100A95E70 /* TransferCreationView.swift */,
 			);
 			path = OtherTab;
 			sourceTree = "<group>";
@@ -636,6 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2239A92AD95C8800A95E70 /* TransferRowView.swift in Sources */,
 				CE30DCEB29D456E7009C519A /* UIApplication+Ext.swift in Sources */,
 				CE177BC929D23EAC00C79390 /* MainView.swift in Sources */,
 				CEFD301F29DFE2E4008A3071 /* OtherTab.swift in Sources */,
@@ -661,6 +671,7 @@
 				CE7026132AB06DC4004912E6 /* PortfolioIncome.swift in Sources */,
 				CE8B4EDC2ACB3B83004C8144 /* LargeButtonStyle.swift in Sources */,
 				CE30DC7A29D2DEB1009C519A /* Debt.swift in Sources */,
+				CE2239A72AD9450800A95E70 /* Transfer.swift in Sources */,
 				CE30DC7429D2DAEB009C519A /* ExpenseCreationView.swift in Sources */,
 				CE30DCEA29D456E7009C519A /* Dictionary+Ext.swift in Sources */,
 				CE10576F2AAB4E2500C6512A /* IncomesTab.swift in Sources */,
@@ -686,6 +697,7 @@
 				CE1057732AAB543900C6512A /* ActiveIncomeView.swift in Sources */,
 				CE8B4EE02ACB3C18004C8144 /* CurrencyPickerScreen.swift in Sources */,
 				CE30DCED29D456E7009C519A /* View+Ext.swift in Sources */,
+				CE2239AB2AD960C100A95E70 /* TransferCreationView.swift in Sources */,
 				CE30DCCE29D455EA009C519A /* RootPresentationModeKey.swift in Sources */,
 				CE8B4EE22ACB3C3F004C8144 /* MoneyHolderPicker.swift in Sources */,
 				CE177BC729D23EAC00C79390 /* AssetsControlApp.swift in Sources */,
