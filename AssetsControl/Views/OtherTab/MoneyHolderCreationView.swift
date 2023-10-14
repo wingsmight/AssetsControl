@@ -19,7 +19,7 @@ struct MoneyHolderCreationView: View {
     @State private var date: Date = .init()
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    
+
     var body: some View {
         NavigationView {
             Form {
@@ -59,7 +59,7 @@ struct MoneyHolderCreationView: View {
 
                             return
                         }
-                        
+
                         moneyHolder = MoneyHolder(id: id,
                                                   name: name,
                                                   description: description,
