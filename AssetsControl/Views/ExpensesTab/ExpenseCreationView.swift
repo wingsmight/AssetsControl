@@ -17,14 +17,15 @@ struct ExpenseCreationView: View {
     @State private var moneyCurrency: Currency = .dollar
     @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
     @State private var date: Date = Date()
-    
+
     @EnvironmentObject private var financesStore: FinancialDataStore
+    @EnvironmentObject private var preferencesDataStore: PreferencesDataStore
+    @EnvironmentObject private var userDataStore: UserDataStore
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     init(expense: Binding<Expense?>,
-         isShowing: Binding<Bool>)
-    {
+         isShowing: Binding<Bool>) {
         _expense = expense
         _isShowing = isShowing
     }
@@ -81,7 +82,7 @@ struct ExpenseCreationView: View {
         .onAppear {
             guard let firstMoneyHolder = financesStore.data.moneyHolders.first else { return }
 
-            moneyHolderSource = firstMoneyHolder
+            moneyHolderSource = getDefaultMoneyHolderSource()
 
             moneyCurrency = firstMoneyHolder.initialMoney.currency
         }
@@ -114,6 +115,17 @@ struct ExpenseCreationView: View {
 
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
+    }
+
+    // TODO: refactor to separate class (DI)
+    private func getDefaultMoneyHolderSource() -> MoneyHolder {
+        switch preferencesDataStore.data.defaultMoneyHolderSourceMethod {
+        case .selected(let moneyHolder):
+            return moneyHolder ?? MoneyHolder.test
+        case .ai, .lastUsed:
+            let firstMoneyHolder = financesStore.data.moneyHolders.first
+            return userDataStore.data.lastMoneyHolderSource ?? firstMoneyHolder ?? MoneyHolder.test
+        }
     }
 
     private var isDoneButtonDisabled: Bool {

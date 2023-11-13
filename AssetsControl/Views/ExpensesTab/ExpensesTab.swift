@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExpensesTab: View {
     @EnvironmentObject private var financesStore: FinancialDataStore
+    @EnvironmentObject private var userStore: UserDataStore
 
     @State private var isNewAssetSheetShowing: Bool = false
     @State private var expense: Expense? = nil
@@ -45,14 +46,14 @@ struct ExpensesTab: View {
             .onChange(of: expense) { newExpense in
                 if let newExpense {
                     financesStore.data.addExpense(newExpense)
+                    
+                    userStore.data.setLastMoneyHolderSource(newExpense.moneyHolderSource)
                 }
             }
         }
     }
 
     private func removeExpenses(at offsets: IndexSet, for headerDate: Date) {
-        print(offsets.startIndex.description)
-
         guard let expenseGroup = expenseGroups[headerDate] else { return }
         let removedExpenses = offsets.map { expenseGroup[$0] }
 
