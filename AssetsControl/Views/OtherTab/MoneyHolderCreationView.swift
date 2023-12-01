@@ -42,7 +42,7 @@ struct MoneyHolderCreationView: View {
                     SymbolPicker(selected: $selectedSymbol)
                 }
             }
-            .navigationTitle("Create Account")
+            .navigationTitle("New Money Holder")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
@@ -71,7 +71,6 @@ struct MoneyHolderCreationView: View {
                     }
                 }
             }
-            .hideKeyboardWhenTappedAround()
         }
         .onAppear {
             if let moneyHolder {

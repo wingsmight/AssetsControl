@@ -54,8 +54,6 @@ struct IncomesTab: View {
     }
 
     private func removeIncomes(at offsets: IndexSet, for headerDate: Date) {
-        print(offsets.startIndex.description)
-
         guard let incomeGroup = incomeGroups[headerDate] else { return }
         let removedIncomes = offsets.map { incomeGroup[$0] }
 

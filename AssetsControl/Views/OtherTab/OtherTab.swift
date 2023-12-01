@@ -26,89 +26,98 @@ struct OtherTab: View {
     @State private var transferRowId: UUID = .init()
 
     var body: some View {
-        VStack {
-            addMoneyHolderButton
+        NavigationView {
+            VStack {
+                openMoneyHoldersScreenButton
 
-            moneyHolderList
+                Spacer()
 
-            Spacer()
+                addIncomeSourceButton
 
-            addIncomeSourceButton
+                incomeSourceList
 
-            incomeSourceList
+                Spacer()
 
-            Spacer()
+                addTransferButton
 
-            addTransferButton
-
-            transferList
-        }
-        .navigationTitle("Other")
-        .sheet(isPresented: $isMoneyHolderCreationSheetShowing) {
-            guard let newMoneyHolder else {
-                return
+                transferList
             }
-
-            financesStore.data.addMoneyHolder(newMoneyHolder)
-            self.newMoneyHolder = nil
-        } content: {
-            MoneyHolderCreationView(moneyHolder: $newMoneyHolder)
-        }
-        .sheet(item: $editedMoneyHolder) { editedMoneyHolder in
-            MoneyHolderCreationView(moneyHolder: Binding(
-                get: { financesStore.data.moneyHolders.first(where: { $0.id == editedMoneyHolder.id }) },
-                set: { newEditedMoneyHolder in
-                    guard let newEditedMoneyHolder else { return }
-
-                    financesStore.data.updateMoneyHolder(withId: newEditedMoneyHolder.id, to: newEditedMoneyHolder)
-
-                    moneyHolderRowId = UUID()
+            .navigationTitle("Other")
+            .sheet(isPresented: $isMoneyHolderCreationSheetShowing) {
+                guard let newMoneyHolder else {
+                    return
                 }
-            ))
-        }
-        .sheet(isPresented: $isIncomeSourceCreationSheetShowing) {
-            guard let newIncomeSource else {
-                return
+
+                financesStore.data.addMoneyHolder(newMoneyHolder)
+                self.newMoneyHolder = nil
+            } content: {
+                MoneyHolderCreationView(moneyHolder: $newMoneyHolder)
             }
+            .sheet(item: $editedMoneyHolder) { editedMoneyHolder in
+                MoneyHolderCreationView(moneyHolder: Binding(
+                    get: { financesStore.data.moneyHolders.first(where: { $0.id == editedMoneyHolder.id }) },
+                    set: { newEditedMoneyHolder in
+                        guard let newEditedMoneyHolder else { return }
 
-            financesStore.data.addIncomeSource(newIncomeSource)
-            self.newIncomeSource = nil
-        } content: {
-            IncomeSourceCreationView(incomeSource: $newIncomeSource)
-        }
-        .sheet(item: $editedIncomeSource) { editedIncomeSource in
-            IncomeSourceCreationView(incomeSource: Binding(
-                get: { financesStore.data.incomeSources.first(where: { $0.id == editedIncomeSource.id }) },
-                set: { newEditedIncomeSource in
-                    guard let newEditedIncomeSource else { return }
+                        financesStore.data.updateMoneyHolder(withId: newEditedMoneyHolder.id, to: newEditedMoneyHolder)
 
-                    financesStore.data.updateIncomeSource(withId: newEditedIncomeSource.id, to: newEditedIncomeSource)
-
-                    incomeSourceRowId = UUID()
-                }
-            ))
-        }
-        .sheet(isPresented: $isTransferCreationSheetShowing) {
-            guard let newTransfer else {
-                return
+                        moneyHolderRowId = UUID()
+                    }
+                ))
             }
-
-            financesStore.data.addTransfer(newTransfer)
-            self.newTransfer = nil
-        } content: {
-            TransferCreationView(transfer: $newTransfer)
-        }
-        .sheet(item: $editedTransfer) { editedTransfer in
-            TransferCreationView(transfer: Binding(
-                get: { financesStore.data.transfers.first(where: { $0.id == editedTransfer.id }) },
-                set: { newEditedTransfer in
-                    guard let newEditedTransfer else { return }
-
-                    financesStore.data.updateTransfer(withId: newEditedTransfer.id, to: newEditedTransfer)
-
-                    transferRowId = UUID()
+            .sheet(isPresented: $isIncomeSourceCreationSheetShowing) {
+                guard let newIncomeSource else {
+                    return
                 }
-            ))
+
+                financesStore.data.addIncomeSource(newIncomeSource)
+                self.newIncomeSource = nil
+            } content: {
+                IncomeSourceCreationView(incomeSource: $newIncomeSource)
+            }
+            .sheet(item: $editedIncomeSource) { editedIncomeSource in
+                IncomeSourceCreationView(incomeSource: Binding(
+                    get: { financesStore.data.incomeSources.first(where: { $0.id == editedIncomeSource.id }) },
+                    set: { newEditedIncomeSource in
+                        guard let newEditedIncomeSource else { return }
+
+                        financesStore.data.updateIncomeSource(withId: newEditedIncomeSource.id,
+                                                              to: newEditedIncomeSource)
+
+                        incomeSourceRowId = UUID()
+                    }
+                ))
+            }
+            .sheet(isPresented: $isTransferCreationSheetShowing) {
+                guard let newTransfer else {
+                    return
+                }
+
+                financesStore.data.addTransfer(newTransfer)
+                self.newTransfer = nil
+            } content: {
+                TransferCreationView(transfer: $newTransfer)
+            }
+            .sheet(item: $editedTransfer) { editedTransfer in
+                TransferCreationView(transfer: Binding(
+                    get: { financesStore.data.transfers.first(where: { $0.id == editedTransfer.id }) },
+                    set: { newEditedTransfer in
+                        guard let newEditedTransfer else { return }
+
+                        financesStore.data.updateTransfer(withId: newEditedTransfer.id, to: newEditedTransfer)
+
+                        transferRowId = UUID()
+                    }
+                ))
+            }
+        }
+    }
+
+    var openMoneyHoldersScreenButton: some View {
+        NavigationLink {
+            MoneyHoldersScreen()
+        } label: {
+            Text("MoneyHoldersScreen")
         }
     }
 
