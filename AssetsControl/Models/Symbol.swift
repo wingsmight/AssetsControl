@@ -27,6 +27,7 @@ enum Symbol: String, CaseIterable, Identifiable, Codable, Hashable {
     case airplane
     case sailboat
     case bed = "bed.double"
+    case briefcase
 
     // Household
     case wifi
@@ -176,7 +177,9 @@ enum Symbol: String, CaseIterable, Identifiable, Codable, Hashable {
         case .app:
             return "App Subscriptions"
         case .star:
-            return ""
+            return "Favorite"
+        case .briefcase:
+            return "Job"
         }
     }
 
@@ -280,6 +283,8 @@ enum Symbol: String, CaseIterable, Identifiable, Codable, Hashable {
             return .blue
         case .star:
             return .gray
+        case .briefcase:
+            return .brown
         }
     }
 }
