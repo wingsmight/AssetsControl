@@ -81,6 +81,22 @@ extension FinancialData {
 
         moneyHolders[index] = updatedMoneyHolder
     }
+    
+    mutating func adjustInitialMoney(for moneyHolder: MoneyHolder, to actualCurrentAmount: Money) {
+        guard let index = moneyHolders.firstIndex(where: { $0.id == moneyHolder.id }) else { return }
+        
+        let totalExpenses = getExpenses(for: moneyHolder).reduce(Money(0, of: actualCurrentAmount.currency)) { $0 + $1.amount }
+        let totalIncomes = getActiveIncomes(for: moneyHolder).reduce(Money(0, of: actualCurrentAmount.currency)) { $0 + $1.amount }
+        let totalIncomeTransfers = getIncomeTransfers(for: moneyHolder).reduce(Money(0, of: actualCurrentAmount.currency)) { $0 + $1.receivedMoneyAmount }
+        let totalOutcomeTransfers = getOutcomeTransfers(for: moneyHolder).reduce(Money(0, of: actualCurrentAmount.currency)) { $0 + $1.moneyAmount }
+        let totalAssetExpenses = getAssetExpenses(for: moneyHolder).reduce(Money(0, of: actualCurrentAmount.currency)) { $0 + $1.amount }
+        
+        let newInitialMoney = actualCurrentAmount + totalExpenses - totalIncomes - totalIncomeTransfers + totalOutcomeTransfers + totalAssetExpenses
+        
+        var updatedMoneyHolder = moneyHolders[index]
+        updatedMoneyHolder.initialMoney = newInitialMoney
+        moneyHolders[index] = updatedMoneyHolder
+    }
 }
 
 extension FinancialData {

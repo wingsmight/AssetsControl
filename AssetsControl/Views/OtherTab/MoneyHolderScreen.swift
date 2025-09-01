@@ -13,8 +13,6 @@ struct MoneyHolderScreen: View {
 
     @EnvironmentObject private var financesStore: FinancialDataStore
     
-    @State private var isEditSheetShowing: Bool = false
-
     var body: some View {
         VStack {
             ZStack {
@@ -40,7 +38,6 @@ struct MoneyHolderScreen: View {
             }
             .frame(height: 200)
             .padding()
-            .navigationTitle(data.name)
 
             Text(data.description)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -68,23 +65,6 @@ struct MoneyHolderScreen: View {
                     }
                 }
             }
-        }
-        .toolbar {
-            Button {
-                isEditSheetShowing = true
-            } label: {
-                Image(systemName: "pencil")
-            }
-        }
-        .sheet(isPresented: $isEditSheetShowing) {
-            MoneyHolderCreationView(moneyHolder: Binding(
-                get: { financesStore.data.moneyHolders.first(where: { $0.id == data.id }) },
-                set: { newEditedMoneyHolder in
-                    guard let newEditedMoneyHolder else { return }
-
-                    financesStore.data.updateMoneyHolder(withId: data.id, to: newEditedMoneyHolder)
-                }
-            ))
         }
     }
 
