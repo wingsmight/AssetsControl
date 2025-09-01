@@ -33,7 +33,7 @@ struct IncomeSourceRowView: View {
     @ViewBuilder
     var moneyTextView: some View {
         if let defaultAmount = data.defaultAmount {
-            Text("\(defaultAmount) \(data.currency.symbol)")
+            Text(Money(defaultAmount, of: data.currency).description)
                 .font(.title3)
                 .bold()
         } else {

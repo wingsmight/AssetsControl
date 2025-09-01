@@ -29,6 +29,31 @@ class FinancialDataStore: ObservableObject {
             }
         }
     }
+    
+    static func load(from url: URL, completion: @escaping (Result<FinancialData, Error>) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            var result: Result<FinancialData, Error>
+
+            let needsSecurity = url.startAccessingSecurityScopedResource()
+            defer {
+                if needsSecurity {
+                    url.stopAccessingSecurityScopedResource()
+                }
+            }
+
+            do {
+                let data = try Data(contentsOf: url)
+                let decoded = try JSONDecoder().decode(FinancialData.self, from: data)
+                result = .success(decoded)
+            } catch {
+                result = .failure(error)
+            }
+
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
 
     static func save(_ data: FinancialData?, completion: @escaping (Result<Bool, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
@@ -36,6 +61,23 @@ class FinancialDataStore: ObservableObject {
                 let data = try JSONEncoder().encode(data)
                 let outfile = try fileURL()
                 try data.write(to: outfile)
+
+                DispatchQueue.main.async {
+                    completion(.success(true))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    static func save(_ data: FinancialData?, path: URL, completion: @escaping (Result<Bool, Error>) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let data = try JSONEncoder().encode(data)
+                try data.write(to: path)
 
                 DispatchQueue.main.async {
                     completion(.success(true))

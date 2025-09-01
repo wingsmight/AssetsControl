@@ -1,22 +1,22 @@
 //
-//  ExpenseCreationView.swift
+//  AssetCreationView.swift
 //  AssetsControl
 //
-//  Created by Igoryok on 28.03.2023.
+//  Created by Igoryok
 //
 
 import SwiftUI
 
-struct ExpenseCreationView: View {
-    @Binding private var expense: Expense?
+struct AssetCreationView: View {
+    @Binding private var asset: Asset?
     @Binding private var isShowing: Bool
 
     @State private var name: String = ""
-    @State private var selectedSymbol: Symbol = .defaultSymbol
+    @State private var selectedSymbol: Symbol = .stocks
     @State private var moneyAmount: Double?
     @State private var moneyCurrency: Currency = .dollar
     @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
-    @State private var date: Date = Date()
+    @State private var date: Date = .init()
 
     @EnvironmentObject private var financesStore: FinancialDataStore
     @EnvironmentObject private var preferencesDataStore: PreferencesDataStore
@@ -24,9 +24,10 @@ struct ExpenseCreationView: View {
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
-    init(expense: Binding<Expense?>,
-         isShowing: Binding<Bool>) {
-        _expense = expense
+    init(asset: Binding<Asset?>,
+         isShowing: Binding<Bool>)
+    {
+        _asset = asset
         _isShowing = isShowing
     }
 
@@ -51,11 +52,11 @@ struct ExpenseCreationView: View {
                     symbolPicker
                 }
             }
-            .navigationTitle("Add Expense")
+            .navigationTitle("Add Asset")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
-                        expense = nil
+                        asset = nil
 
                         dismiss()
                     }
@@ -66,11 +67,11 @@ struct ExpenseCreationView: View {
                         if let moneyAmount {
                             let amount = Money(moneyAmount, of: moneyCurrency)
 
-                            expense = Expense(name: name,
-                                              symbol: selectedSymbol,
-                                              amount: amount,
-                                              moneyHolderSource: moneyHolderSource,
-                                              date: date)
+                            asset = Asset(name: name,
+                                          symbol: selectedSymbol,
+                                          amount: amount,
+                                          moneyHolderSource: moneyHolderSource,
+                                          date: date)
 
                             dismiss()
                         }
@@ -120,7 +121,7 @@ struct ExpenseCreationView: View {
     // TODO: refactor to separate class (DI)
     private func getDefaultMoneyHolderSource() -> MoneyHolder {
         switch preferencesDataStore.data.defaultMoneyHolderSourceMethod {
-        case .selected(let moneyHolder):
+        case let .selected(moneyHolder):
             return moneyHolder ?? MoneyHolder.test
         case .ai, .lastUsed:
             let firstMoneyHolder = financesStore.data.moneyHolders.first
@@ -133,12 +134,12 @@ struct ExpenseCreationView: View {
     }
 }
 
-struct ExpenseCreationView_Previews: PreviewProvider {
+struct AssetCreationView_Previews: PreviewProvider {
     @StateObject private static var financialDataStore = FinancialDataStore()
 
     static var previews: some View {
-        ExpenseCreationView(expense: .constant(nil),
-                            isShowing: .constant(false))
+        AssetCreationView(asset: .constant(nil),
+                          isShowing: .constant(false))
             .environmentObject(financialDataStore)
     }
 }

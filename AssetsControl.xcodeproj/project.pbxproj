@@ -93,6 +93,19 @@
 		CE8B4EDE2ACB3BBC004C8144 /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B4EDD2ACB3BBC004C8144 /* ForEachWithIndex.swift */; };
 		CE8B4EE02ACB3C18004C8144 /* CurrencyPickerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B4EDF2ACB3C18004C8144 /* CurrencyPickerScreen.swift */; };
 		CE8B4EE22ACB3C3F004C8144 /* MoneyHolderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B4EE12ACB3C3F004C8144 /* MoneyHolderPicker.swift */; };
+		CEBCD9B72CBBF1CE001C7980 /* MoneyTransfersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9B62CBBF1CE001C7980 /* MoneyTransfersScreen.swift */; };
+		CEBCD9B92CBC5D95001C7980 /* NetWorthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9B82CBC5D95001C7980 /* NetWorthView.swift */; };
+		CEBCD9BB2CBC6E13001C7980 /* AssetCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9BA2CBC6E13001C7980 /* AssetCreationView.swift */; };
+		CEBCD9BD2CBC6E4A001C7980 /* AssetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9BC2CBC6E4A001C7980 /* AssetRowView.swift */; };
+		CEBCD9C62CBCE532001C7980 /* AnalyticsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9C52CBCE532001C7980 /* AnalyticsTab.swift */; };
+		CEBCD9C82CBCE563001C7980 /* AnalyticsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9C72CBCE563001C7980 /* AnalyticsTabViewModel.swift */; };
+		CEBCD9CB2CBCFB7C001C7980 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CEBCD9CA2CBCFB7C001C7980 /* SwiftUICharts */; };
+		CEBE4CF92CBE70DD00F597DA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEBE4CF82CBE70DD00F597DA /* Alamofire */; };
+		CED65C562CFB32E000D0FD70 /* DataSyncScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED65C552CFB32E000D0FD70 /* DataSyncScreen.swift */; };
+		CED65C5A2CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED65C592CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift */; };
+		CEE639DC2C6A76A000ABDFF4 /* FluidGradient in Frameworks */ = {isa = PBXBuildFile; productRef = CEE639DB2C6A76A000ABDFF4 /* FluidGradient */; };
+		CEE639DE2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE639DD2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift */; };
+		CEE639E02C6A869700ABDFF4 /* Sequence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE639DF2C6A869700ABDFF4 /* Sequence+Ext.swift */; };
 		CEFD301B29DFDC12008A3071 /* MoneyHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */; };
 		CEFD301F29DFE2E4008A3071 /* OtherTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD301E29DFE2E4008A3071 /* OtherTab.swift */; };
 		CEFD302129DFE3E3008A3071 /* MoneyHolderCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */; };
@@ -189,6 +202,17 @@
 		CE8B4EDD2ACB3BBC004C8144 /* ForEachWithIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachWithIndex.swift; sourceTree = "<group>"; };
 		CE8B4EDF2ACB3C18004C8144 /* CurrencyPickerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerScreen.swift; sourceTree = "<group>"; };
 		CE8B4EE12ACB3C3F004C8144 /* MoneyHolderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolderPicker.swift; sourceTree = "<group>"; };
+		CEBCD9B62CBBF1CE001C7980 /* MoneyTransfersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTransfersScreen.swift; sourceTree = "<group>"; };
+		CEBCD9B82CBC5D95001C7980 /* NetWorthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthView.swift; sourceTree = "<group>"; };
+		CEBCD9BA2CBC6E13001C7980 /* AssetCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCreationView.swift; sourceTree = "<group>"; };
+		CEBCD9BC2CBC6E4A001C7980 /* AssetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetRowView.swift; sourceTree = "<group>"; };
+		CEBCD9C52CBCE532001C7980 /* AnalyticsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTab.swift; sourceTree = "<group>"; };
+		CEBCD9C72CBCE563001C7980 /* AnalyticsTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTabViewModel.swift; sourceTree = "<group>"; };
+		CED65C552CFB32E000D0FD70 /* DataSyncScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSyncScreen.swift; sourceTree = "<group>"; };
+		CED65C572CFB3DA600D0FD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CED65C592CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSyncScreenViewModel.swift; sourceTree = "<group>"; };
+		CEE639DD2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeAPI.swift; sourceTree = "<group>"; };
+		CEE639DF2C6A869700ABDFF4 /* Sequence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Ext.swift"; sourceTree = "<group>"; };
 		CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolder.swift; sourceTree = "<group>"; };
 		CEFD301E29DFE2E4008A3071 /* OtherTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTab.swift; sourceTree = "<group>"; };
 		CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolderCreationView.swift; sourceTree = "<group>"; };
@@ -202,6 +226,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBE4CF92CBE70DD00F597DA /* Alamofire in Frameworks */,
+				CEE639DC2C6A76A000ABDFF4 /* FluidGradient in Frameworks */,
+				CEBCD9CB2CBCFB7C001C7980 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +271,7 @@
 			children = (
 				CE177BC529D23EAC00C79390 /* AssetsControl */,
 				CE177BC429D23EAC00C79390 /* Products */,
+				CEE639DA2C6A76A000ABDFF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,6 +286,7 @@
 		CE177BC529D23EAC00C79390 /* AssetsControl */ = {
 			isa = PBXGroup;
 			children = (
+				CED65C572CFB3DA600D0FD70 /* Info.plist */,
 				CE177BDF29D2473000C79390 /* Models */,
 				CE177BD529D2438800C79390 /* Views */,
 				CE177BE529D247AB00C79390 /* ViewModels */,
@@ -290,6 +319,7 @@
 				CE10576D2AAB4E1100C6512A /* IncomesTab */,
 				CE30DCC729D32AC9009C519A /* AssetsTab */,
 				CEFD301D29DFE2C8008A3071 /* OtherTab */,
+				CEBCD9C42CBCE51C001C7980 /* AnalyticsTab */,
 				CE30DC9029D2FD98009C519A /* ExpenseView.swift */,
 				CE30DC9229D2FE62009C519A /* SymbolImage.swift */,
 				CE1057722AAB543900C6512A /* ActiveIncomeView.swift */,
@@ -408,6 +438,7 @@
 				CE8B4ECF2ACB3A85004C8144 /* CGSize+Ext.swift */,
 				CE8B4ED12ACB3A96004C8144 /* Text+Ext.swift */,
 				CE8B4ED52ACB3AF1004C8144 /* Int+Ext.swift */,
+				CEE639DF2C6A869700ABDFF4 /* Sequence+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -448,6 +479,7 @@
 		CE30DC6829D2D44E009C519A /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				CEE639DD2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -504,6 +536,9 @@
 			isa = PBXGroup;
 			children = (
 				CE30DCC829D32BB1009C519A /* AssetsTab.swift */,
+				CEBCD9B82CBC5D95001C7980 /* NetWorthView.swift */,
+				CEBCD9BA2CBC6E13001C7980 /* AssetCreationView.swift */,
+				CEBCD9BC2CBC6E4A001C7980 /* AssetRowView.swift */,
 			);
 			path = AssetsTab;
 			sourceTree = "<group>";
@@ -572,9 +607,35 @@
 			path = TextField;
 			sourceTree = "<group>";
 		};
+		CEBCD9C42CBCE51C001C7980 /* AnalyticsTab */ = {
+			isa = PBXGroup;
+			children = (
+				CEBCD9C52CBCE532001C7980 /* AnalyticsTab.swift */,
+				CEBCD9C72CBCE563001C7980 /* AnalyticsTabViewModel.swift */,
+			);
+			path = AnalyticsTab;
+			sourceTree = "<group>";
+		};
+		CED65C582CFB3E1B00D0FD70 /* DataSync */ = {
+			isa = PBXGroup;
+			children = (
+				CED65C552CFB32E000D0FD70 /* DataSyncScreen.swift */,
+				CED65C592CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift */,
+			);
+			path = DataSync;
+			sourceTree = "<group>";
+		};
+		CEE639DA2C6A76A000ABDFF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CEFD301D29DFE2C8008A3071 /* OtherTab */ = {
 			isa = PBXGroup;
 			children = (
+				CED65C582CFB3E1B00D0FD70 /* DataSync */,
 				CEFD301E29DFE2E4008A3071 /* OtherTab.swift */,
 				CEFD302029DFE3E3008A3071 /* MoneyHolderCreationView.swift */,
 				CEFD302229DFEAA7008A3071 /* MoneyHolderRowView.swift */,
@@ -583,6 +644,7 @@
 				CE2239AA2AD960C100A95E70 /* TransferCreationView.swift */,
 				CE72925B2ADA8FB40079EF05 /* MoneyHolderScreen.swift */,
 				CE1E68552ADAAC7800DAD07D /* MoneyHoldersScreen.swift */,
+				CEBCD9B62CBBF1CE001C7980 /* MoneyTransfersScreen.swift */,
 			);
 			path = OtherTab;
 			sourceTree = "<group>";
@@ -605,6 +667,9 @@
 			);
 			name = AssetsControl;
 			packageProductDependencies = (
+				CEE639DB2C6A76A000ABDFF4 /* FluidGradient */,
+				CEBCD9CA2CBCFB7C001C7980 /* SwiftUICharts */,
+				CEBE4CF82CBE70DD00F597DA /* Alamofire */,
 			);
 			productName = AssetsControl;
 			productReference = CE177BC329D23EAC00C79390 /* AssetsControl.app */;
@@ -635,6 +700,9 @@
 			);
 			mainGroup = CE177BBA29D23EAC00C79390;
 			packageReferences = (
+				CE6E17BF2C6A74E200F7CD7E /* XCRemoteSwiftPackageReference "FluidGradient" */,
+				CEBCD9C92CBCFB7C001C7980 /* XCRemoteSwiftPackageReference "ChartView" */,
+				CEBE4CF72CBE70DD00F597DA /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = CE177BC429D23EAC00C79390 /* Products */;
 			projectDirPath = "";
@@ -689,11 +757,13 @@
 				CE2239A52AD6E86600A95E70 /* IncomeSourceRowView.swift in Sources */,
 				CE30DC8729D2EC8D009C519A /* Asset.swift in Sources */,
 				CE8B4ECE2ACB39D9004C8144 /* BankrollShape.swift in Sources */,
+				CED65C5A2CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift in Sources */,
 				CE30DC8529D2EA4E009C519A /* NumberFormatterContainer.swift in Sources */,
 				CE30DC8029D2E959009C519A /* SymbolPicker.swift in Sources */,
 				CE1057712AAB4F0800C6512A /* IncomeCreationView.swift in Sources */,
 				CE377D262B448E7E00155235 /* PreferencesData.swift in Sources */,
 				CE30DCEE29D456E7009C519A /* Date+Ext.swift in Sources */,
+				CED65C562CFB32E000D0FD70 /* DataSyncScreen.swift in Sources */,
 				CE8B4EDA2ACB3B6B004C8144 /* RoundedTextFieldStyle.swift in Sources */,
 				CE10577F2AAC7FEA00C6512A /* IncomeType.swift in Sources */,
 				CE30DC9A29D320C0009C519A /* DateFormatterContainer.swift in Sources */,
@@ -729,6 +799,7 @@
 				CE30DCD329D455FD009C519A /* CloseNavigationButton.swift in Sources */,
 				CE30DCC929D32BB1009C519A /* AssetsTab.swift in Sources */,
 				CEFD302729E1318F008A3071 /* NumericTextField.swift in Sources */,
+				CEBCD9C62CBCE532001C7980 /* AnalyticsTab.swift in Sources */,
 				CE8B4EC52ACB3987004C8144 /* CurrencyIcon.swift in Sources */,
 				CE377D302B4494CC00155235 /* UserDataStore.swift in Sources */,
 				CE30DCBD29D326B7009C519A /* Collection+Ext.swift in Sources */,
@@ -741,10 +812,12 @@
 				CE30DCED29D456E7009C519A /* View+Ext.swift in Sources */,
 				CE2239AB2AD960C100A95E70 /* TransferCreationView.swift in Sources */,
 				CE30DCCE29D455EA009C519A /* RootPresentationModeKey.swift in Sources */,
+				CEBCD9BB2CBC6E13001C7980 /* AssetCreationView.swift in Sources */,
 				CE8B4EE22ACB3C3F004C8144 /* MoneyHolderPicker.swift in Sources */,
 				CE177BC729D23EAC00C79390 /* AssetsControlApp.swift in Sources */,
 				CE2239A12AD6D61F00A95E70 /* IncomeSourceCreationView.swift in Sources */,
 				CE30DC7629D2DC7B009C519A /* Expense.swift in Sources */,
+				CEBCD9BD2CBC6E4A001C7980 /* AssetRowView.swift in Sources */,
 				CEFD303129E18FC2008A3071 /* Transaction.swift in Sources */,
 				CEFD301B29DFDC12008A3071 /* MoneyHolder.swift in Sources */,
 				CE30DCE929D456E7009C519A /* JsonExtension.swift in Sources */,
@@ -753,19 +826,24 @@
 				CE7026152AB06FD6004912E6 /* AbstractIncome.swift in Sources */,
 				CE10577B2AAC7C7A00C6512A /* GeneralError.swift in Sources */,
 				CE30DCE529D456E7009C519A /* Comparable+Ext.swift in Sources */,
+				CEE639DE2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift in Sources */,
 				CE1E68562ADAAC7800DAD07D /* MoneyHoldersScreen.swift in Sources */,
 				CE8B4ED22ACB3A96004C8144 /* Text+Ext.swift in Sources */,
+				CEE639E02C6A869700ABDFF4 /* Sequence+Ext.swift in Sources */,
 				CE30DCE729D456E7009C519A /* String+Ext.swift in Sources */,
 				CE10576B2AAB49BA00C6512A /* IncomeSource.swift in Sources */,
 				CE30DCF029D4585E009C519A /* TestValueExtension.swift in Sources */,
 				CE30DC9529D30C1E009C519A /* FinancialData.swift in Sources */,
 				CE8B4EBF2ACB390F004C8144 /* MoneyCountField.swift in Sources */,
+				CEBCD9B72CBBF1CE001C7980 /* MoneyTransfersScreen.swift in Sources */,
 				CE30DCC329D327E2009C519A /* Color+Ext.swift in Sources */,
 				CE30DC7829D2DD9E009C519A /* Symbol.swift in Sources */,
 				CE8B4EC72ACB3995004C8144 /* CurrencyPicker.swift in Sources */,
+				CEBCD9C82CBCE563001C7980 /* AnalyticsTabViewModel.swift in Sources */,
 				CE30DCE829D456E7009C519A /* DateComponents+Ext.swift in Sources */,
 				CE30DCBF29D32778009C519A /* TimeInterval+Ext.swift in Sources */,
 				CE8B4EC32ACB3978004C8144 /* BankrollView.swift in Sources */,
+				CEBCD9B92CBC5D95001C7980 /* NetWorthView.swift in Sources */,
 				CE30DC9329D2FE62009C519A /* SymbolImage.swift in Sources */,
 				CE377D282B448E9000155235 /* PreferencesDataStore.swift in Sources */,
 				CE8B4ED42ACB3AC0004C8144 /* UIColor+Ext.swift in Sources */,
@@ -897,19 +975,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AssetsControl/Preview Content\"";
-				DEVELOPMENT_TEAM = D86YAFJU4P;
+				DEVELOPMENT_TEAM = RYQ797LH6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssetsControl/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Assets control";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -917,6 +998,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wingsmight.AssetsControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -928,19 +1010,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AssetsControl/Preview Content\"";
-				DEVELOPMENT_TEAM = D86YAFJU4P;
+				DEVELOPMENT_TEAM = RYQ797LH6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssetsControl/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Assets control";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -948,6 +1033,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wingsmight.AssetsControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -976,6 +1062,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE6E17BF2C6A74E200F7CD7E /* XCRemoteSwiftPackageReference "FluidGradient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Cindori/FluidGradient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		CEBCD9C92CBCFB7C001C7980 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/priya-mobiquity/ChartView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		CEBE4CF72CBE70DD00F597DA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEBCD9CA2CBCFB7C001C7980 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEBCD9C92CBCFB7C001C7980 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+		CEBE4CF82CBE70DD00F597DA /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEBE4CF72CBE70DD00F597DA /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		CEE639DB2C6A76A000ABDFF4 /* FluidGradient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6E17BF2C6A74E200F7CD7E /* XCRemoteSwiftPackageReference "FluidGradient" */;
+			productName = FluidGradient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE177BBB29D23EAC00C79390 /* Project object */;
 }

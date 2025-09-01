@@ -35,9 +35,7 @@ struct TransferCreationView: View {
 
                     moneyAmountInputField
 
-                    if sourceMoneyHolder.initialMoney.currency != targetMoneyHolder.initialMoney.currency {
-                        moneyReceivedAmountInputField
-                    }
+                    moneyReceivedAmountInputField
                 }
 
                 Section {
@@ -69,6 +67,7 @@ struct TransferCreationView: View {
                                             target: targetMoneyHolder,
                                             description: description,
                                             amount: moneyAmount,
+                                            receivedAmount: moneyReceivedAmount,
                                             date: date)
 
                         dismiss()
@@ -113,11 +112,20 @@ struct TransferCreationView: View {
             Text(moneyCurrency.symbol)
         }
     }
-    
+
     private var moneyReceivedAmountInputField: some View {
         HStack {
             MoneyCountField("Money received amount", value: $moneyReceivedAmount)
-            
+
+            if sourceMoneyHolder.initialMoney.currency == targetMoneyHolder.initialMoney.currency {
+                Button("=") {
+                    print("moneyAmount = \(moneyAmount)")
+                    moneyReceivedAmount = moneyAmount
+                    print("moneyReceivedAmount = \(moneyReceivedAmount)")
+                }
+                .buttonStyle(.bordered)
+            }
+
             Text(moneyReceivedCurrency.symbol)
         }
     }

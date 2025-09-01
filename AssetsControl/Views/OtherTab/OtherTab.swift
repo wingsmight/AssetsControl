@@ -20,27 +20,20 @@ struct OtherTab: View {
     @State private var isIncomeSourceCreationSheetShowing: Bool = false
     @State private var incomeSourceRowId: UUID = .init()
 
-    @State private var newTransfer: Transfer?
-    @State private var editedTransfer: Transfer?
-    @State private var isTransferCreationSheetShowing: Bool = false
-    @State private var transferRowId: UUID = .init()
-
     var body: some View {
         NavigationView {
             VStack {
                 openMoneyHoldersScreenButton
+                
+                openMoneyTransfersScreenButton
 
                 Spacer()
 
                 addIncomeSourceButton
 
                 incomeSourceList
-
-                Spacer()
-
-                addTransferButton
-
-                transferList
+                
+                dataSyncScreenButton
             }
             .navigationTitle("Other")
             .sheet(isPresented: $isMoneyHolderCreationSheetShowing) {
@@ -88,28 +81,6 @@ struct OtherTab: View {
                     }
                 ))
             }
-            .sheet(isPresented: $isTransferCreationSheetShowing) {
-                guard let newTransfer else {
-                    return
-                }
-
-                financesStore.data.addTransfer(newTransfer)
-                self.newTransfer = nil
-            } content: {
-                TransferCreationView(transfer: $newTransfer)
-            }
-            .sheet(item: $editedTransfer) { editedTransfer in
-                TransferCreationView(transfer: Binding(
-                    get: { financesStore.data.transfers.first(where: { $0.id == editedTransfer.id }) },
-                    set: { newEditedTransfer in
-                        guard let newEditedTransfer else { return }
-
-                        financesStore.data.updateTransfer(withId: newEditedTransfer.id, to: newEditedTransfer)
-
-                        transferRowId = UUID()
-                    }
-                ))
-            }
         }
     }
 
@@ -120,6 +91,15 @@ struct OtherTab: View {
             Text("MoneyHoldersScreen")
         }
     }
+    
+    var openMoneyTransfersScreenButton: some View {
+        NavigationLink {
+            MoneyTransfersScreen()
+        } label: {
+            Text("MoneyTransfersScreen")
+        }
+    }
+
 
     var addMoneyHolderButton: some View {
         Button {
@@ -168,28 +148,12 @@ struct OtherTab: View {
             }
         }
     }
-
-    var addTransferButton: some View {
-        Button {
-            isTransferCreationSheetShowing = true
+    
+    var dataSyncScreenButton: some View {
+        NavigationLink {
+            DataSyncScreen()
         } label: {
-            Label("Add Money Transfer", systemImage: "arrow.left.arrow.right.square.fill")
-        }
-    }
-
-    var transferList: some View {
-        List {
-            ForEach(financesStore.data.transfers) { transfer in
-                Button {
-                    editedTransfer = transfer
-                } label: {
-                    TransferRowView(data: transfer)
-                        .id(transferRowId)
-                }
-            }
-            .onDelete { indexOffset in
-                financesStore.data.removeTransfer(atOffsets: indexOffset)
-            }
+            Text("Data Sync")
         }
     }
 }

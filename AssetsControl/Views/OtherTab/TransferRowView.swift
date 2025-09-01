@@ -11,36 +11,55 @@ struct TransferRowView: View {
     var data: Transfer
 
     var body: some View {
-        ZStack {
+        VStack(alignment: .center) {
             HStack {
                 SymbolImage(symbol: data.source.symbol)
 
-                Spacer()
-                Image(systemName: "arrow.right")
-                    .foregroundColor(.secondary)
-                Spacer()
+                Text(data.source.name)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
 
-                moneyTextView
+            moneyTextView
 
-                Spacer()
-                Image(systemName: "arrow.right")
-                    .foregroundColor(.secondary)
-                Spacer()
+            HStack {
+                Text(data.target.name)
 
                 SymbolImage(symbol: data.target.symbol)
             }
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 
     var moneyTextView: some View {
-        Text(data.amount.description)
-            .font(.title3)
-            .bold()
+        HStack {
+            MoneyView(amount: data.moneyAmount)
+            
+            if data.amount != data.receivedAmount {
+                Image(systemName: "arrow.right")
+                    .foregroundColor(.secondary)
+
+                MoneyView(amount: data.receivedMoneyAmount)
+            }
+        }
+    }
+
+    struct MoneyView: View {
+        let amount: Money
+
+        var body: some View {
+            Text(amount.description)
+                .font(.title3)
+                .bold()
+        }
     }
 }
 
 struct TransferRowView_Previews: PreviewProvider {
     static var previews: some View {
-        TransferRowView(data: Transfer.test)
+        List {
+            TransferRowView(data: Transfer.test)
+
+            TransferRowView(data: Transfer.test2)
+        }
     }
 }

@@ -1,66 +1,53 @@
 //
-//  Models.swift
-//  My Assets
+//  Asset.swift
+//  AssetsControl
 //
 //  Created by Igoryok
 //
 
 import SwiftUI
 
-class Asset: Comparable, Identifiable, Codable {
-    private var prevValue: Double
-    private var prevDate: Date
-
+struct Asset: Comparable, Identifiable, Codable, Hashable {
     let id = UUID()
 
-    @Published var name: String
-    @Published var symbol: Symbol
-    @Published var color: Color
-    @Published var isLiquid: Bool
-    @Published var compoundFrequency: CompoundFrequency
-    @Published var annualInterestFraction: Double
+    var name: String
+    var symbol: Symbol
+    var color: Color
+    var amount: Money
+    var date: Date
+    var moneyHolderSource: MoneyHolder
 
-    init() {
-        name = ""
-        symbol = Symbol.defaultSymbol
+    init(name: String,
+         symbol: Symbol,
+         amount: Money,
+         moneyHolderSource: MoneyHolder,
+         date: Date = Date())
+    {
+        self.name = name
+        self.symbol = symbol
         color = .black
-        isLiquid = true
-        compoundFrequency = .none
-        annualInterestFraction = 0
-        prevValue = 0
-        prevDate = Date()
+        self.amount = amount
+        self.date = date
+        self.moneyHolderSource = moneyHolderSource
     }
 
-    init(stock: Stock) {
-        name = stock.symbol
-        symbol = Symbol.stocks
-        color = .black
-        isLiquid = true
-        compoundFrequency = .none
-        annualInterestFraction = stock.annualInterestFraction ?? 0.0
-        prevValue = stock.price ?? 0.00 * Double(stock.numberOfShares)
-        prevDate = Date()
-    }
-
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         name = try values.decode(String.self, forKey: .name)
         symbol = try values.decode(Symbol.self, forKey: .symbol)
         color = try values.decode(Color.self, forKey: .color)
-        isLiquid = try values.decode(Bool.self, forKey: .isLiquid)
-        compoundFrequency = try values.decode(CompoundFrequency.self, forKey: .compoundFrequency)
-        annualInterestFraction = try values.decode(Double.self, forKey: .annualInterestFraction)
-        prevValue = try values.decode(Double.self, forKey: .prevValue)
-        prevDate = try values.decode(Date.self, forKey: .prevDate)
+        amount = try values.decode(Money.self, forKey: .amount)
+        date = try values.decode(Date.self, forKey: .date)
+        moneyHolderSource = try values.decode(MoneyHolder.self, forKey: .moneyHolderSource)
     }
 
     static func == (lhs: Asset, rhs: Asset) -> Bool {
-        lhs.currentValue == rhs.currentValue
+        lhs.id == rhs.id
     }
 
     static func < (lhs: Asset, rhs: Asset) -> Bool {
-        lhs.currentValue < rhs.currentValue
+        lhs.cost < rhs.cost
     }
 
     func encode(to encoder: Encoder) throws {
@@ -69,72 +56,29 @@ class Asset: Comparable, Identifiable, Codable {
         try container.encode(name, forKey: .name)
         try container.encode(symbol, forKey: .symbol)
         try container.encode(color, forKey: .color)
-        try container.encode(isLiquid, forKey: .isLiquid)
-        try container.encode(compoundFrequency, forKey: .compoundFrequency)
-        try container.encode(annualInterestFraction, forKey: .annualInterestFraction)
-        try container.encode(prevValue, forKey: .prevValue)
-        try container.encode(prevDate, forKey: .prevDate)
+        try container.encode(amount, forKey: .amount)
+        try container.encode(date, forKey: .date)
+        try container.encode(moneyHolderSource, forKey: .moneyHolderSource)
     }
 
-    func currentValue(at date: Date) -> Double {
-        let periodsSinceDate = date.timeIntervalSince(prevDate) / compoundFrequency.timeInterval
-        return prevValue * pow(1 + (annualInterestFraction / compoundFrequency.periodsPerYear), periodsSinceDate)
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name.hashValue)
+        hasher.combine(symbol.hashValue)
+        hasher.combine(color.hashValue)
+        hasher.combine(amount.hashValue)
+        hasher.combine(moneyHolderSource.hashValue)
     }
 
-    var effectiveAnnualInterestFraction: Double {
-        if compoundFrequency.timeInterval == .year {
-            return annualInterestFraction
-        } else {
-            return pow(1 + (annualInterestFraction / compoundFrequency.periodsPerYear), compoundFrequency.periodsPerYear) - 1
-        }
-    }
-
-    var currentValue: Double {
-        get {
-            currentValue(at: Date())
-        }
-        set {
-            prevValue = newValue
-            prevDate = Date()
-        }
-    }
-
-    var monthlyEarnings: Double {
-        (currentValue * pow(1 + annualInterestFraction / 12, 1)) - currentValue
-    }
-
-    enum CompoundFrequency: String, CaseIterable, Identifiable, Codable {
-        case yearly
-        case monthly
-        case biweekly
-        case none
-
-        var id: Self { self }
-
-        var timeInterval: TimeInterval {
-            switch self {
-            case .monthly:
-                return .month
-            case .biweekly:
-                return .month / 2
-            case .yearly, .none:
-                return .year
-            }
-        }
-
-        var periodsPerYear: Double {
-            TimeInterval.year / timeInterval
-        }
+    var cost: Money {
+        amount
     }
 
     enum CodingKeys: String, CodingKey {
         case name
         case symbol
         case color
-        case isLiquid
-        case compoundFrequency
-        case annualInterestFraction
-        case prevValue
-        case prevDate
+        case amount
+        case date
+        case moneyHolderSource
     }
 }

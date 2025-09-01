@@ -1,0 +1,33 @@
+{
+  "originHash" : "4ddbd2567529e1920c70075332c9b43d70e46f8d88f7f18d49091ec16e6e42cc",
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "ea6a94b7dddffd0ca4d0f29252d95310b84dec84",
+        "version" : "5.10.0"
+      }
+    },
+    {
+      "identity" : "chartview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/priya-mobiquity/ChartView.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "b9ecfdbb4c4b07ac8c8503870a024f7c5902d7e4"
+      }
+    },
+    {
+      "identity" : "fluidgradient",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cindori/FluidGradient.git",
+      "state" : {
+        "revision" : "9ddda4cf23671ef0228e88681ec6210cb3e0d7f7",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

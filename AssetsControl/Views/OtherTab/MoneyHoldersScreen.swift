@@ -12,38 +12,52 @@ struct MoneyHoldersScreen: View {
 
     @State private var isMoneyHolderCreationSheetShowing: Bool = false
     @State private var newMoneyHolder: MoneyHolder?
-    
-    var body: some View {
-//        NavigationView {
-            ScrollView {
-                LazyHStack {
-                    pageView
-                }
-            }
-//            .navigationTitle("Money holders")
-            .toolbar {
-                Button {
-                    isMoneyHolderCreationSheetShowing = true
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                }
-            }
-            .sheet(isPresented: $isMoneyHolderCreationSheetShowing) {
-                guard let newMoneyHolder else {
-                    return
-                }
+    @State private var isEditSheetShowing: Bool = false
 
-                financesStore.data.addMoneyHolder(newMoneyHolder)
-                self.newMoneyHolder = nil
-            } content: {
-                MoneyHolderCreationView(moneyHolder: $newMoneyHolder)
+    var body: some View {
+        ScrollView {
+            LazyHStack {
+                pageView
             }
+        }
+        .toolbar {
+            Button {
+                isMoneyHolderCreationSheetShowing = true
+            } label: {
+                Image(systemName: "plus.circle.fill")
+            }
+            
+//            Button {
+//                isEditSheetShowing = true
+//            } label: {
+//                Image(systemName: "pencil")
+//            }
+        }
+//        .sheet(isPresented: $isEditSheetShowing) {
+//            MoneyHolderCreationView(moneyHolder: Binding(
+//                get: { financesStore.data.moneyHolders.first(where: { $0.id == data.id }) },
+//                set: { newEditedMoneyHolder in
+//                    guard let newEditedMoneyHolder else { return }
+//
+//                    financesStore.data.updateMoneyHolder(withId: data.id, to: newEditedMoneyHolder)
+//                }
+//            ))
 //        }
+        .sheet(isPresented: $isMoneyHolderCreationSheetShowing) {
+            guard let newMoneyHolder else {
+                return
+            }
+
+            financesStore.data.addMoneyHolder(newMoneyHolder)
+            self.newMoneyHolder = nil
+        } content: {
+            MoneyHolderCreationView(moneyHolder: $newMoneyHolder)
+        }
     }
 
     private var pageView: some View {
         TabView {
-            ForEach(moneyHolder) { moneyHolder in
+            ForEach(moneyHolders) { moneyHolder in
                 MoneyHolderScreen(data: moneyHolder)
             }
         }
@@ -51,7 +65,7 @@ struct MoneyHoldersScreen: View {
         .tabViewStyle(PageTabViewStyle())
     }
 
-    private var moneyHolder: [MoneyHolder] {
+    private var moneyHolders: [MoneyHolder] {
         financesStore.data.moneyHolders
     }
 }
@@ -59,5 +73,6 @@ struct MoneyHoldersScreen: View {
 struct MoneyHoldersScreen_Previews: PreviewProvider {
     static var previews: some View {
         MoneyHoldersScreen()
+            .environmentObject(FinancialDataStore())
     }
 }

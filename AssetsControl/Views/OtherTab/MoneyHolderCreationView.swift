@@ -78,6 +78,7 @@ struct MoneyHolderCreationView: View {
                 name = moneyHolder.name
                 description = moneyHolder.description
                 money = moneyHolder.initialMoney
+                print("money = \(money)")
                 selectedSymbol = moneyHolder.symbol
                 date = moneyHolder.initialDate
             }

@@ -74,7 +74,7 @@ struct IncomeCreationView: View {
                                                   initialDate: date,
                                                   source: source,
                                                   target: moneyHolderTarget,
-                                                  amount: Money(amount))
+                                                  amount: Money(amount, of: source.currency))
 
                             dismiss()
                         }

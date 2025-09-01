@@ -12,11 +12,23 @@ struct ActiveIncomeView: View {
 
     var body: some View {
         HStack {
-            SymbolImage(symbol: income.symbol)
-                .font(.system(size: 17, weight: .medium))
-                .frame(width: 32)
-
-            Text(income.name)
+            VStack(alignment: .leading) {
+                HStack {
+                    SymbolImage(symbol: income.symbol)
+                        .font(.system(size: 17, weight: .medium))
+                        .frame(width: 32)
+                    
+                    Text(income.source.name)
+                }
+                
+                HStack {
+                    SymbolImage(symbol: income.target.symbol)
+                        .font(.system(size: 17, weight: .medium))
+                        .frame(width: 32)
+                    
+                    Text(income.target.name)
+                }
+            }
 
             Spacer()
 

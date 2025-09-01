@@ -16,6 +16,14 @@ struct Transfer: Identifiable, Codable, Hashable {
     var amount: Double
     var receivedAmount: Double
     var date: Date
+    
+    var moneyAmount: Money {
+        Money(amount, of: source.initialMoney.currency)
+    }
+    
+    var receivedMoneyAmount: Money {
+        Money(receivedAmount, of: target.initialMoney.currency)
+    }
 
     init(source: MoneyHolder,
          target: MoneyHolder,

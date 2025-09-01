@@ -9,6 +9,7 @@ import SwiftUI
 struct MoneyInputField: View {
     @State private var moneyCurrency: Currency
     @State private var isPickerShowing = false
+    @State private var isPositive = true
 
     @Binding private var money: Money
 
@@ -16,11 +17,21 @@ struct MoneyInputField: View {
         moneyCurrency = initialMoney.wrappedValue.currency
 
         _money = initialMoney
+        _isPositive = State(wrappedValue: initialMoney.wrappedValue.count >= 0)
+        print("_money = \(money)")
+        print("initialMoney.wrappedValue.count = \(initialMoney.wrappedValue.count)")
+        print("isPositive = \(isPositive)")
     }
 
     var body: some View {
         VStack {
             HStack {
+                Button(isPositive ? "+" : "-") {
+                    isPositive.toggle()
+
+                    money.count *= -1
+                }.buttonStyle(BorderedButtonStyle())
+
                 MoneyCountField("Current Money Count",
                                 value: Binding<Double?>($money.count))
 

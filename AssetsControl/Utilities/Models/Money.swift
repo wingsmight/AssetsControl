@@ -29,6 +29,15 @@ struct Money: Hashable, Codable, CustomStringConvertible, Comparable {
 
         return Money(lhs.count + rhs.count, of: lhs.currency)
     }
+    
+    static func - (lhs: Money, rhs: Money) -> Money {
+        // TODO: convert from one currency to other
+        guard lhs.currency == rhs.currency else {
+            fatalError("Attempted to remove money with different currencies: \(lhs.currency) and \(rhs.currency)")
+        }
+
+        return Money(lhs.count - rhs.count, of: lhs.currency)
+    }
 
     static func > (lhs: Money, rhs: Money) -> Bool {
         // TODO: convert from one currency to other

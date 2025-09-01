@@ -48,6 +48,18 @@ struct MoneyCountField: View {
 
                 textValue = format(textValue)
             }
+            .onChange(of: value) { newValue in
+                if let newValue {
+                    textValue = format("\(newValue)")
+                } else {
+                    textValue = ""
+                }
+            }
+            .onAppear {
+                guard let value else { return }
+
+                textValue = format("\(value)")
+            }
             .keyboardType(.decimalPad)
     }
 

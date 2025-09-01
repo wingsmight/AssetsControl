@@ -80,4 +80,19 @@ extension Transfer {
                                description: "Cash Advance",
                                amount: 95.99,
                                date: Date())
+
+    static let test2 = Transfer(source: MoneyHolder.test2,
+                                target: MoneyHolder.test,
+                                description: "Cash Advance",
+                                amount: 95.99,
+                                receivedAmount: 90.99,
+                                date: Date())
+}
+
+extension Asset {
+    static let test = Asset(name: "APPL",
+                            symbol: .stocks,
+                            amount: Money(95.99),
+                            moneyHolderSource: MoneyHolder.test,
+                            date: Date())
 }

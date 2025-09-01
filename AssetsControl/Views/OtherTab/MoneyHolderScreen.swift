@@ -5,20 +5,56 @@
 //  Created by Igoryok on 14.10.2023.
 //
 
+import FluidGradient
 import SwiftUI
 
 struct MoneyHolderScreen: View {
     let data: MoneyHolder
 
     @EnvironmentObject private var financesStore: FinancialDataStore
+    
+    @State private var isEditSheetShowing: Bool = false
 
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.green)
-                .frame(height: 200)
+            ZStack {
+                FluidGradient(blobs: [.red, .green, .blue],
+                              highlights: [.yellow, .orange, .purple],
+                              speed: 1.0,
+                              blur: 0.75)
+                    .cornerRadius(10)
+
+                Text(data.initialMoney.currency.symbol)
+                    .foregroundStyle(Color.white.opacity(0.15))
+                    .font(.system(size: 500))
+                    .minimumScaleFactor(0.01)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    .padding()
+
+                Text(currentAmount.description)
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .padding()
+            }
+            .frame(height: 200)
+            .padding()
+            .navigationTitle(data.name)
+
+            Text(data.description)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                .navigationTitle(data.name)
+
+            Button {
+                // TODO: add confirm sheet
+//                financesStore.data.removeMoneyHolder(data)
+            } label: {
+                Image(systemName: "trash")
+                    .foregroundStyle(.red)
+            }
+
+            Text(data.initialMoney.count.description)
 
             List {
                 ForEach(expenseGroupHeaders, id: \.self) { headerDate in
@@ -32,6 +68,23 @@ struct MoneyHolderScreen: View {
                     }
                 }
             }
+        }
+        .toolbar {
+            Button {
+                isEditSheetShowing = true
+            } label: {
+                Image(systemName: "pencil")
+            }
+        }
+        .sheet(isPresented: $isEditSheetShowing) {
+            MoneyHolderCreationView(moneyHolder: Binding(
+                get: { financesStore.data.moneyHolders.first(where: { $0.id == data.id }) },
+                set: { newEditedMoneyHolder in
+                    guard let newEditedMoneyHolder else { return }
+
+                    financesStore.data.updateMoneyHolder(withId: data.id, to: newEditedMoneyHolder)
+                }
+            ))
         }
     }
 
@@ -55,6 +108,22 @@ struct MoneyHolderScreen: View {
         expenseGroups
             .map(\.key)
             .sorted { $0 > $1 }
+    }
+
+    private var incomes: [ActiveIncome] {
+        financesStore.data.activeIncomes.filter { $0.target == data }
+    }
+
+    private var incomeTransfers: [Transfer] {
+        financesStore.data.transfers.filter { $0.target == data }
+    }
+
+    private var outcomeTransfers: [Transfer] {
+        financesStore.data.transfers.filter { $0.source == data }
+    }
+
+    private var currentAmount: Money {
+        financesStore.data.getCurrentAmount(for: data)
     }
 }
 
