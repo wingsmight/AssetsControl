@@ -18,7 +18,7 @@ protocol Income: Hashable, Identifiable, Codable {
 }
 
 extension Income {
-    static func == (lhs: any Income, rhs: any Income) -> Bool {
+    static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }
 }

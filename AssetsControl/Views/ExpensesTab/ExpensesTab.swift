@@ -12,7 +12,9 @@ struct ExpensesTab: View {
     @EnvironmentObject private var userStore: UserDataStore
 
     @State private var isNewAssetSheetShowing: Bool = false
+    @State private var isReceiptScannerShowing: Bool = false
     @State private var expense: Expense? = nil
+    @State private var scannedExpenses: [Expense] = []
 
     var body: some View {
         NavigationView {
@@ -30,6 +32,14 @@ struct ExpensesTab: View {
             }
             .navigationTitle("Expenses")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        isReceiptScannerShowing = true
+                    } label: {
+                        Label("Scan Receipt", systemImage: "doc.text.viewfinder")
+                    }
+                }
+                
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         isNewAssetSheetShowing = true
@@ -43,11 +53,24 @@ struct ExpensesTab: View {
                 ExpenseCreationView(expense: $expense,
                                   isShowing: $isNewAssetSheetShowing)
             }
+            .sheet(isPresented: $isReceiptScannerShowing) {
+                ReceiptScannerView(isPresented: $isReceiptScannerShowing,
+                                 createdExpenses: $scannedExpenses)
+            }
             .onChange(of: expense) { newExpense in
                 if let newExpense {
                     financesStore.data.addExpense(newExpense)
                     
                     userStore.data.setLastMoneyHolderSource(newExpense.moneyHolderSource)
+                }
+            }
+            .onChange(of: scannedExpenses) { newExpenses in
+                for newExpense in newExpenses {
+                    financesStore.data.addExpense(newExpense)
+                    userStore.data.setLastMoneyHolderSource(newExpense.moneyHolderSource)
+                }
+                if !newExpenses.isEmpty {
+                    scannedExpenses = []
                 }
             }
         }

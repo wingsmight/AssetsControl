@@ -73,6 +73,7 @@
 		CE377D2B2B448FA500155235 /* DefaultMoneyHolderSourceMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE377D2A2B448FA500155235 /* DefaultMoneyHolderSourceMethod.swift */; };
 		CE377D2E2B44948F00155235 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE377D2D2B44948F00155235 /* UserData.swift */; };
 		CE377D302B4494CC00155235 /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE377D2F2B4494CC00155235 /* UserDataStore.swift */; };
+		CE60907B2F0DAA47008A79F7 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CE60907A2F0DAA47008A79F7 /* AppIcon.icon */; };
 		CE7026132AB06DC4004912E6 /* PortfolioIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7026122AB06DC4004912E6 /* PortfolioIncome.swift */; };
 		CE7026152AB06FD6004912E6 /* AbstractIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7026142AB06FD6004912E6 /* AbstractIncome.swift */; };
 		CE72925C2ADA8FB40079EF05 /* MoneyHolderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72925B2ADA8FB40079EF05 /* MoneyHolderScreen.swift */; };
@@ -103,6 +104,8 @@
 		CEBE4CF92CBE70DD00F597DA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEBE4CF82CBE70DD00F597DA /* Alamofire */; };
 		CED65C562CFB32E000D0FD70 /* DataSyncScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED65C552CFB32E000D0FD70 /* DataSyncScreen.swift */; };
 		CED65C5A2CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED65C592CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift */; };
+		CED7B3742E9C1964007C557F /* ReceiptScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7B3732E9C1964007C557F /* ReceiptScannerViewModel.swift */; };
+		CED7B3762E9C197C007C557F /* ReceiptScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7B3752E9C197C007C557F /* ReceiptScannerView.swift */; };
 		CEE639DC2C6A76A000ABDFF4 /* FluidGradient in Frameworks */ = {isa = PBXBuildFile; productRef = CEE639DB2C6A76A000ABDFF4 /* FluidGradient */; };
 		CEE639DE2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE639DD2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift */; };
 		CEE639E02C6A869700ABDFF4 /* Sequence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE639DF2C6A869700ABDFF4 /* Sequence+Ext.swift */; };
@@ -182,6 +185,7 @@
 		CE377D2A2B448FA500155235 /* DefaultMoneyHolderSourceMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMoneyHolderSourceMethod.swift; sourceTree = "<group>"; };
 		CE377D2D2B44948F00155235 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		CE377D2F2B4494CC00155235 /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
+		CE60907A2F0DAA47008A79F7 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		CE7026122AB06DC4004912E6 /* PortfolioIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioIncome.swift; sourceTree = "<group>"; };
 		CE7026142AB06FD6004912E6 /* AbstractIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractIncome.swift; sourceTree = "<group>"; };
 		CE72925B2ADA8FB40079EF05 /* MoneyHolderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolderScreen.swift; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 		CED65C552CFB32E000D0FD70 /* DataSyncScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSyncScreen.swift; sourceTree = "<group>"; };
 		CED65C572CFB3DA600D0FD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CED65C592CFB3E2C00D0FD70 /* DataSyncScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSyncScreenViewModel.swift; sourceTree = "<group>"; };
+		CED7B3732E9C1964007C557F /* ReceiptScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScannerViewModel.swift; sourceTree = "<group>"; };
+		CED7B3752E9C197C007C557F /* ReceiptScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScannerView.swift; sourceTree = "<group>"; };
 		CEE639DD2C6A7E2E00ABDFF4 /* CurrencyExchangeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeAPI.swift; sourceTree = "<group>"; };
 		CEE639DF2C6A869700ABDFF4 /* Sequence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Ext.swift"; sourceTree = "<group>"; };
 		CEFD301A29DFDC12008A3071 /* MoneyHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolder.swift; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 		CE177BD729D243A100C79390 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				CE60907A2F0DAA47008A79F7 /* AppIcon.icon */,
 				CE177BCA29D23EAE00C79390 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -446,6 +453,7 @@
 		CE177BE529D247AB00C79390 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CED7B3732E9C1964007C557F /* ReceiptScannerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -525,6 +533,7 @@
 		CE30DCC429D32906009C519A /* ExpensesTab */ = {
 			isa = PBXGroup;
 			children = (
+				CED7B3752E9C197C007C557F /* ReceiptScannerView.swift */,
 				CE30DCC529D3291B009C519A /* ExpensesTab.swift */,
 				CE30DC7329D2DAEB009C519A /* ExpenseCreationView.swift */,
 				CE30DC7F29D2E959009C519A /* SymbolPicker.swift */,
@@ -719,6 +728,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE177BCE29D23EAE00C79390 /* Preview Assets.xcassets in Resources */,
+				CE60907B2F0DAA47008A79F7 /* AppIcon.icon in Resources */,
 				CE177BCB29D23EAE00C79390 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -790,6 +800,7 @@
 				CE30DCCF29D455EE009C519A /* Time.swift in Sources */,
 				CE30DCD029D455F0009C519A /* Day.swift in Sources */,
 				CE30DCCD29D455E6009C519A /* Currency.swift in Sources */,
+				CED7B3762E9C197C007C557F /* ReceiptScannerView.swift in Sources */,
 				CE30DCD129D455F1009C519A /* Money.swift in Sources */,
 				CE30DC9129D2FD98009C519A /* ExpenseView.swift in Sources */,
 				CE30DCD229D455F3009C519A /* AlertItem.swift in Sources */,
@@ -820,6 +831,7 @@
 				CEBCD9BD2CBC6E4A001C7980 /* AssetRowView.swift in Sources */,
 				CEFD303129E18FC2008A3071 /* Transaction.swift in Sources */,
 				CEFD301B29DFDC12008A3071 /* MoneyHolder.swift in Sources */,
+				CED7B3742E9C1964007C557F /* ReceiptScannerViewModel.swift in Sources */,
 				CE30DCE929D456E7009C519A /* JsonExtension.swift in Sources */,
 				CE30DC8B29D2EED3009C519A /* Income.swift in Sources */,
 				CE1057692AAB38DA00C6512A /* ActiveIncome.swift in Sources */,
@@ -975,6 +987,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -984,6 +997,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AssetsControl/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Assets control";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1010,6 +1024,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1019,6 +1034,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AssetsControl/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Assets control";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
