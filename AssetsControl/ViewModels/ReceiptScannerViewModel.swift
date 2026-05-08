@@ -5,6 +5,7 @@
 //  Created by AI Assistant
 //
 
+import Foundation
 import SwiftUI
 import Vision
 import VisionKit
@@ -23,7 +24,8 @@ class ReceiptScannerViewModel: ObservableObject {
         var name: String
         var amount: Double
         var currency: Currency
-        
+        var date: Date
+
         var isValid: Bool {
             !name.isEmpty && amount > 0
         }
@@ -149,7 +151,8 @@ class ReceiptScannerViewModel: ObservableObject {
                                 expenses.append(ParsedExpense(
                                     name: name,
                                     amount: amount,
-                                    currency: detectedCurrency
+                                    currency: detectedCurrency,
+                                    date: Date()
                                 ))
                                 break // Found amount in this line, move to next line
                             }
@@ -164,7 +167,8 @@ class ReceiptScannerViewModel: ObservableObject {
         for expense in expenses {
             let isDuplicate = uniqueExpenses.contains { existing in
                 abs(existing.amount - expense.amount) < 0.01 &&
-                existing.name.lowercased() == expense.name.lowercased()
+                existing.name.lowercased() == expense.name.lowercased() &&
+                Calendar.current.isDate(existing.date, inSameDayAs: expense.date)
             }
             if !isDuplicate {
                 uniqueExpenses.append(expense)

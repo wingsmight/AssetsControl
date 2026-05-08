@@ -13,6 +13,7 @@ struct ExpensesTab: View {
 
     @State private var isNewAssetSheetShowing: Bool = false
     @State private var isReceiptScannerShowing: Bool = false
+    @State private var isExpensesPdfScannerShowing: Bool = false
     @State private var expense: Expense? = nil
     @State private var scannedExpenses: [Expense] = []
 
@@ -32,11 +33,19 @@ struct ExpensesTab: View {
             }
             .navigationTitle("Expenses")
             .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button {
+//                        isReceiptScannerShowing = true
+//                    } label: {
+//                        Label("Scan Receipt", systemImage: "doc.text.viewfinder")
+//                    }
+//                }
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        isReceiptScannerShowing = true
+                        isExpensesPdfScannerShowing = true
                     } label: {
-                        Label("Scan Receipt", systemImage: "doc.text.viewfinder")
+                        Label("Import bank PDF", systemImage: "text.page.badge.magnifyingglass")
                     }
                 }
                 
@@ -54,8 +63,16 @@ struct ExpensesTab: View {
                                   isShowing: $isNewAssetSheetShowing)
             }
             .sheet(isPresented: $isReceiptScannerShowing) {
-                ReceiptScannerView(isPresented: $isReceiptScannerShowing,
-                                 createdExpenses: $scannedExpenses)
+                ReceiptScannerView(
+                    isPresented: $isReceiptScannerShowing,
+                    createdExpenses: $scannedExpenses
+                )
+            }
+            .sheet(isPresented: $isExpensesPdfScannerShowing) {
+                ExpensesPdfScannerView(
+                    isPresented: $isExpensesPdfScannerShowing,
+                    createdExpenses: $scannedExpenses
+                )
             }
             .onChange(of: expense) { newExpense in
                 if let newExpense {
@@ -96,9 +113,13 @@ struct ExpensesTab: View {
 
 struct ExpensesTab_Previews: PreviewProvider {
     @StateObject private static var financialDataStore = FinancialDataStore()
-    
+    @StateObject private static var userDataStore = UserDataStore()
+    @StateObject private static var preferencesDataStore = PreferencesDataStore()
+
     static var previews: some View {
         ExpensesTab()
             .environmentObject(financialDataStore)
+            .environmentObject(userDataStore)
+            .environmentObject(preferencesDataStore)
     }
 }

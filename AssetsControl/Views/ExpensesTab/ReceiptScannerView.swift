@@ -214,7 +214,7 @@ struct ReceiptScannerView: View {
 
 struct ExpenseCardView: View {
     let expense: ReceiptScannerViewModel.ParsedExpense
-    
+
     var body: some View {
         HStack {
             Image(systemName: "tag.fill")
@@ -224,6 +224,9 @@ struct ExpenseCardView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(expense.name)
                     .font(.headline)
+                Text(expense.date, format: .dateTime.day().month().year().hour().minute())
+                    .font(.caption)
+                    .foregroundColor(.secondary)
                 Text(expense.currency.code)
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -256,15 +259,11 @@ struct ExpenseConfirmationView: View {
     @State private var expenseAmounts: [UUID: String] = [:]
     @State private var expenseSymbols: [UUID: Symbol] = [:]
     @State private var moneyHolderSource: MoneyHolder = .init(name: "default")
-    @State private var expenseDate: Date = Date()
-    
+    @State private var expenseDates: [UUID: Date] = [:]
+
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    DatePicker("Date", selection: $expenseDate)
-                }
-                
                 Section {
                     MoneyHolderPicker(selected: $moneyHolderSource,
                                     moneyHolders: financesStore.data.moneyHolders)
@@ -281,17 +280,22 @@ struct ExpenseConfirmationView: View {
                                         expenseNames[expense.id] = expense.name
                                         expenseAmounts[expense.id] = String(format: "%.2f", expense.amount)
                                         expenseSymbols[expense.id] = .banknote
+                                        expenseDates[expense.id] = expense.date
                                     } else {
                                         selectedExpenses.remove(expense.id)
                                         expenseNames.removeValue(forKey: expense.id)
                                         expenseAmounts.removeValue(forKey: expense.id)
                                         expenseSymbols.removeValue(forKey: expense.id)
+                                        expenseDates.removeValue(forKey: expense.id)
                                     }
                                 }
                             )) {
                                 VStack(alignment: .leading) {
                                     Text(expense.name)
                                         .font(.headline)
+                                    Text(expense.date, format: .dateTime.day().month().year().hour().minute())
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
                                     Text("\(expense.amount, specifier: "%.2f") \(expense.currency.symbol)")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
@@ -322,6 +326,15 @@ struct ExpenseConfirmationView: View {
                                                 .tag(symbol)
                                         }
                                     }
+
+                                    DatePicker(
+                                        "Date",
+                                        selection: Binding(
+                                            get: { expenseDates[expense.id] ?? expense.date },
+                                            set: { expenseDates[expense.id] = $0 }
+                                        ),
+                                        displayedComponents: [.date, .hourAndMinute]
+                                    )
                                 }
                                 .padding(.leading, 30)
                             }
@@ -352,6 +365,7 @@ struct ExpenseConfirmationView: View {
                     expenseNames[expense.id] = expense.name
                     expenseAmounts[expense.id] = String(format: "%.2f", expense.amount)
                     expenseSymbols[expense.id] = .banknote
+                    expenseDates[expense.id] = expense.date
                 }
                 
                 // Set default money holder
@@ -375,6 +389,7 @@ struct ExpenseConfirmationView: View {
             }
             
             let money = Money(amount, of: parsedExpense.currency)
+            let expenseDate = expenseDates[expenseId] ?? parsedExpense.date
             let expense = Expense(
                 name: name,
                 symbol: symbol,

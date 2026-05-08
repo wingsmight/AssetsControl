@@ -94,6 +94,10 @@
 		CE8B4EDE2ACB3BBC004C8144 /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B4EDD2ACB3BBC004C8144 /* ForEachWithIndex.swift */; };
 		CE8B4EE02ACB3C18004C8144 /* CurrencyPickerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B4EDF2ACB3C18004C8144 /* CurrencyPickerScreen.swift */; };
 		CE8B4EE22ACB3C3F004C8144 /* MoneyHolderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B4EE12ACB3C3F004C8144 /* MoneyHolderPicker.swift */; };
+		CE9641B32FAB8DFD0039E2B6 /* JusanPDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9641B22FAB8DF90039E2B6 /* JusanPDFParser.swift */; };
+		CE9641B52FAB90D50039E2B6 /* ExpensesPdfScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9641B42FAB90CF0039E2B6 /* ExpensesPdfScannerView.swift */; };
+		CE9641BD2FAB93000039E2D0 /* ExpensesPdfScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9641BC2FAB93000039E2D0 /* ExpensesPdfScannerViewModel.swift */; };
+		CE9641C12FAB95000039E2D0 /* ExpensesPDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9641C02FAB95000039E2D0 /* ExpensesPDFParser.swift */; };
 		CEBCD9B72CBBF1CE001C7980 /* MoneyTransfersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9B62CBBF1CE001C7980 /* MoneyTransfersScreen.swift */; };
 		CEBCD9B92CBC5D95001C7980 /* NetWorthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9B82CBC5D95001C7980 /* NetWorthView.swift */; };
 		CEBCD9BB2CBC6E13001C7980 /* AssetCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD9BA2CBC6E13001C7980 /* AssetCreationView.swift */; };
@@ -206,6 +210,10 @@
 		CE8B4EDD2ACB3BBC004C8144 /* ForEachWithIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachWithIndex.swift; sourceTree = "<group>"; };
 		CE8B4EDF2ACB3C18004C8144 /* CurrencyPickerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerScreen.swift; sourceTree = "<group>"; };
 		CE8B4EE12ACB3C3F004C8144 /* MoneyHolderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyHolderPicker.swift; sourceTree = "<group>"; };
+		CE9641B22FAB8DF90039E2B6 /* JusanPDFParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JusanPDFParser.swift; sourceTree = "<group>"; };
+		CE9641B42FAB90CF0039E2B6 /* ExpensesPdfScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPdfScannerView.swift; sourceTree = "<group>"; };
+		CE9641BC2FAB93000039E2D0 /* ExpensesPdfScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPdfScannerViewModel.swift; sourceTree = "<group>"; };
+		CE9641C02FAB95000039E2D0 /* ExpensesPDFParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPDFParser.swift; sourceTree = "<group>"; };
 		CEBCD9B62CBBF1CE001C7980 /* MoneyTransfersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTransfersScreen.swift; sourceTree = "<group>"; };
 		CEBCD9B82CBC5D95001C7980 /* NetWorthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthView.swift; sourceTree = "<group>"; };
 		CEBCD9BA2CBC6E13001C7980 /* AssetCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCreationView.swift; sourceTree = "<group>"; };
@@ -347,6 +355,7 @@
 		CE177BDD29D243E600C79390 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CE9641B12FAB8DF10039E2B6 /* PDF */,
 				CE8B4ECC2ACB39CC004C8144 /* Shapes */,
 				CE1057792AAC7C7100C6512A /* Errors */,
 				CE30DC8329D2EA2F009C519A /* Formatters */,
@@ -453,6 +462,7 @@
 		CE177BE529D247AB00C79390 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CE9641BC2FAB93000039E2D0 /* ExpensesPdfScannerViewModel.swift */,
 				CED7B3732E9C1964007C557F /* ReceiptScannerViewModel.swift */,
 			);
 			path = ViewModels;
@@ -533,6 +543,7 @@
 		CE30DCC429D32906009C519A /* ExpensesTab */ = {
 			isa = PBXGroup;
 			children = (
+				CE9641B42FAB90CF0039E2B6 /* ExpensesPdfScannerView.swift */,
 				CED7B3752E9C197C007C557F /* ReceiptScannerView.swift */,
 				CE30DCC529D3291B009C519A /* ExpensesTab.swift */,
 				CE30DC7329D2DAEB009C519A /* ExpenseCreationView.swift */,
@@ -614,6 +625,15 @@
 				CE8B4ED92ACB3B6B004C8144 /* RoundedTextFieldStyle.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		CE9641B12FAB8DF10039E2B6 /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				CE9641C02FAB95000039E2D0 /* ExpensesPDFParser.swift */,
+				CE9641B22FAB8DF90039E2B6 /* JusanPDFParser.swift */,
+			);
+			path = PDF;
 			sourceTree = "<group>";
 		};
 		CEBCD9C42CBCE51C001C7980 /* AnalyticsTab */ = {
@@ -774,6 +794,7 @@
 				CE377D262B448E7E00155235 /* PreferencesData.swift in Sources */,
 				CE30DCEE29D456E7009C519A /* Date+Ext.swift in Sources */,
 				CED65C562CFB32E000D0FD70 /* DataSyncScreen.swift in Sources */,
+				CE9641B32FAB8DFD0039E2B6 /* JusanPDFParser.swift in Sources */,
 				CE8B4EDA2ACB3B6B004C8144 /* RoundedTextFieldStyle.swift in Sources */,
 				CE10577F2AAC7FEA00C6512A /* IncomeType.swift in Sources */,
 				CE30DC9A29D320C0009C519A /* DateFormatterContainer.swift in Sources */,
@@ -816,6 +837,7 @@
 				CE30DCBD29D326B7009C519A /* Collection+Ext.swift in Sources */,
 				CE30DCCB29D455DE009C519A /* TimeIntervalFormatter.swift in Sources */,
 				CE30DCC629D3291B009C519A /* ExpensesTab.swift in Sources */,
+				CE9641B52FAB90D50039E2B6 /* ExpensesPdfScannerView.swift in Sources */,
 				CE30DCD829D45604009C519A /* MultiSelectPickerView.swift in Sources */,
 				CE30DC8929D2EDB2009C519A /* Stock.swift in Sources */,
 				CE1057732AAB543900C6512A /* ActiveIncomeView.swift in Sources */,
@@ -832,6 +854,8 @@
 				CEFD303129E18FC2008A3071 /* Transaction.swift in Sources */,
 				CEFD301B29DFDC12008A3071 /* MoneyHolder.swift in Sources */,
 				CED7B3742E9C1964007C557F /* ReceiptScannerViewModel.swift in Sources */,
+				CE9641BD2FAB93000039E2D0 /* ExpensesPdfScannerViewModel.swift in Sources */,
+				CE9641C12FAB95000039E2D0 /* ExpensesPDFParser.swift in Sources */,
 				CE30DCE929D456E7009C519A /* JsonExtension.swift in Sources */,
 				CE30DC8B29D2EED3009C519A /* Income.swift in Sources */,
 				CE1057692AAB38DA00C6512A /* ActiveIncome.swift in Sources */,
